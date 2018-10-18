@@ -1,0 +1,6 @@
+INFO:root:Attempting to connect to nba_stats_staging database 2018-10-17 20:16:00.007540
+INFO:root:Successfully connected to nba_stats_staging 2018-10-17 20:16:00.010436
+INFO:root:Backing up nba_stats_backup database 2018-10-17 20:16:00.010567
+INFO:root:Backing up complete 2018-10-17 20:16:07.776002
+INFO:root:Compressing backup of nba_stats_backup database 2018-10-17 20:16:07.776244
+INFO:root:Compression complete 2018-10-17 20:16:21.791384
