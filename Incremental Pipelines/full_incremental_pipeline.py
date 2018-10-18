@@ -30,7 +30,6 @@ import active_roster
 import injured_players
 
 def back_up_db(out_file):
-    print(out_file)
     logging.info('Backing up nba_stats_backup database {}'.format(str(datetime.datetime.now())))
     os.system('mysqldump -u root -p nba_stats > {}'.format(out_file))
     logging.info('Backing up complete {}'.format(str(datetime.datetime.now())))
