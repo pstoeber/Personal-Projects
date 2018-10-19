@@ -12,7 +12,6 @@ import datetime
 import logging
 
 def season_scraper():
-
     date_time = str(datetime.date.today())
     current_year = int(date_time[:date_time.index("-")])
     if current_year == 2018:
@@ -90,18 +89,19 @@ def create_standing_table(connection, header_list):
     create_statement = 'create table team_standings (team varchar(30), conference varchar(20), season int,'
     for p, field in enumerate(header_list):
 
-        if field == 'W' or field == 'L' or field == 'GB':
-            create_statement += field + ' int(10),'
+        if field == 'W' or field == 'L':
+            create_statement += field + ' int(10),\n'
         elif field == 'PCT' or field == 'PPG':
-            create_statement += field + ' float(10),'
-        elif field == 'OPP PPG':
-            create_statement += 'OPP_PPG float(10),'
+            create_statement += field + ' float(10),\n'
+        elif field == 'OPP PPG' or field == 'GB':
+            create_statement += field.replace(' ', '_') + ' float(10),\n'
         elif field == 'HOME' or field == 'AWAY' or field == 'CONF' or field == 'DIFF' or field == 'STRK' or field == 'L10':
-            create_statement += field + ' varchar(10),'
+            create_statement += field + ' varchar(10),\n'
         elif field == 'DIV':
             create_statement += '`' + field + '` varchar(10),'
 
-    create_statement = create_statement[:-1] + ')'
+    create_statement = create_statement[:-2] + ')'
+    print(create_statement)
     sql_execute(create_statement, connection)
 
 def create_insert_statements(standing_dict, connection):
@@ -116,7 +116,11 @@ def create_insert_statements(standing_dict, connection):
             else:
                 insert_statement += str(value) + ', '
         insert_statement = insert_statement[:-2] + ')'
-        sql_execute(insert_statement, connection)
+        try:
+            sql_execute(insert_statement, connection)
+        except:
+            logging.info('[FAILED INSERT]:' + insert_statement)
+        #    pass
         insert_statement = ''
 
 def update_statements(connection):
@@ -127,16 +131,16 @@ def update_statements(connection):
     #sql_execute(update_okc, connection)
 
 def sql_execute(query, connection):
-    exe = connection.cursor()
-    exe.execute(query)
+        exe = connection.cursor()
+        exe.execute(query)
 
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
-    ##UNCOMMENT AFTER TESTING##
-    #years_list = season_scraper()
+    years_list = season_scraper()
     logging.info('Beginning ESPN team standings pipeline {}'.format(str(datetime.datetime.now())))
-    years_list = [2018]
+    ##UNCOMMENT AFTER TESTING##
+    #years_list = [2018]
     for c, year in enumerate(years_list):
         standing_stats_link = 'http://www.espn.com/nba/standings/_/season/' + str(year)
         #print(standing_stats_link)

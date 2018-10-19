@@ -44,16 +44,16 @@ def stat_scraper(link):
         try:
             browser.get(link)
 
-            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[2]').click() ## Change to option 1
-            time.sleep(15)
+            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click() ## Change to option 1
+            time.sleep(5)
 
             ########REMOVE TILL NEXT COMMENT LINE AFTER TESTING#############
-            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/label/select/option[2]').click()
-            time.sleep(15)
+            #browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/label/select/option[2]').click()
+            #time.sleep(15)
             ################################################################
 
             browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
-            time.sleep(15)
+            time.sleep(5)
 
             break
         except:

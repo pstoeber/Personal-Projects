@@ -42,7 +42,7 @@ def gen_lookup_dict(conn, date_list):
                 else:
                     exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year -1] + date]) + '\', \'%Y-%m-%d\'), ' + str(year) + ')')
             except:
-                print('-'.join([str(i) for i in [year] + date]))
+                logging.info('[INVALID DATE]' + '-'.join([str(i) for i in [year] + date]))
 def sql_execute(conn, query):
 
     exe = conn.cursor()
