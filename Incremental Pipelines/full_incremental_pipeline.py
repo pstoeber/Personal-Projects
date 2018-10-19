@@ -55,7 +55,7 @@ def espn_delete_max_season(conn):
         field = 'season'
         if c > 3:
             field = 'year'
-        delete = 'delete from nba_stats_backup.{} where {} = 2018'.format(table, field)
+        delete = 'delete from nba_stats_backup.{} where {} = 2019'.format(table, field)
         sql_execute(conn, delete)
     logging.info('Deletion from ESPN tables complete {}'.format(str(datetime.datetime.now())))
 

@@ -141,9 +141,9 @@ def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
     # team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/2018/seasontype/2"
+    years_list = season_link_scraper()
     ##UNCOMMENT AFTER TESTING##
-    #years_list = season_link_scraper()
-    years_list = [2018]
+    #years_list = [2018]
     logging.info('Beginning ESPN team incrementials pipeline {}'.format(str(datetime.datetime.now())))
     for c, year in enumerate(years_list):
         team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"

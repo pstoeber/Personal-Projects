@@ -194,9 +194,8 @@ def create_sql_insert_statements(connection, stat_dict, header_list, player_inde
                 for season in range(len(stat_dict[player][table])): #iteration through the seasons within the dictionary
                     insert_statement = 'insert into ' + ''.join([i for i in table.split()]) + ' values ("' + str(player_index) + '", '\
                                        '"' + '", "'.join([p for p in stat_dict[player][table][season].split()]) + '")'
-                    ##UNCOMMENT THIS AFTER TESTING##
-                    #if flag == True or (flag == False and stat_dict[player][table][season].split()[0][-2:] == '19'):
-                    if flag == True or (flag == False and stat_dict[player][table][season].split()[0][-2:] == '18'):
+                    if flag == True or (flag == False and stat_dict[player][table][season].split()[0][-2:] == '19'):
+                    #if flag == True or (flag == False and stat_dict[player][table][season].split()[0][-2:] == '18'):
                         try:
                             insert_into_sql_table(connection, insert_statement)
                         except:
