@@ -15,10 +15,8 @@ def truncate_table(conn):
 def date_gen():
 
     date_list = []
-    start_date = '2018-1-1'#'2018-10-10'#'1990-1-01' #2014-8-30
-    end_date =  '2018-12-31'#datetime.datetime.today().date() #2018-6-30
-    start = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
-    end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d').date()
+    start = datetime.datetime.strptime('2018-1-1', '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime('2018-12-31', '%Y-%m-%d').date()
     step = datetime.timedelta(days=1)
 
     while start <= end_date:
