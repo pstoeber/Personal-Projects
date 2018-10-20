@@ -24,9 +24,6 @@ def season_link_scraper():
         return [current_year]
 
 def team_stat_scraper(team_link, year):
-
-    print(team_link)
-
     season_totals_list, header_list, table_names = [], [], []
     table_names.append("Team_info")
 
@@ -90,11 +87,14 @@ def create_team_info_insert_statements(connection, season_total_list, table_name
         if row[0] in city_prefixes:
             row[0] = row[0] + " " + row[1]
             row.pop(1)
-        cities[row[0]] = p +1
+            
+        sql_name = row[0]
+        if 'Lakers' in row[0]:
+            sql_name = 'Los Angeles Lakers'
 
-        team_info_state = 'insert into ' + table_names[0] + ' values ("' + str(cities[row[0]]) + '", ' + str(year) + ', "'  + row[0] + '")'
-        ####COMMENTED OUT TO AVOID INSERTING DUPLICATE TEAMS####
-        #sql_execute(connection, [team_info_state])
+        find_team_id = 'select team_id from nba_stats_backup.team_info where team like \'{}%\''.format(sql_name)
+        team_id = sql_execute(connection, [find_team_id])[0][0]
+        cities[row[0]] = int(team_id)
     return cities
 
 def create_insert_statements(connection, season_total_list, table_names, iterated_header_list, year, cities):
@@ -132,10 +132,10 @@ def alter_team_info_table(connection):
     sql_execute(connection, [alter_statement])
 
 def sql_execute(connection, input_list):
-
+    exe = connection.cursor()
     for i in input_list:
-        exe = connection.cursor()
         exe.execute(i)
+    return exe.fetchall()
 
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
