@@ -97,7 +97,6 @@ def main():
     logging.info('Beginning NBA Stats Advanced Team Stats incrementals pipeline {}'.format(str(datetime.datetime.now())))
     stat_df = stat_scraper(link)
     stat_df['GAME_DATE'] = stat_df.loc[:, 'GAME_DATE'].apply(convert_date)
-    print(stat_df.head())
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
 
     if stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].empty:

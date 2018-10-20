@@ -61,7 +61,6 @@ def stat_scraper(link):
             columns += row
         if c > 6 and len(row) > 1:
             sub_row = (home_away_team_aligner(row[:4]))
-            #print(sub_row + row[4:])
             stats.append(sub_row + row[4:])
     columns = column_list_format(columns)
     browser.quit()
@@ -103,7 +102,6 @@ def main():
         sys.exit(1)
 
     stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].to_sql(con=engine, name='team_misc_boxscore_stats', if_exists='append', index=False)
-    print(stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].count())
     logging.info('Misc Stats Dataframe Count: {}'.format(str(stat_df.count())))
     logging.info('NBA Stats Misc Team Stats incrementals pipeline completed successfully{}'.format(str(datetime.datetime.now())))
 
