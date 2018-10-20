@@ -268,7 +268,7 @@
         <column name="wins" type="int"></column>
         <column name="loses" type="int"></column>
         <column name="pct" type="float"></column>
-        <column name="gb" type="int"></column>
+        <column name="gb" type="float"></column>
         <column name="home_wins" type="int"></column>
         <column name="home_loses" type="int"></column>
         <column name="away_wins" type="int"></column>
@@ -1035,4 +1035,26 @@
         inner join nba_stats_test.game_results as results on map.game_hash = results.game_hash
       </createView>
     </changeSet>
+
+    <changeSet id="86" author="Philip">
+      <createTable tableName="total_points_predictions">
+        <column name="team" type="varchar(50)">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="game_date" type="date">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="predicted_total_pts" type="float"></column>
+        <column name="r_squared" type="float"></column>
+      </createTable>
+    </changeSet>
+
+    <changeSet id="87" author="Philip">
+      <sql>
+        insert into total_points_predictions
+        select *
+        from nba_stats_backup.total_points_predictions
+      </sql>
+    </changeSet>
+
 </databaseChangeLog>
