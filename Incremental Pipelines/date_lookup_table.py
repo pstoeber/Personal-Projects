@@ -15,13 +15,15 @@ def truncate_table(conn):
 def date_gen():
 
     date_list = []
-    start_date = '1990-1-01' #2014-8-30
-    end_date = datetime.datetime.today().date() #2018-6-30
+    start_date = '2018-1-1'#'2018-10-10'#'1990-1-01' #2014-8-30
+    end_date =  '2018-12-31'#datetime.datetime.today().date() #2018-6-30
     start = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d').date()
     step = datetime.timedelta(days=1)
 
     while start <= end_date:
         date = str(start).split('-')
+        print(date)
         if date[1:] not in date_list:
             date_list.append(date[1:])
         start += step
@@ -33,6 +35,7 @@ def gen_lookup_dict(conn, date_list):
     get_years = 'select year(game_date) from box_score_map group by year(game_date)'
     years = sql_execute(conn, get_years)
     years = [i[0] for i in years]
+    print(years)
 
     for year in years:
         for date in date_list:
@@ -40,7 +43,8 @@ def gen_lookup_dict(conn, date_list):
                 if int(date[0]) < 6:
                     exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year] + date]) + '\', \'%Y-%m-%d\'), ' + str(year) + ')')
                 else:
-                    exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year -1] + date]) + '\', \'%Y-%m-%d\'), ' + str(year) + ')')
+                    exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year] + date]) + '\', \'%Y-%m-%d\'), ' + str(year+1) + ')')
+                    print('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year] + date]) + '\', \'%Y-%m-%d\'), ' + str(year+1) + ')')
             except:
                 logging.info('[INVALID DATE]' + '-'.join([str(i) for i in [year] + date]))
 def sql_execute(conn, query):
