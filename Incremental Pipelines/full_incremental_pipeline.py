@@ -12,6 +12,7 @@ import pymysql
 import shutil
 import datetime
 import logging
+import hashlib
 import nba_stats_adv_team_box_score
 import nba_stats_fig4_team_box_score
 import nba_stats_misc_team_box_score
@@ -69,6 +70,14 @@ def insert_into_nba_stats(conn):
         sql_execute(conn, insert)
     logging.info('Insert completed {}'.format(str(datetime.datetime.now())))
 
+def pipeline_auditlog(conn):
+    pipeline_insert = 'insert into nba_stats_backup.pipeline_auditlog values ("{}", "{}")'.format(gen_hash(str(datetime.datetime.now())), str(datetime.datetime.now()))
+    print(pipeline_insert)
+    sql_execute(conn, pipeline_insert)
+
+def gen_hash(row):
+    return  hashlib.md5(row.encode('utf-8')).hexdigest()
+
 def recreate_database(conn):
     logging.info('Dropping nba_stats_test database {}'.format(str(datetime.datetime.now())))
     sql_execute(conn, 'drop database nba_stats_TEST')
@@ -97,25 +106,26 @@ if __name__ == '__main__':
     logging.info('Successfully connected to nba_stats_staging {}'.format(str(datetime.datetime.now())))
     out_file = '/Users/Philip/Documents/NBA\ Database\ Backups/nba_stats_{}.sql'.format(str(datetime.date.today()))
 
-    back_up_db(out_file)
-    compress_backup(out_file)
-    nba_espn_incrementals.main()
-    nba_espn_team_incrementals.main()
-    nba_espn_team_standings_incrementals.main()
-    box_score_nba_ref_incrementals.main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
-    nba_stats_adv_team_box_score.main()
-    nba_stats_fig4_team_box_score.main()
-    nba_stats_misc_team_box_score.main()
-    nba_stats_scoring_team_box_score.main()
-    nba_stats_traditional_team_box_score.main()
-    espn_update_season_date.main()
-    espn_team_name_update.main()
-    team_name_update_team_boxscore.main()
-    player_name_nba_ref_boxscore.main()
+    #back_up_db(out_file)
+    #compress_backup(out_file)
+    #nba_espn_incrementals.main()
+    #nba_espn_team_incrementals.main()
+    #nba_espn_team_standings_incrementals.main()
+    #box_score_nba_ref_incrementals.main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    #nba_stats_adv_team_box_score.main()
+    #nba_stats_fig4_team_box_score.main()
+    #nba_stats_misc_team_box_score.main()
+    #nba_stats_scoring_team_box_score.main()
+    #nba_stats_traditional_team_box_score.main()
+    #espn_update_season_date.main()
+    #espn_team_name_update.main()
+    #team_name_update_team_boxscore.main()
+    #player_name_nba_ref_boxscore.main()
     #espn_delete_max_season(connection)
     #insert_into_nba_stats(connection)
-    date_lookup_table.main()
-    active_roster.main(sys.argv[5], sys.argv[6])
-    injured_players.main(sys.argv[5])
-    #recreate_database(connection)
-    #liquibase_call()
+    #date_lookup_table.main()
+    #active_roster.main(sys.argv[5], sys.argv[6])
+    #injured_players.main(sys.argv[5])
+    pipeline_auditlog(connection)
+    recreate_database(connection)
+    liquibase_call()
