@@ -52,7 +52,7 @@ def  extract_injured_players(link):
         if player_content[2] == 'Out':
             injured_player_list.append([player_content[0], ' '.join([i for i in team])])
         else:
-            ruled_out_list = ['out', 'ruled out', 'did not make the trip', 'off', 'night off', 'miss', 'won\'t take the court']
+            ruled_out_list = ['out', 'ruled out', 'did not make the trip', 'off', 'night off', 'miss', 'missed', 'won\'t take the court']
             for crit in ruled_out_list:
                 if crit in player_content[3]:
                     injured_player_list.append([player_content[0], ' '.join([i for i in team])])
