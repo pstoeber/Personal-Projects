@@ -79,7 +79,7 @@ def check_name(name):
     return name
 
 def insert_into_database(conn, df):
-    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_backup"))
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name='injuries', if_exists='replace', index=False)
 
 def sql_execute(sql, conn):
@@ -90,7 +90,7 @@ def sql_execute(sql, conn):
 def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
-    connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_backup', autocommit=True)
+    connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
     truncate_table(connection)
     links = get_injury_links()
     players = np.empty(shape=[0, 2])

@@ -1,6 +1,406 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2018-10-20 00:56:07.023409
-INFO:root:Successfully connected to nba_stats_staging 2018-10-20 00:56:07.026761
-INFO:root:Dropping nba_stats_test database 2018-10-20 00:56:07.047846
-INFO:root:nba_stats_test schema re-created 2018-10-20 00:56:07.222821
-INFO:root:Calling liquibase for nba_stats_test refresh 2018-10-20 00:56:07.223029
-INFO:root:Incrementials Pipeline completed 2018-10-20 01:04:46.673096
+INFO:root:Attempting to connect to nba_stats_staging database 2018-10-20 22:37:59.382937
+INFO:root:Successfully connected to nba_stats_staging 2018-10-20 22:37:59.386614
+INFO:root:Backing up nba_stats_backup database 2018-10-20 22:37:59.386723
+INFO:root:Backing up complete 2018-10-20 22:38:05.991961
+INFO:root:Compressing backup of nba_stats_backup database 2018-10-20 22:38:05.992226
+INFO:root:Compression complete 2018-10-20 22:38:21.168879
+INFO:root:Beginning ESPN players incrementals pipeline 2018-10-20 22:38:38.478173
+INFO:root:Creating new player_id for DJ Stephens
+INFO:root:Creating new player_id for Ryan Broekhoff
+INFO:root:Creating new player_id for Deonte Burton
+INFO:root:Creating new player_id for Zach Lofton
+INFO:root:Creating new player_id for Gary Clark
+INFO:root:Creating new player_id for Jaylen Adams
+INFO:root:Creating new player_id for Mikal Bridges
+INFO:root:Creating new player_id for Chandler Hutchison
+INFO:root:Creating new player_id for Jonah Bolden
+INFO:root:Creating new player_id for Allonzo Trier
+INFO:root:Creating new player_id for Ray Spalding
+INFO:root:Creating new player_id for Landry Shamet
+INFO:root:Creating new player_id for Aaron Holiday
+INFO:root:Creating new player_id for Jalen Brunson
+INFO:root:Creating new player_id for Donte DiVincenzo
+INFO:root:Creating new player_id for Isaiah Briscoe
+INFO:root:Creating new player_id for Luka Doncic
+INFO:root:Creating new player_id for Harry Giles
+INFO:root:Creating new player_id for Frank Jackson
+INFO:root:Creating new player_id for Bruce Brown
+INFO:root:Creating new player_id for Omari Spellman
+INFO:root:Creating new player_id for Kevin Huerter
+INFO:root:Creating new player_id for Miles Bridges
+INFO:root:Creating new player_id for Alize Johnson
+INFO:root:Creating new player_id for Hamidou Diallo
+INFO:root:Creating new player_id for Isaiah Hartenstein
+INFO:root:Creating new player_id for Rodions Kurucs
+INFO:root:Creating new player_id for Elie Okobo
+INFO:root:Creating new player_id for Collin Sexton
+INFO:root:Creating new player_id for Wendell Carter Jr.
+INFO:root:Creating new player_id for Marvin Bagley III
+INFO:root:Creating new player_id for Trae Young
+INFO:root:Creating new player_id for Mohamed Bamba
+INFO:root:Creating new player_id for Jaren Jackson Jr.
+INFO:root:Creating new player_id for Shai Gilgeous-Alexander
+INFO:root:Creating new player_id for Kevin Knox
+INFO:root:Creating new player_id for Deandre Ayton
+INFO:root:Creating new player_id for Mitchell Robinson
+INFO:root:Creating new player_id for Brad Wanamaker
+INFO:root:ESPN players incrementals pipeline completed successfully 2018-10-20 22:41:00.330094
+INFO:root:Beginning ESPN team incrementials pipeline 2018-10-20 22:41:00.332365
+INFO:root:ESPN team incrementals pipeline completed successfully 2018-10-20 22:41:02.782258
+INFO:root:Beginning ESPN team standings pipeline 2018-10-20 22:41:02.785525
+INFO:root:ESPN team standings pipeline completed successfully 2018-10-20 22:41:04.147771
+INFO:root:Beginning NBA Reference players incrementals pipeline 2018-10-20 22:41:04.150771
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Cheick Diallo", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Dress", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Cheick Diallo", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Emeka Okafor", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Emeka Okafor", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Frank Jackson", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Frank Jackson", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jordan Crawford", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jordan Crawford", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("DeAndre Liggins", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("DeAndre Liggins", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("JaVale McGee", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("JaVale McGee", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Zaza Pachulia", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Zaza Pachulia", "a7dcca61a4218c5f6978e95ef9321cbf")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("David Stockton", "219029b1fa3280c280be0c491cfb933e", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("David Stockton", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ekpe Udoh", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ekpe Udoh", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tony Bradley", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tony Bradley", "219029b1fa3280c280be0c491cfb933e", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tarik Black", "219029b1fa3280c280be0c491cfb933e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tarik Black", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Aaron Jackson", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Aaron Jackson", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ryan Anderson", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ryan Anderson", "219029b1fa3280c280be0c491cfb933e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Joe Johnson", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Joe Johnson", "219029b1fa3280c280be0c491cfb933e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Shake Milton", "7969f0c7b27d2eebabf05f5e1ea60c39", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Shake Milton", "7969f0c7b27d2eebabf05f5e1ea60c39")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Demetrius Jackson", "7969f0c7b27d2eebabf05f5e1ea60c39")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Demetrius Jackson", "7969f0c7b27d2eebabf05f5e1ea60c39", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Abdel Nader", "8fa9b4c4736c0f081f1fb03579a66cb0", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Abdel Nader", "8fa9b4c4736c0f081f1fb03579a66cb0")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Timothe Luwawu-Cabarrot", "8fa9b4c4736c0f081f1fb03579a66cb0")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Timothe Luwawu-Cabarrot", "8fa9b4c4736c0f081f1fb03579a66cb0")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Deonte Burton", "8fa9b4c4736c0f081f1fb03579a66cb0")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Deonte Burton", "8fa9b4c4736c0f081f1fb03579a66cb0", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jacob Evans", "8fa9b4c4736c0f081f1fb03579a66cb0", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jacob Evans", "8fa9b4c4736c0f081f1fb03579a66cb0", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Matthew Dellavedova", "1d1e442cc66f8bef518150f51a91f664", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Matthew Dellavedova", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Pat Connaughton", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Pat Connaughton", "1d1e442cc66f8bef518150f51a91f664", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dwayne Bacon", "1d1e442cc66f8bef518150f51a91f664", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dwayne Bacon", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Frank Kaminsky", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Frank Kaminsky", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Bismack Biyombo", "1d1e442cc66f8bef518150f51a91f664")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Bismack Biyombo", "1d1e442cc66f8bef518150f51a91f664", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Kenneth Faried", "4c4f28d11c4cc7753f69c98bf6a368a7", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Kenneth Faried", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dzanan Musa", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dzanan Musa", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Theo Pinson", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Theo Pinson", "4c4f28d11c4cc7753f69c98bf6a368a7", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jon Leuer", "4c4f28d11c4cc7753f69c98bf6a368a7", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jon Leuer", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Henry Ellenson", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Henry Ellenson", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jose Calderon", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jose Calderon", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Reggie Bullock", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Reggie Bullock", "4c4f28d11c4cc7753f69c98bf6a368a7", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Stanley Johnson", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Stanley Johnson", "4c4f28d11c4cc7753f69c98bf6a368a7")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ian Clark", "af2b30ddb2f4d3eb9ecccfcdc5458e6d", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ian Clark", "af2b30ddb2f4d3eb9ecccfcdc5458e6d", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ivan Rabb", "618a38d16fdba352932d20a3683bfcf8", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ivan Rabb", "618a38d16fdba352932d20a3683bfcf8")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Omri Casspi", "618a38d16fdba352932d20a3683bfcf8")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Omri Casspi", "618a38d16fdba352932d20a3683bfcf8", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Torrey Craig", "bf78c55ec5948b48132a4c7b623fd9ef", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Torrey Craig", "bf78c55ec5948b48132a4c7b623fd9ef")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tyler Lydon", "bf78c55ec5948b48132a4c7b623fd9ef")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tyler Lydon", "bf78c55ec5948b48132a4c7b623fd9ef", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jerome Robinson", "bf78c55ec5948b48132a4c7b623fd9ef", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jerome Robinson", "bf78c55ec5948b48132a4c7b623fd9ef")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tyrone Wallace", "bf78c55ec5948b48132a4c7b623fd9ef")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tyrone Wallace", "bf78c55ec5948b48132a4c7b623fd9ef", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Courtney Lee", "646c1fcd08d1c70a5113939a7d6ae65a", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Courtney Lee", "646c1fcd08d1c70a5113939a7d6ae65a")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Damyean Dotson", "646c1fcd08d1c70a5113939a7d6ae65a")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Damyean Dotson", "646c1fcd08d1c70a5113939a7d6ae65a", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Udonis Haslem", "3e83232ece8958615c966dcf5fd5c37e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Udonis Haslem", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Wayne Ellington", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Wayne Ellington", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Yante Maten", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Yante Maten", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Duncan Robinson", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Duncan Robinson", "3e83232ece8958615c966dcf5fd5c37e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Khem Birch", "3e83232ece8958615c966dcf5fd5c37e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Khem Birch", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jarell Martin", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jarell Martin", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Wesley Iwundu", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Wesley Iwundu", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Isaiah Briscoe", "3e83232ece8958615c966dcf5fd5c37e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Isaiah Briscoe", "3e83232ece8958615c966dcf5fd5c37e", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Salah Mejri", "f43ae6ebc8482cf65b107267cc427387", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Salah Mejri", "f43ae6ebc8482cf65b107267cc427387", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dragan Bender", "f43ae6ebc8482cf65b107267cc427387", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dragan Bender", "f43ae6ebc8482cf65b107267cc427387")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Richaun Holmes", "f43ae6ebc8482cf65b107267cc427387")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Richaun Holmes", "f43ae6ebc8482cf65b107267cc427387", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ekpe Udoh", "c4aa0c0b1db5611ce70fc180419b7007", "Did Not Play", "Did Not Play", "Not With Team")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ekpe Udoh", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Grayson Allen", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Grayson Allen", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Thabo Sefolosha", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Thabo Sefolosha", "c4aa0c0b1db5611ce70fc180419b7007", "Not With Team", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ben McLemore", "c4aa0c0b1db5611ce70fc180419b7007", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ben McLemore", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Wenyen Gabriel", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Wenyen Gabriel", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Skal Labissiere", "c4aa0c0b1db5611ce70fc180419b7007")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Skal Labissiere", "c4aa0c0b1db5611ce70fc180419b7007", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Luol Deng", "e9e0e9e783b3e396cb4b520a506eea61", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Luol Deng", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("James Nunnally", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("James Nunnally", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Josh Okogie", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Josh Okogie", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Keita Bates-Diop", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Keita Bates-Diop", "e9e0e9e783b3e396cb4b520a506eea61", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Quincy Pondexter", "e9e0e9e783b3e396cb4b520a506eea61", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Quincy Pondexter", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Chimezie Metu", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Chimezie Metu", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Drew Eubanks", "e9e0e9e783b3e396cb4b520a506eea61")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Drew Eubanks", "e9e0e9e783b3e396cb4b520a506eea61", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Channing Frye", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Channing Frye", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Greg Monroe", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Greg Monroe", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Rawle Alkins", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Rawle Alkins", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Shake Milton", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Shake Milton", "877391093a1b4cc76f3444d0feec74ab")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Demetrius Jackson", "877391093a1b4cc76f3444d0feec74ab")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Demetrius Jackson", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Svi Mykhailiuk", "31f63b4b39cad4f066262ba82dbf8b1c", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Svi Mykhailiuk", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Isaac Bonga", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Isaac Bonga", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ivica Zubac", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ivica Zubac", "31f63b4b39cad4f066262ba82dbf8b1c", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Caleb Swanigan", "31f63b4b39cad4f066262ba82dbf8b1c", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Caleb Swanigan", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Wade Baldwin", "31f63b4b39cad4f066262ba82dbf8b1c")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Wade Baldwin", "31f63b4b39cad4f066262ba82dbf8b1c", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Udonis Haslem", "c5477004ee9d00d7fbfa6fb49d584a2f", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Udonis Haslem", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Yante Maten", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Yante Maten", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Duncan Robinson", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Duncan Robinson", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Wayne Ellington", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Wayne Ellington", "c5477004ee9d00d7fbfa6fb49d584a2f", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Troy Brown", "c5477004ee9d00d7fbfa6fb49d584a2f", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Troy Brown", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Thomas Bryant", "c5477004ee9d00d7fbfa6fb49d584a2f")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Thomas Bryant", "c5477004ee9d00d7fbfa6fb49d584a2f", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Luke Kornet", "ffef653c02b5f87fc00eeee839f619a6", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Luke Kornet", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Mitchell Robinson", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Mitchell Robinson", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Damyean Dotson", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Damyean Dotson", "ffef653c02b5f87fc00eeee839f619a6", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Kenneth Faried", "ffef653c02b5f87fc00eeee839f619a6", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Kenneth Faried", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Theo Pinson", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Theo Pinson", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dzanan Musa", "ffef653c02b5f87fc00eeee839f619a6")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dzanan Musa", "ffef653c02b5f87fc00eeee839f619a6", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Abdel Nader", "52aaf4e6e8d005a8ccdf710520e055ee", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Abdel Nader", "52aaf4e6e8d005a8ccdf710520e055ee")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Timothe Luwawu-Cabarrot", "52aaf4e6e8d005a8ccdf710520e055ee")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Timothe Luwawu-Cabarrot", "52aaf4e6e8d005a8ccdf710520e055ee", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tyrone Wallace", "52aaf4e6e8d005a8ccdf710520e055ee", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tyrone Wallace", "52aaf4e6e8d005a8ccdf710520e055ee")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Milos Teodosic", "52aaf4e6e8d005a8ccdf710520e055ee")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Milos Teodosic", "52aaf4e6e8d005a8ccdf710520e055ee", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Omari Spellman", "7a645d0cdf08b9e8b674d5efdd18430e", "Did Not Dress", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Omari Spellman", "7a645d0cdf08b9e8b674d5efdd18430e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jaylen Adams", "7a645d0cdf08b9e8b674d5efdd18430e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jaylen Adams", "7a645d0cdf08b9e8b674d5efdd18430e", "Did Not Play", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Andrew Harrison", "7a645d0cdf08b9e8b674d5efdd18430e", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Andrew Harrison", "7a645d0cdf08b9e8b674d5efdd18430e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("MarShon Brooks", "7a645d0cdf08b9e8b674d5efdd18430e")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("MarShon Brooks", "7a645d0cdf08b9e8b674d5efdd18430e", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Channing Frye", "7f4c91a43a6d103aacdf61c5ff6fb5bd", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Channing Frye", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("David Nwaba", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("David Nwaba", "7f4c91a43a6d103aacdf61c5ff6fb5bd", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Luol Deng", "7f4c91a43a6d103aacdf61c5ff6fb5bd", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Luol Deng", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Keita Bates-Diop", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Keita Bates-Diop", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("James Nunnally", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("James Nunnally", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Josh Okogie", "7f4c91a43a6d103aacdf61c5ff6fb5bd")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Josh Okogie", "7f4c91a43a6d103aacdf61c5ff6fb5bd", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Guerschon Yabusele", "c26c267179f99f8d8db9b48afba1df45", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Guerschon Yabusele", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Brad Wanamaker", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Brad Wanamaker", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Semi Ojeleye", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Semi Ojeleye", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Daniel Theis", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Daniel Theis", "c26c267179f99f8d8db9b48afba1df45", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Malachi Richardson", "c26c267179f99f8d8db9b48afba1df45", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Malachi Richardson", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Lorenzo Brown", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Lorenzo Brown", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Greg Monroe", "c26c267179f99f8d8db9b48afba1df45")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Greg Monroe", "c26c267179f99f8d8db9b48afba1df45", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Damion Lee", "8c5301048fe0e3d6f4c93e9fbd1656f4", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Damion Lee", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jordan Bell", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jordan Bell", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jacob Evans", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jacob Evans", "8c5301048fe0e3d6f4c93e9fbd1656f4", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Thabo Sefolosha", "8c5301048fe0e3d6f4c93e9fbd1656f4", "Not With Team", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Thabo Sefolosha", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Grayson Allen", "8c5301048fe0e3d6f4c93e9fbd1656f4")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Grayson Allen", "8c5301048fe0e3d6f4c93e9fbd1656f4", "Did Not Play", "Not With Team")
+INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-10-20 22:43:25.116279
+INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-10-20 22:43:25.131595
+INFO:root:Advanced Stats Dataframe Count: TEAM         58
+HOME_TEAM    58
+AWAY_TEAM    58
+GAME_DATE    58
+W/L          58
+MIN          58
+OFFRTG       58
+DEFRTG       58
+NETRTG       58
+AST%         58
+AST/TO       58
+AST_RATIO    58
+OREB%        58
+DREB%        58
+REB%         58
+TOV%         58
+EFG%         58
+TS%          58
+PACE         58
+PIE          58
+dtype: int64
+INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-10-20 22:43:43.878541
+INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-10-20 22:43:43.880886
+INFO:root:Four Factors Dataframe Count: TEAM            58
+HOME_TEAM       58
+AWAY_TEAM       58
+GAME_DATE       58
+W/L             58
+MIN             58
+EFG%            58
+FTA_RATE        58
+FTA             58
+RATE            58
+OPP_EFG%        58
+OPP_FTA_RATE    58
+OPP_TOV%        58
+OPP_OREB%       58
+dtype: int64
+INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-10-20 22:45:14.742156
+INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-10-20 22:45:14.760045
+INFO:root:Misc Stats Dataframe Count: TEAM              58
+HOME_TEAM         58
+AWAY_TEAM         58
+GAME_DATE         58
+W/L               58
+MIN               58
+PTS_OFF_TO        58
+2ND_PTS           58
+FBPS              58
+PITP              58
+OPP_PTS_OFF_TO    58
+OPP_2ND_PTS       58
+OPP_FBPS          58
+OPP_PITP          58
+dtype: int64
+INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-10-20 22:46:41.883817
+INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-10-20 22:46:41.887451
+INFO:root:Scoring Stats Dataframe Count: TEAM           58
+HOME_TEAM      58
+AWAY_TEAM      58
+GAME_DATE      58
+W/L            58
+MIN            58
+%FGA_2PT       58
+%FGA_3PT       58
+%PTS_2PT       58
+%PTS_2PT_MR    58
+%PTS_3PT       58
+%PTS_FBPS      58
+%PTS_FT        58
+%PTS_OFF_TO    58
+%PTS_PITP      58
+2FGM_%AST      58
+2FGM_%UAST     58
+3FGM_%AST      58
+3FGM_%UAST     58
+FGM_%AST       58
+FGM_%UAST      58
+dtype: int64
+INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-10-20 22:48:50.148530
+INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-10-20 22:48:50.150840
+INFO:root:Traditional Stats Dataframe Count: TEAM         58
+HOME_TEAM    58
+AWAY_TEAM    58
+GAME_DATE    58
+W/L          58
+MIN          58
+PTS          58
+FGM          58
+FGA          58
+FG%          58
+3PM          58
+3PA          58
+3P%          58
+FTM          58
+FTA          58
+FT%          58
+OREB         58
+DREB         58
+REB          58
+AST          58
+TOV          58
+STL          58
+BLK          58
+PF           58
++/-          58
+dtype: int64
+INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-10-20 22:49:01.845796
+INFO:root:Updating ESPN seasons 2018-10-20 22:49:01.848841
+INFO:root:ESPN seasons update completed successfully 2018-10-20 22:49:01.974255
+INFO:root:Updating ESPN team names 2018-10-20 22:49:01.974537
+INFO:root:ESPN team names update completed successfully 2018-10-20 22:49:03.048164
+INFO:root:Beginning NBA Stats team name 2018-10-20 22:49:03.048409
+INFO:root:NBA Stats team name update completed successfully 2018-10-20 22:49:16.800702
+INFO:root:Beginning NBA Reference player name update 2018-10-20 22:49:16.800891
+INFO:root:NBA Reference player name update completed successfully 2018-10-20 22:49:17.197843
+INFO:root:Beginning generation of date lookup table 2018-10-20 22:49:17.198143
+INFO:root:Date lookup table generated 2018-10-20 22:51:23.671997
+INFO:root:Refreshing active_rosters table 2018-10-20 22:51:23.672379
+INFO:root:Active_rosters table refresh complete 2018-10-20 22:57:07.650169
+INFO:root:Refreshing injured_players table 2018-10-20 22:57:07.650621
+INFO:root:Injured_players table refresh complete 2018-10-20 23:05:47.053685

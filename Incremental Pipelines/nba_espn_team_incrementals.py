@@ -87,12 +87,12 @@ def create_team_info_insert_statements(connection, season_total_list, table_name
         if row[0] in city_prefixes:
             row[0] = row[0] + " " + row[1]
             row.pop(1)
-            
+
         sql_name = row[0]
         if 'Lakers' in row[0]:
             sql_name = 'Los Angeles Lakers'
 
-        find_team_id = 'select team_id from nba_stats_backup.team_info where team like \'{}%\''.format(sql_name)
+        find_team_id = 'select team_id from nba_stats.team_info where team like \'{}%\''.format(sql_name)
         team_id = sql_execute(connection, [find_team_id])[0][0]
         cities[row[0]] = int(team_id)
     return cities

@@ -101,7 +101,6 @@ def create_standing_table(connection, header_list):
             create_statement += '`' + field + '` varchar(10),'
 
     create_statement = create_statement[:-2] + ')'
-    print(create_statement)
     sql_execute(create_statement, connection)
 
 def create_insert_statements(standing_dict, connection):

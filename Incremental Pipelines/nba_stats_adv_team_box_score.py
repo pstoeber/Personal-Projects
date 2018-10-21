@@ -27,9 +27,9 @@ from contextlib import closing
 
 def find_max_date(conn):
     exe = conn.cursor()
+    exe.execute('select max(game_date) from nba_stats.box_score_map')
     ##UNCOMMENT AFTER TESTING##
-    #exe.execute('select max(game_date) from nba_stats.box_score_map')
-    exe.execute('select max(game_date) from nba_stats_backup.box_score_map')
+    #exe.execute('select max(game_date) from nba_stats_backup.box_score_map')
     return exe.fetchall()[0][0]
 
 def stat_scraper(link):
@@ -52,9 +52,8 @@ def stat_scraper(link):
             #time.sleep(15)
             ################################################################
 
-        #    browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
-        #    time.sleep(5)
-
+            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
+            time.sleep(5)
             break
         except:
             logging.info('[CONNECTION TIME-OUT]: re-trying advanced pipeline')

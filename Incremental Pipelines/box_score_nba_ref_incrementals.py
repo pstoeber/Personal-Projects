@@ -39,9 +39,10 @@ def gen_dates(conn):
 
     links_list = []
 
+
+    find_max_date = 'select max(game_date) from nba_stats.box_score_map'
     ##UNCOMMENT THIS AFTER TESTING##
-    #find_max_date = 'select max(game_date) from nba_stats.box_score_map'
-    find_max_date = 'select max(game_date) from nba_stats_backup.box_score_map'
+    #find_max_date = 'select max(game_date) from nba_stats_backup.box_score_map'
     max_system_date = sql_execute(conn, find_max_date)[0][0]
 
     start = max_system_date
