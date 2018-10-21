@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 INFO:root:Attempting to connect to nba_stats_staging database 2018-10-21 10:44:46.499639
 INFO:root:Successfully connected to nba_stats_staging 2018-10-21 10:44:46.502928
 INFO:root:Backing up nba_stats_backup database 2018-10-21 10:44:46.503023
@@ -30,6 +31,8 @@ INFO:root:Creating new player_id for Harry Giles
 INFO:root:Creating new player_id for Frank Jackson
 INFO:root:Creating new player_id for Josh Okogie
 =======
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:Attempting to connect to nba_stats_staging database 2018-10-18 22:11:17.760553
 INFO:root:Successfully connected to nba_stats_staging 2018-10-18 22:11:17.763194
 INFO:root:Backing up nba_stats_backup database 2018-10-18 22:11:17.763283
@@ -52,13 +55,19 @@ INFO:root:Creating new player_id for Donte DiVincenzo
 INFO:root:Creating new player_id for Luka Doncic
 INFO:root:Creating new player_id for Harry Giles
 INFO:root:Creating new player_id for Frank Jackson
+<<<<<<< HEAD
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
+=======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:Creating new player_id for Bruce Brown
 INFO:root:Creating new player_id for Omari Spellman
 INFO:root:Creating new player_id for Kevin Huerter
 INFO:root:Creating new player_id for Miles Bridges
 <<<<<<< HEAD
+<<<<<<< HEAD
 INFO:root:Creating new player_id for Alize Johnson
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 =======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:Creating new player_id for Hamidou Diallo
@@ -67,7 +76,10 @@ INFO:root:Creating new player_id for Rodions Kurucs
 INFO:root:Creating new player_id for Elie Okobo
 INFO:root:Creating new player_id for Collin Sexton
 <<<<<<< HEAD
+<<<<<<< HEAD
 INFO:root:Creating new player_id for Wendell Carter Jr.
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 =======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:Creating new player_id for Marvin Bagley III
@@ -77,6 +89,7 @@ INFO:root:Creating new player_id for Jaren Jackson Jr.
 INFO:root:Creating new player_id for Shai Gilgeous-Alexander
 INFO:root:Creating new player_id for Kevin Knox
 INFO:root:Creating new player_id for Deandre Ayton
+<<<<<<< HEAD
 <<<<<<< HEAD
 INFO:root:Creating new player_id for Dzanan Musa
 INFO:root:Creating new player_id for Mitchell Robinson
@@ -93,6 +106,8 @@ INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values 
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Emeka Okafor", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Dress")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Frank Jackson", "a7dcca61a4218c5f6978e95ef9321cbf")
 =======
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:Creating new player_id for Mitchell Robinson
 INFO:root:Creating new player_id for Brad Wanamaker
 INFO:root:ESPN players incrementals pipeline completed successfully 2018-10-18 22:14:34.220711
@@ -100,12 +115,16 @@ INFO:root:Beginning ESPN team incrementials pipeline 2018-10-18 22:14:34.224553
 INFO:root:ESPN team incrementals pipeline completed successfully 2018-10-18 22:14:36.420077
 INFO:root:Beginning NBA Reference players incrementals pipeline 2018-10-18 22:14:36.423144
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Frank Jackson", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Dress", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+<<<<<<< HEAD
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
+=======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Frank Jackson", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jordan Crawford", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jordan Crawford", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("DeAndre Liggins", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("DeAndre Liggins", "a7dcca61a4218c5f6978e95ef9321cbf")
+<<<<<<< HEAD
 <<<<<<< HEAD
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play")
@@ -114,6 +133,8 @@ INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats valu
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Zaza Pachulia", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Zaza Pachulia", "a7dcca61a4218c5f6978e95ef9321cbf")
 =======
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Cheick Diallo", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Cheick Diallo", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Dress", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Emeka Okafor", "a7dcca61a4218c5f6978e95ef9321cbf")
@@ -124,6 +145,9 @@ INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values 
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Zaza Pachulia", "a7dcca61a4218c5f6978e95ef9321cbf", "Did Not Play", "Did Not Play", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Nick Young", "a7dcca61a4218c5f6978e95ef9321cbf")
+<<<<<<< HEAD
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
+=======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("David Stockton", "219029b1fa3280c280be0c491cfb933e", "Did Not Play", "Did Not Play", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("David Stockton", "219029b1fa3280c280be0c491cfb933e")
@@ -247,6 +271,7 @@ INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values 
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Channing Frye", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Greg Monroe", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Greg Monroe", "8b74486bda3a671236f8bcb5a97e7699", "Did Not Play")
+<<<<<<< HEAD
 <<<<<<< HEAD
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Rawle Alkins", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Rawle Alkins", "877391093a1b4cc76f3444d0feec74ab", "Did Not Play")
@@ -554,6 +579,8 @@ INFO:root:Dropping nba_stats_test database 2018-10-21 11:06:27.493092
 INFO:root:nba_stats_test schema re-created 2018-10-21 11:06:27.708898
 INFO:root:Calling liquibase for nba_stats_test refresh 2018-10-21 11:06:27.709082
 =======
+=======
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
 INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-10-18 22:16:48.690982
 INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-10-18 22:16:48.711595
 INFO:root:[CONNECTION TIME-OUT]: re-trying advanced pipeline
@@ -11684,4 +11711,7 @@ INFO:root:[CONNECTION TIME-OUT]: re-trying advanced pipeline
 INFO:root:[CONNECTION TIME-OUT]: re-trying advanced pipeline
 INFO:root:[CONNECTION TIME-OUT]: re-trying advanced pipeline
 INFO:root:[CONNECTION TIME-OUT]: re-trying advanced pipeline
+<<<<<<< HEAD
+>>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
+=======
 >>>>>>> b708789d957a82f227e5f0d4a6e527061293d74c
