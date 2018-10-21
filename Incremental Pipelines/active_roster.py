@@ -82,13 +82,13 @@ def sql_execute(query, connection):
     return exe.fetchall()
 
 def insert_into_database(conn, df):
-    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_backup"))
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name='active_rosters', if_exists='replace', index=False)
 
 def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
-    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_backup", autocommit="true")
+    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
 
     truncate_table(myConnection)

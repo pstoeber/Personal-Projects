@@ -161,9 +161,9 @@ def create_sql_tables(connection, create_table_list):
 def create_sql_insert_statements(connection, stat_dict, header_list, player_index, current_team, exp):
     #error handling to check for None entries for players that have no stats
 
+    find_max_id = 'select max(player_id) from nba_stats.player_info'
     ## UNCOMMENT AFTER TESTING##
-    #find_max_id = 'select max(player_id) from nba_stats.player_info'
-    find_max_id = 'select max(player_id) from nba_stats_backup.player_info'
+    #find_max_id = 'select max(player_id) from nba_stats_backup.player_info'
 #    print(insert_into_sql_table(connection, find_max_id)[0][0])
     player_index = insert_into_sql_table(connection, find_max_id)[0][0] + 100 + player_index
     #print(player_index)
@@ -177,9 +177,10 @@ def create_sql_insert_statements(connection, stat_dict, header_list, player_inde
             special_char = player.find("'") #checking if player's name contains '
             if special_char != -1:
                 name = player[:special_char] + "\\" + player[special_char:] #escaping special character\
+
+            find_player_id = "select player_id from nba_stats.player_info where name like '{}'".format(name)
             ## UNCOMMENT AFTER TESTING##
-            #find_player_id = "select player_id from nba_stats.player_info where name like '{}'".format(name)
-            find_player_id = "select player_id from nba_stats_backup.player_info where name like '{}'".format(name)
+            #find_player_id = "select player_id from nba_stats_backup.player_info where name like '{}'".format(name)
             result = insert_into_sql_table(connection, find_player_id)
 
             try:

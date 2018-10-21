@@ -268,7 +268,7 @@
         <column name="wins" type="int"></column>
         <column name="loses" type="int"></column>
         <column name="pct" type="float"></column>
-        <column name="gb" type="int"></column>
+        <column name="gb" type="float"></column>
         <column name="home_wins" type="int"></column>
         <column name="home_loses" type="int"></column>
         <column name="away_wins" type="int"></column>
@@ -300,7 +300,7 @@
     </changeSet>
 
     <changeSet id="21" author="Philip">
-      <createIndex catalogName="nba_stats_test"
+      <createIndex catalogName="nba_stats_prod"
           indexName="team_standings_index"
           tableName="team_info">
         <column name="team" type="varchar(50)"/>
@@ -333,17 +333,17 @@
 
     <changeSet id="25" author="Philip">
       <sql>
-        insert into nba_stats_test.player_info
+        insert into nba_stats_prod.player_info
         select *
-        from nba_stats_backup.player_info_view
+        from nba_stats.player_info_view
       </sql>
     </changeSet>
 
     <changeSet id="26" author="Philip">
       <sql>
-        insert into nba_stats_test.RegularSeasonAverages
+        insert into nba_stats_prod.RegularSeasonAverages
         select *
-        from nba_stats_backup.reg_season_avgs
+        from nba_stats.reg_season_avgs
       </sql>
     </changeSet>
 
@@ -351,9 +351,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.RegularSeasonTotals
+        insert into nba_stats_prod.RegularSeasonTotals
         select *
-        from nba_stats_backup.reg_season_tots;
+        from nba_stats.reg_season_tots;
 
         set session sql_mode = default;
       </sql>
@@ -363,9 +363,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.RegularSeasonMiscTotals
+        insert into nba_stats_prod.RegularSeasonMiscTotals
         select *
-        from nba_stats_backup.reg_season_misc_totals;
+        from nba_stats.reg_season_misc_totals;
 
         set session sql_mode = default;
       </sql>
@@ -373,65 +373,65 @@
 
     <changeSet id="29" author="Philip">
       <sql>
-        insert into nba_stats_test.team_info
+        insert into nba_stats_prod.team_info
         select *
-        from nba_stats_backup.team_info
+        from nba_stats.team_info
       </sql>
     </changeSet>
 
     <changeSet id="30" author="Philip">
       <sql>
-        insert into nba_stats_test.3pt_pct
+        insert into nba_stats_prod.3pt_pct
         select *
-        from nba_stats_backup.3pt_pct
+        from nba_stats.3pt_pct
       </sql>
     </changeSet>
 
     <changeSet id="31" author="Philip">
       <sql>
-        insert into nba_stats_test.fg_pct
+        insert into nba_stats_prod.fg_pct
         select *
-        from nba_stats_backup.fg_pct
+        from nba_stats.fg_pct
       </sql>
     </changeSet>
 
     <changeSet id="32" author="Philip">
       <sql>
-        insert into nba_stats_test.points
+        insert into nba_stats_prod.points
         select *
-        from nba_stats_backup.points
+        from nba_stats.points
       </sql>
     </changeSet>
 
     <changeSet id="33" author="Philip">
       <sql>
-        insert into nba_stats_test.rebound_pct
+        insert into nba_stats_prod.rebound_pct
         select *
-        from nba_stats_backup.rebound_pct
+        from nba_stats.rebound_pct
       </sql>
     </changeSet>
 
     <changeSet id="34" author="Philip">
       <sql>
-        insert into nba_stats_test.turnovers
+        insert into nba_stats_prod.turnovers
         select *
-        from nba_stats_backup.turnovers
+        from nba_stats.turnovers
       </sql>
     </changeSet>
 
     <changeSet id="35" author="Philip">
       <sql>
-        insert into nba_stats_test.team_standings
+        insert into nba_stats_prod.team_standings
         select *
-        from nba_stats_backup.team_standings_view
+        from nba_stats.team_standings_view
       </sql>
     </changeSet>
 
     <changeSet id="36" author="Philip">
       <sql>
-        insert into nba_stats_test.active_rosters
+        insert into nba_stats_prod.active_rosters
         select *
-        from nba_stats_backup.active_rosters_view
+        from nba_stats.active_rosters_view
       </sql>
     </changeSet>
 
@@ -552,9 +552,9 @@
 
     <changeSet id="46" author="Philip">
       <sql>
-        insert into nba_stats_test.box_score_map
+        insert into nba_stats_prod.box_score_map
         select *
-        from nba_stats_backup.box_score_map_view
+        from nba_stats.box_score_map_view
       </sql>
     </changeSet>
 
@@ -562,9 +562,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.basic_box_stats
+        insert into nba_stats_prod.basic_box_stats
         select *
-        from nba_stats_backup.basic_box_stats_view;
+        from nba_stats.basic_box_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -574,9 +574,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.advanced_box_stats
+        insert into nba_stats_prod.advanced_box_stats
         select *
-        from nba_stats_backup.advanced_box_stats_view;
+        from nba_stats.advanced_box_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -626,9 +626,9 @@
 
     <changeSet id="53" author="PhiliP">
       <sql>
-        insert into nba_stats_test.player_team_map
+        insert into nba_stats_prod.player_team_map
         select *
-        from nba_stats_backup.player_team_map_view
+        from nba_stats.player_team_map_view
       </sql>
     </changeSet>
 
@@ -654,9 +654,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.game_results
+        insert into nba_stats_prod.game_results
         select *
-        from nba_stats_backup.game_results_view;
+        from nba_stats.game_results_view;
 
         set session sql_mode = default;
       </sql>
@@ -673,9 +673,9 @@
 
     <changeSet id="58" author="Philip">
       <sql>
-        insert into nba_stats_test.game_date_lookup
+        insert into nba_stats_prod.game_date_lookup
         select *
-        from nba_stats_backup.game_date_lookup
+        from nba_stats.game_date_lookup
       </sql>
     </changeSet>
 
@@ -712,9 +712,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.team_misc_boxscore_stats
+        insert into nba_stats_prod.team_misc_boxscore_stats
         select *
-        from nba_stats_backup.team_misc_boxscore_stats_view;
+        from nba_stats.team_misc_boxscore_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -759,9 +759,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.team_advanced_boxscore_stats
+        insert into nba_stats_prod.team_advanced_boxscore_stats
         select *
-        from nba_stats_backup.advanced_team_boxscore_stats_view;
+        from nba_stats.advanced_team_boxscore_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -800,9 +800,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.team_figure4_boxscore_stats
+        insert into nba_stats_prod.team_figure4_boxscore_stats
         select *
-        from nba_stats_backup.figure4_team_boxscore_stats_view;
+        from nba_stats.figure4_team_boxscore_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -848,9 +848,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.team_scoring_boxscore_stats
+        insert into nba_stats_prod.team_scoring_boxscore_stats
         select *
-        from nba_stats_backup.team_scoring_boxscore_stats_view;
+        from nba_stats.team_scoring_boxscore_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -900,9 +900,9 @@
       <sql>
         set session sql_mode = '';
 
-        insert into nba_stats_test.team_traditional_boxscore_stats
+        insert into nba_stats_prod.team_traditional_boxscore_stats
         select *
-        from nba_stats_backup.traditional_team_boxscore_stats_view;
+        from nba_stats.traditional_team_boxscore_stats_view;
 
         set session sql_mode = default;
       </sql>
@@ -928,9 +928,9 @@
 
     <changeSet id="77" author="Philip">
       <sql>
-        insert into nba_stats_test.injured_players
+        insert into nba_stats_prod.injured_players
         select player_id, name, team
-        from nba_stats_backup.injuries;
+        from nba_stats.injuries;
       </sql>
     </changeSet>
 
@@ -983,7 +983,7 @@
       <sql>
         insert into player_prediction_results
         select *
-        from nba_stats_backup.player_prediction_results;
+        from nba_stats.player_prediction_results;
       </sql>
     </changeSet>
 
@@ -991,7 +991,7 @@
       <sql>
         insert into win_probability_results
         select *
-        from nba_stats_backup.win_probability_results
+        from nba_stats.win_probability_results
       </sql>
     </changeSet>
 
@@ -1030,9 +1030,107 @@
                    else results.away_score
                end as opp_score
 
-        from nba_stats_backup.win_probability_results as pred
-        inner join nba_stats_test.box_scores_map_view as map on ( (pred.team = map.team) and (pred.game_date = map.game_date) )
-        inner join nba_stats_test.game_results as results on map.game_hash = results.game_hash
+        from win_probability_results as pred
+        inner join box_scores_map_view as map on ( (pred.team = map.team) and (pred.game_date = map.game_date) )
+        inner join game_results as results on map.game_hash = results.game_hash
       </createView>
     </changeSet>
+
+    <changeSet id="86" author="Philip">
+      <createTable tableName="total_points_predictions">
+        <column name="team" type="varchar(50)">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="game_date" type="date">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="predicted_total_pts" type="float"></column>
+        <column name="r_squared" type="float"></column>
+      </createTable>
+    </changeSet>
+
+    <changeSet id="87" author="Philip">
+      <sql>
+        insert into total_points_predictions
+        select *
+        from nba_stats.total_points_predictions
+      </sql>
+    </changeSet>
+
+    <changeSet id="88" author="Philip">
+      <createTable tableName="pipeline_auditlog">
+        <column name="pipeline_id" type="varchar(255)"></column>
+        <column name="date" type="datetime"></column>
+      </createTable>
+    </changeSet>
+
+    <changeSet id="89" author="Philip">
+      <sql>
+        insert into pipeline_auditlog
+        select *
+        from nba_stats.pipeline_auditlog
+      </sql>
+    </changeSet>
+
+    <changeSet id="90" author="Philip">
+      <createView replaceIfExists="true"  viewName="vis_player_points_comparision">
+        select pred.player_id,
+               pred.name,
+               pred.team,
+               pred.game_date,
+               points.pts,
+               points.flag
+        from player_prediction_results as pred
+        inner join box_scores_map_view as map on ( (pred.team = map.team) and (pred.game_date = map.game_date) )
+        inner join (
+
+            select player_id, game_date, pts, 'predicted' as flag
+            from player_prediction_results
+
+            union
+
+            select b.player_id, m.game_date, b.pts, 'actual' as flag
+            from basic_box_stats as b
+            inner join box_scores_map_view as m on b.game_hash = m.game_hash
+
+        ) as points on pred.player_id = points.player_id and map.game_date = points.game_date
+      </createView>
+    </changeSet>
+
+    <changeSet id="91" author="Philip">
+      <createView replaceIfExists="true" viewName="total_points_prediction_comparison">
+        select tp.team,
+               tp.game_date,
+               tp.predicted_total_pts,
+               trad.pts as actual_pts,
+               tp.r_squared
+        from total_points_predictions as tp
+        inner join box_scores_map_view as m on tp.team = m.team and tp.game_date = m.game_date
+        inner join team_traditional_boxscore_stats as trad on m.team = trad.team and m.game_hash = trad.game_hash
+      </createView>
+    </changeSet>
+
+    <changeSet id="92" author="Philip">
+      <createView replaceIfExists="true" viewName="vis_total_points_comparision">
+        select tp.team,
+               tp.game_date,
+               points.pts,
+               points.flag
+        from total_points_predictions as tp
+        inner join (
+
+            select team, game_date, predicted_total_pts as pts, 'predicted' as flag
+            from total_points_predictions
+
+            union
+
+            select m.team, m.game_date, trad.pts as pts, 'actual' as flag
+            from box_scores_map_view as m
+            inner join team_traditional_boxscore_stats as trad on m.team = trad.team and m.game_hash = trad.game_hash
+
+            order by game_date asc
+            ) as points on tp.team = points.team and tp.game_date = points.game_date;
+      </createView>
+    </changeSet>
+
 </databaseChangeLog>

@@ -12,6 +12,7 @@ import pymysql
 import shutil
 import datetime
 import logging
+import hashlib
 import nba_stats_adv_team_box_score
 import nba_stats_fig4_team_box_score
 import nba_stats_misc_team_box_score
@@ -25,6 +26,7 @@ import espn_update_season_date
 import espn_team_name_update
 import team_name_update_team_boxscore
 import player_name_nba_ref_boxscore
+import predictions_team_name_update
 import date_lookup_table
 import active_roster
 import injured_players
@@ -55,32 +57,39 @@ def espn_delete_max_season(conn):
         field = 'season'
         if c > 3:
             field = 'year'
-        delete = 'delete from nba_stats_backup.{} where {} = 2019'.format(table, field)
+        delete = 'delete from nba_stats.{} where {} = 2019'.format(table, field)
         sql_execute(conn, delete)
     logging.info('Deletion from ESPN tables complete {}'.format(str(datetime.datetime.now())))
 
 def insert_into_nba_stats(conn):
-    logging.info('Beginning insert into nba_stats_backup from nba_stats_staging {}'.format(str(datetime.datetime.now())))
+    logging.info('Beginning insert into nba_stats from nba_stats_staging {}'.format(str(datetime.datetime.now())))
     get_tables = 'show tables'
     tables = sql_execute(conn, get_tables)
 
     for table in tables:
-        insert = 'insert into nba_stats_backup.{} (select * from nba_stats_staging.{})'.format(table[0], table[0])
+        insert = 'insert into nba_stats.{} (select * from nba_stats_staging.{})'.format(table[0], table[0])
         sql_execute(conn, insert)
     logging.info('Insert completed {}'.format(str(datetime.datetime.now())))
 
+def pipeline_auditlog(conn):
+    pipeline_insert = 'insert into nba_stats.pipeline_auditlog values ("{}", "{}")'.format(gen_hash(str(datetime.datetime.now())), str(datetime.datetime.now()))
+    sql_execute(conn, pipeline_insert)
+
+def gen_hash(row):
+    return  hashlib.md5(row.encode('utf-8')).hexdigest()
+
 def recreate_database(conn):
     logging.info('Dropping nba_stats_test database {}'.format(str(datetime.datetime.now())))
-    sql_execute(conn, 'drop database nba_stats_TEST')
-    sql_execute(conn, 'create database nba_stats_TEST')
+    sql_execute(conn, 'drop database nba_stats_prod')
+    sql_execute(conn, 'create database nba_stats_prod')
     logging.info('nba_stats_test schema re-created {}'.format(str(datetime.datetime.now())))
 
 def liquibase_call():
     logging.info('Calling liquibase for nba_stats_test refresh {}'.format(str(datetime.datetime.now())))
     os.system("""liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
-                 --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLogV3_TEST.xml" \
-                 --url="jdbc:mysql://localhost:3306/nba_stats_TEST?autoReconnect=true&amp;useSSL=false" \
+                 --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLog_Prod.xml" \
+                 --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&amp;useSSL=false" \
                  --username=root \
                  --password=Sk1ttles update""")
     logging.info('Incrementials Pipeline completed {}'.format(str(datetime.datetime.now())))
@@ -117,5 +126,7 @@ if __name__ == '__main__':
     date_lookup_table.main()
     active_roster.main(sys.argv[5], sys.argv[6])
     injured_players.main(sys.argv[5])
+    predictions_team_name_update.main()
+    pipeline_auditlog(connection)
     recreate_database(connection)
     liquibase_call()

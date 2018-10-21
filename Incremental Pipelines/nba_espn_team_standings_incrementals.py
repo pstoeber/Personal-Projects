@@ -37,7 +37,6 @@ def team_standing_scrap(standing_stats_link, year):
 
     for conf in conference:
         conference_list.append(conf.get_text())
-    print(conference_list)
 
     for line in header:
         if line.get_text() != '':
@@ -101,7 +100,6 @@ def create_standing_table(connection, header_list):
             create_statement += '`' + field + '` varchar(10),'
 
     create_statement = create_statement[:-2] + ')'
-    print(create_statement)
     sql_execute(create_statement, connection)
 
 def create_insert_statements(standing_dict, connection):
@@ -120,7 +118,6 @@ def create_insert_statements(standing_dict, connection):
             sql_execute(insert_statement, connection)
         except:
             logging.info('[FAILED INSERT]:' + insert_statement)
-        #    pass
         insert_statement = ''
 
 def update_statements(connection):
@@ -139,11 +136,8 @@ def main():
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
     years_list = season_scraper()
     logging.info('Beginning ESPN team standings pipeline {}'.format(str(datetime.datetime.now())))
-    ##UNCOMMENT AFTER TESTING##
-    #years_list = [2018]
     for c, year in enumerate(years_list):
         standing_stats_link = 'http://www.espn.com/nba/standings/_/season/' + str(year)
-        #print(standing_stats_link)
         standing_dict, header_list = team_standing_scrap(standing_stats_link, str(year))
         if c < 1:
             drop_table(myConnection)

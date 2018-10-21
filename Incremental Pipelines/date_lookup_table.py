@@ -13,11 +13,9 @@ def truncate_table(conn):
     sql_execute(conn, drop)
 
 def date_gen():
-
     date_list = []
-    start_date = '1990-1-01' #2014-8-30
-    end_date = datetime.datetime.today().date() #2018-6-30
-    start = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+    start = datetime.datetime.strptime('2018-1-1', '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime('2018-12-31', '%Y-%m-%d').date()
     step = datetime.timedelta(days=1)
 
     while start <= end_date:
@@ -28,7 +26,6 @@ def date_gen():
     return date_list
 
 def gen_lookup_dict(conn, date_list):
-
     exe = conn.cursor()
     get_years = 'select year(game_date) from box_score_map group by year(game_date)'
     years = sql_execute(conn, get_years)
@@ -40,11 +37,10 @@ def gen_lookup_dict(conn, date_list):
                 if int(date[0]) < 6:
                     exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year] + date]) + '\', \'%Y-%m-%d\'), ' + str(year) + ')')
                 else:
-                    exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year -1] + date]) + '\', \'%Y-%m-%d\'), ' + str(year) + ')')
+                    exe.execute('insert into game_date_lookup values(str_to_date(\'' + '-'.join([str(i) for i in [year] + date]) + '\', \'%Y-%m-%d\'), ' + str(year+1) + ')')
             except:
                 logging.info('[INVALID DATE]' + '-'.join([str(i) for i in [year] + date]))
 def sql_execute(conn, query):
-
     exe = conn.cursor()
     exe.execute(query)
     return exe.fetchall()
@@ -52,7 +48,7 @@ def sql_execute(conn, query):
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Beginning generation of date lookup table {}'.format(str(datetime.datetime.now())))
-    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_backup", autocommit=True)
+    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit=True)
     truncate_table(myConnection)
     date_list = date_gen()
     gen_lookup_dict(myConnection, date_list)

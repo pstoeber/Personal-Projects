@@ -23,9 +23,7 @@ from contextlib import closing
 
 def find_max_date(conn):
     exe = conn.cursor()
-    ##UNCOMMENT AFTER TESTING##
-    #exe.execute('select max(game_date) from nba_stats.box_score_map')
-    exe.execute('select max(game_date) from nba_stats_backup.box_score_map')
+    exe.execute('select max(game_date) from nba_stats.box_score_map')
     return exe.fetchall()[0][0]
 
 def stat_scraper(link):
@@ -37,14 +35,8 @@ def stat_scraper(link):
     while True:
         try:
             browser.get(link)
-
             browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click() ## Change to option 1
             time.sleep(2)
-
-            ########REMOVE TILL NEXT COMMENT LINE AFTER TESTING#############
-            #browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[2]/div/div/label/select/option[2]').click()
-            #time.sleep(15)
-            ################################################################
 
             browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
             time.sleep(2)
