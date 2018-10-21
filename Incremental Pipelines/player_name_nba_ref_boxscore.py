@@ -51,7 +51,10 @@ def update_names(connection):
                         'P.J. Tucker':'PJ Tucker',
                         'T.J. Warren':'TJ Warren',
                         'J.J. Redick':'JJ Redick',
-                        'C.J. Williams':'CJ Williams'}
+                        'C.J. Williams':'CJ Williams',
+                        'Marvin Bagley':'Marvin Bagley III',
+                        'Jaren Jackson':'Jaren Jackson Jr.',
+                        'Wendell Carter':'Wendell Carter Jr.'}
 
     for k, v in update_name_dict.items():
         for table in table_list:
