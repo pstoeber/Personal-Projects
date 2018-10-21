@@ -50,7 +50,7 @@ def predicted_total_pts_comparison(df):
 
 if __name__ == '__main__':
     try:
-        connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_test')
+        connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_prod')
     except:
         print('Failed to connect to database')
         sys.exit(1)
