@@ -37,7 +37,12 @@ def plot_total_pts_pred(df):
     sns.lineplot(x='game_date', y='r_squared', data=df, color='blue')
     plt.show()
 
-#def
+def predicted_total_pts_comparison(df):
+    sns.set_style('whitegrid')
+    plt.title('Predicted Total Points Vs. Actual Total Points')
+    df.groupby(['team', 'game_date'])
+    sns.barplot(x='game_date', y='pts', data=df, hue='flag', palette='plasma_r')
+    plt.show()
 
 if __name__ == '__main__':
     try:
@@ -46,9 +51,11 @@ if __name__ == '__main__':
         print('Failed to connect to database')
         sys.exit(1)
 
-    #player_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[1])))
-    #player_pred_to_actual_pts(player_pred_df)
-    #win_lose_prob_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[2])))
-    #win_lose_prob(win_lose_prob_df)
+    player_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[1])))
+    player_pred_to_actual_pts(player_pred_df)
+    win_lose_prob_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[2])))
+    win_lose_prob(win_lose_prob_df)
     total_pts_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[3])))
     plot_total_pts_pred(total_pts_pred_df)
+    total_pts_comp_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[4])))
+    predicted_total_pts_comparison(total_pts_comp_df)
