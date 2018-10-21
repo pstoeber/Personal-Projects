@@ -41,18 +41,15 @@ def gen_dates(conn):
 
 
     find_max_date = 'select max(game_date) from nba_stats.box_score_map'
-    ##UNCOMMENT THIS AFTER TESTING##
-    #find_max_date = 'select max(game_date) from nba_stats_backup.box_score_map'
     max_system_date = sql_execute(conn, find_max_date)[0][0]
 
     start = max_system_date
-    end = datetime.datetime.today().date() #2018-6-30
+    end = datetime.datetime.today().date()
     step = datetime.timedelta(days=1)
 
     while start <= end:
         date = str(start).split('-')
         links_list.append('https://www.basketball-reference.com/boxscores/?month=' + date[1] + '&day=' + date[2] + '&year=' + date[0])
-
         start += step
     return links_list
 
@@ -139,7 +136,6 @@ def sql_execute(conn, insert_statement):
         return exe.fetchall()
     except:
         logging.info('[FAILED INSERT]: {}'.format(insert_statement))
-        #print('failed insert: ', insert_statment)
 
 def main(arg1, arg2, arg3, arg4):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)

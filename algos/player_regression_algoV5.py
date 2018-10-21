@@ -2,7 +2,7 @@
 Regression algorithm used to predict the number of points each player on a given team will score
 against a specific opponent.  Data pulled from nba_stats_prod mysql database instance.
 
-python3 player_regression_algoV4.py train_lin_test.sql train_log_query.sql test_lin_test_game.sql test_log_query.sql
+python3 player_regression_algoV5.py train_lin_test.sql train_log_query.sql test_lin_test_game.sql test_log_query.sql
 
 """
 
@@ -165,8 +165,13 @@ if __name__ == '__main__':
         total_points['game_date'] = str(current_date)
         insert_into_database(myConnection, total_points, 'player_prediction_results')
         total_points_df.append(total_points)
-        total_points_list.append(total_points.iloc[:, -2].sum())
-        r_list.append(r_square)
+        #total_points_list.append(total_points.iloc[:, -2].sum())
+        #r_list.append(r_square)
+
+        linear_reg_np_arr = np.array([team, str(current_date), total_points.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
+        linear_reg_pred_df = pd.DataFrame(linear_reg_np_arr, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
+        insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
+
         test_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[4])]).format(team, team))
         test_log_df = concat_drop(test_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose']).mean().to_frame().T
         win_prob = gen_log_coef(train_log_df.drop('W', axis=1), test_log_df.drop('W', axis=1), \
@@ -178,8 +183,8 @@ if __name__ == '__main__':
         insert_into_database(myConnection, win_prob_df, 'win_probability_results')
         prob.append(win_prob)
 
-    for i in range(0, len(total_points_df), 2):
-        print('R-Squared Value: {}'.format(r_list[i]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(r_list[i+1]))
-        print(pd.concat([total_points_df[i], total_points_df[i+1]], axis=1))
-        print('Total Score: {}'.format(total_points_list[i]), '\t\t\t\t\t', 'Total Score: {}'.format(total_points_list[i+1]))
-        print('Win Probability: {}'.format(prob[i]), '\t\t\t', 'Win Probability: {}'.format(prob[i+1]), '\n\n')
+    #for i in range(0, len(total_points_df), 2):
+    #    print('R-Squared Value: {}'.format(r_list[i]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(r_list[i+1]))
+    #    print(pd.concat([total_points_df[i], total_points_df[i+1]], axis=1))
+    #    print('Total Score: {}'.format(total_points_list[i]), '\t\t\t\t\t', 'Total Score: {}'.format(total_points_list[i+1]))
+    #    print('Win Probability: {}'.format(prob[i]), '\t\t\t', 'Win Probability: {}'.format(prob[i+1]), '\n\n')

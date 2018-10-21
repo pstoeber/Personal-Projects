@@ -1,3 +1,7 @@
+"""
+python3 prediction_visualizations.py sql/extract_player_pred.sql sql/extract_win_lose_prob.sql sql/extract_total_pts_pred.sql sql/extract_total_pts_comp.sql
+"""
+
 import numpy as np
 import pandas as pd
 import pymysql
