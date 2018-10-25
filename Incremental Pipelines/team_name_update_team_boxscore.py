@@ -72,6 +72,11 @@ def create_update_statements(connection):
             update_away_statement = "update " + table + " set away_team = \"" + team_dict[city] + "\" where away_team = \"" + city + "\""
             sql_execute(connection, update_away_statement)
 
+    update_box_map_away = 'update box_score_map set away_team = "{}" where away_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
+    sql_execute(connection, update_box_map_away)
+    update_box_map_home = 'update box_score_map set home_team = "{}" where home_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
+    sql_execute(connection, update_box_map_home)
+
 def update_team_info(connection):
 
     nets_insert = "insert into team_info values (33, \"Vancouver Grizzlies\")"

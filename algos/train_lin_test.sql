@@ -39,7 +39,7 @@ from (
 
     select game_hash, team, game_date, home_away
     from box_scores_map_view
-    where game_date < '2018-03-13'
+    where game_date < '{}'
     order by game_date desc
 
          ) as box_view

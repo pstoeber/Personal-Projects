@@ -86,7 +86,7 @@ def main():
         print('No new data.')
         sys.exit(1)
 
-    stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].to_sql(con=engine, name='traditional_team_boxscore_stats', if_exists='append', index=False)
+    stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].to_sql(con=engine, name='traditional_team_boxscore_stats', if_exists='replace', index=False)
     logging.info('Traditional Stats Dataframe Count: {}'.format(str(stat_df.count())))
     logging.info('NBA Stats Traditional Team Stats incrementals pipeline completed successfully {}'.format(str(datetime.datetime.now())))
 

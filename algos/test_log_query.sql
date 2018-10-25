@@ -59,7 +59,8 @@ inner join(
     select game_hash, team, home_away, game_date
     from box_scores_map_view
     where team like '{}%' and
-          game_date < '2017-03-13'
+          game_date < '{}' and
+          game_hash in (select game_hash from team_misc_boxscore_stats)
     order by game_date desc limit 9
     ) as bm on ( (b.game_hash = bm.game_hash) and (b.team = bm.team) )
 

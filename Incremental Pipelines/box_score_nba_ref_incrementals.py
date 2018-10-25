@@ -39,13 +39,12 @@ def gen_dates(conn):
 
     links_list = []
 
-
     find_max_date = 'select max(game_date) from nba_stats.box_score_map'
     max_system_date = sql_execute(conn, find_max_date)[0][0]
 
-    start = max_system_date
-    end = datetime.datetime.today().date()
     step = datetime.timedelta(days=1)
+    start = max_system_date + step
+    end = datetime.datetime.today().date()
 
     while start <= end:
         date = str(start).split('-')
@@ -72,6 +71,7 @@ def get_links(links_list):
     return sorted(set(box_score_list))
 
 def box_scrape(page_link):
+    print(page_link)
 
     count_dict, game_dict = {}, {}
     stat_dict = defaultdict(list)
