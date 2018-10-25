@@ -59,7 +59,7 @@ inner join(
     select b.game_hash, b.team, b.home_away, b.game_date
     from box_scores_map_view as b
     inner join game_date_lookup as lu on b.game_date = lu.day
-    where b.game_date < '2018-03-13' and
+    where b.game_date < '{}' and
           lu.season > 1994
 
     ) as bm on ( (b.game_hash = bm.game_hash) and (b.team = bm.team) )

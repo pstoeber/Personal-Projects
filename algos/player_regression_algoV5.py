@@ -24,7 +24,7 @@ from sqlalchemy import create_engine
 def get_games(chromeDriver, games_list):
     #current_date = str(datetime.date.today()).split('-')  ## needed to get games listed for a current date
     #link = "https://www.basketball-reference.com/boxscores/?month={}&day={}&year={}".format(current_date[1], current_date[2], current_date[0]) #spliced link
-    link = "https://www.basketball-reference.com/boxscores/?month=3&day=13&year=2018"
+    link = "https://www.basketball-reference.com/boxscores/?month=10&day=21&year=2018"
     soup = BeautifulSoup(requests.get(link).content, "html.parser")
     for games in soup.findAll('table', {'class':'teams'}):
         for game in games.find_all('a', href=True):
@@ -129,29 +129,28 @@ def plot_test_data(predictions, y_test):
 if __name__ == '__main__':
 
     try:
-        myConnection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_test', autocommit=True)
+        myConnection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_prod', autocommit=True)
     except:
         print('Failed to connect to database')
         sys.exit(1)
 
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
-    #current_date = datetime.date.today()
-    current_date = '2017-03-13'
+    #current_date = str(datetime.date.today())
+    current_date = '2018-10-20'
     team_list = get_games(chromeDriver, [])
     total_points_df, total_points_list, r_list, prob = [], [], [], []
 
-    train_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[1])]))
+    train_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[1])]).format(current_date))
     train_lin_reg_df.loc[:, 'minutes_played'] = train_lin_reg_df.loc[:, 'minutes_played'].apply(time_convert)
     train_lin_reg_df = concat_drop(train_lin_reg_df, ['home_away'], ['player_id', 'team', 'game_hash', 'game_date', 'home_away', 'fg', '3p', 'ft'])
     X_train, X_test, y_train, y_test = train_split(train_lin_reg_df.loc[:, 'minutes_played':'defensive_rating'], train_lin_reg_df.loc[:, 'pts'])
     gen_lin_reg_coef(X_train, X_test, y_train, y_test)
 
-    train_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[2])]))
+    train_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[2])]).format(current_date))
     train_log_df = concat_drop(train_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose'])
 
     for team in team_list:
-
-        test_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[3])]).format(team, team, team))
+        test_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team))
         test_lin_reg_df.loc[:, 'minutes_played'] = test_lin_reg_df.loc[:, 'minutes_played'].apply(time_convert)
         test_lin_reg_df = concat_drop(test_lin_reg_df, ['home_away'], ['home_away', 'fg', '3p', 'ft'])
 
@@ -163,16 +162,19 @@ if __name__ == '__main__':
         total_points = aggregrate_total_points(test_lin_reg_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
                                                lin_input_coef.T, lin_intercept.item(), 'pts')
         total_points['game_date'] = str(current_date)
-        insert_into_database(myConnection, total_points, 'player_prediction_results')
+        #insert_into_database(myConnection, total_points, 'player_prediction_results')
         total_points_df.append(total_points)
-        #total_points_list.append(total_points.iloc[:, -2].sum())
-        #r_list.append(r_square)
+        total_points_list.append(total_points.iloc[:, -2].sum())
+        r_list.append(r_square)
 
         linear_reg_np_arr = np.array([team, str(current_date), total_points.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
         linear_reg_pred_df = pd.DataFrame(linear_reg_np_arr, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
-        insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
+        #insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
 
-        test_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[4])]).format(team, team))
+        print(' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team))
+
+
+        test_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team))
         test_log_df = concat_drop(test_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose']).mean().to_frame().T
         win_prob = gen_log_coef(train_log_df.drop('W', axis=1), test_log_df.drop('W', axis=1), \
                                              train_log_df.loc[:, 'W'], test_log_df.loc[:, 'W'])
@@ -180,11 +182,11 @@ if __name__ == '__main__':
         win_prob_df = pd.DataFrame(win_prob, index=None, columns=['lose_probability', 'win_probability'])
         win_prob_df['team'] = team
         win_prob_df['game_date'] = str(current_date)
-        insert_into_database(myConnection, win_prob_df, 'win_probability_results')
+        #insert_into_database(myConnection, win_prob_df, 'win_probability_results')
         prob.append(win_prob)
 
-    #for i in range(0, len(total_points_df), 2):
-    #    print('R-Squared Value: {}'.format(r_list[i]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(r_list[i+1]))
-    #    print(pd.concat([total_points_df[i], total_points_df[i+1]], axis=1))
-    #    print('Total Score: {}'.format(total_points_list[i]), '\t\t\t\t\t', 'Total Score: {}'.format(total_points_list[i+1]))
-    #    print('Win Probability: {}'.format(prob[i]), '\t\t\t', 'Win Probability: {}'.format(prob[i+1]), '\n\n')
+    for i in range(0, len(total_points_df), 2):
+        print('R-Squared Value: {}'.format(r_list[i]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(r_list[i+1]))
+        print(pd.concat([total_points_df[i], total_points_df[i+1]], axis=1))
+        print('Total Score: {}'.format(total_points_list[i]), '\t\t\t\t\t', 'Total Score: {}'.format(total_points_list[i+1]))
+        print('Win Probability: {}'.format(prob[i]), '\t\t\t', 'Win Probability: {}'.format(prob[i+1]), '\n\n')
