@@ -162,17 +162,14 @@ if __name__ == '__main__':
         total_points = aggregrate_total_points(test_lin_reg_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
                                                lin_input_coef.T, lin_intercept.item(), 'pts')
         total_points['game_date'] = str(current_date)
-        #insert_into_database(myConnection, total_points, 'player_prediction_results')
+        insert_into_database(myConnection, total_points, 'player_prediction_results')
         total_points_df.append(total_points)
         total_points_list.append(total_points.iloc[:, -2].sum())
         r_list.append(r_square)
 
         linear_reg_np_arr = np.array([team, str(current_date), total_points.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
         linear_reg_pred_df = pd.DataFrame(linear_reg_np_arr, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
-        #insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
-
-        print(' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team))
-
+        insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
 
         test_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team))
         test_log_df = concat_drop(test_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose']).mean().to_frame().T
@@ -182,7 +179,7 @@ if __name__ == '__main__':
         win_prob_df = pd.DataFrame(win_prob, index=None, columns=['lose_probability', 'win_probability'])
         win_prob_df['team'] = team
         win_prob_df['game_date'] = str(current_date)
-        #insert_into_database(myConnection, win_prob_df, 'win_probability_results')
+        insert_into_database(myConnection, win_prob_df, 'win_probability_results')
         prob.append(win_prob)
 
     for i in range(0, len(total_points_df), 2):
