@@ -22,9 +22,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
-def truncate_table(connection):
-    truncate_table_statement = 'truncate table active_rosters'
-    sql_execute(truncate_table_statement, connection)
+def create_threads(chromeDriver):
+    pool = ThreadPool()
+    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
+    pool.close()
+    pool.join()
+    return results
 
 def get_roster_links():
     roster_links = []
@@ -63,6 +66,10 @@ def get_rosters(link, chromeDriver):
     browser.quit()
     return np.array(roster_list)
 
+def truncate_table(connection):
+    truncate_table_statement = 'truncate table active_rosters'
+    sql_execute(truncate_table_statement, connection)
+
 def extract_command(file_path):
     with open(file_path, 'r') as infile:
         return [i for i in infile.readlines()]
@@ -97,18 +104,15 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    chromeDriver = '/Users/Philip/Downloads/chromedriver 2'
+    chromeDriver = '/Users/Philip/Downloads/chromedriver'
 
-    pool = ThreadPool()
-    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
-    pool.close()
-    pool.join()
+    results = create_threads(chromeDriver)
 
-    truncate_table(myConnection)
     active_rosters = np.empty(shape=[0,2])
     for roster in results:
         active_rosters = np.concatenate([active_rosters, roster])
 
+    truncate_table(myConnection)
     rosters_df = pd.DataFrame(active_rosters, index=None, columns=['name', 'team'])
     rosters_df['player_id'] = rosters_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
     team_info_df = gen_df(myConnection, gen_cmd_str(extract_command(arg2)))

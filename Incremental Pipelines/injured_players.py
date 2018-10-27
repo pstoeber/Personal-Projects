@@ -23,9 +23,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
-def truncate_table(conn):
-    truncate_table_statement = 'truncate table injuries'
-    sql_execute(truncate_table_statement, conn)
+def create_threads(chromeDriver):
+    pool = ThreadPool()
+    results = pool.map(partial(extract_injured_players, chromeDriver=chromeDriver), get_injury_links())
+    pool.close()
+    pool.join()
+    return results
 
 def get_injury_links():
     injuries_links = []
@@ -66,6 +69,10 @@ def extract_injured_players(link, chromeDriver):
     browser.quit()
     return np.array(injured_player_list)
 
+def truncate_table(conn):
+    truncate_table_statement = 'truncate table injuries'
+    sql_execute(truncate_table_statement, conn)
+
 def extract_command(file_path):
     with open(file_path, 'r') as infile:
         return [i for i in infile.readlines()]
@@ -98,18 +105,15 @@ def main(arg):
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
-    truncate_table(connection)
 
-    pool = ThreadPool()
-    results = pool.map(partial(extract_injured_players, chromeDriver=chromeDriver), get_injury_links())
-    pool.close()
-    pool.join()
+    results = create_threads(chromeDriver)
 
     players = np.empty(shape=[0, 2])
     for result in results:
         if result.size > 0:
             players = np.concatenate([players, result])
 
+    truncate_table(connection)
     injured_players_df = pd.DataFrame(players, index=None, columns=['name', 'team'])
     injured_players_df['player_id'] = injured_players_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg)), connection))
     insert_into_database(connection, injured_players_df[injured_players_df['player_id'] != 0])
