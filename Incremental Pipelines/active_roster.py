@@ -45,7 +45,7 @@ def get_rosters(link, chromeDriver):
         try:
             browser.get(link)
             break
-        except: TimeoutException or NoSuchElementException:
+        except TimeoutException or NoSuchElementException:
             logging.info('[CONNECTION TIME-UP]: Re-trying {}'.format(link))
             browser.quit()
 
