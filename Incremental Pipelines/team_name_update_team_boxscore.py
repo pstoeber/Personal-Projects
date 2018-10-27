@@ -61,7 +61,8 @@ def create_update_statements(connection):
                    "figure4_team_boxscore_stats",
                    "team_scoring_boxscore_stats",
                    "traditional_team_boxscore_stats",
-                   "team_misc_boxscore_stats"]
+                   "team_misc_boxscore_stats",
+                   "player_info"]
 
     for city in team_dict:
         for table in tables_list:
