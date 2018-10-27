@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
     #current_date = str(datetime.date.today())
-    current_date = '2018-10-20'
+    current_date = '2018-10-21'
     team_list = get_games(chromeDriver, [])
     total_points_df, total_points_list, r_list, prob = [], [], [], []
 

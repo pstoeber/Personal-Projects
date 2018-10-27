@@ -13,8 +13,12 @@ import pandas as pd
 import datetime
 import logging
 from bs4 import BeautifulSoup
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
+from functools import partial
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
 def truncate_table(connection):
@@ -32,12 +36,15 @@ def get_roster_links():
     return roster_links
 
 def get_rosters(link, chromeDriver):
-    browser = webdriver.Chrome(executable_path=chromeDriver)
+    options = Options()
+    options.headless = True
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+
     while True:
         try:
             browser.get(link)
             break
-        except TimeoutException:
+        except: TimeoutException:
             logging.info('[CONNECTION TIME-UP]: Re-trying {}'.format(link))
             browser.quit()
 
@@ -89,12 +96,17 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    chromeDriver = '/Users/Philip/Downloads/chromedriver'
+    chromeDriver = '/Users/Philip/Downloads/chromedriver 2'
+
+    pool = ThreadPool()
+    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
+    pool.close()
+    pool.join()
 
     truncate_table(myConnection)
     active_rosters = np.empty(shape=[0,2])
-    for roster in get_roster_links():
-        active_rosters = np.concatenate([active_rosters, get_rosters(roster, chromeDriver)])
+    for roster in results:
+        active_rosters = np.concatenate([active_rosters, roster])
 
     rosters_df = pd.DataFrame(active_rosters, index=None, columns=['name', 'team'])
     rosters_df['player_id'] = rosters_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
