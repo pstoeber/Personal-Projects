@@ -18,6 +18,7 @@ from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
@@ -32,7 +33,7 @@ def get_roster_links():
 
     for i in soup.find_all('a', href=True):
         if '/nba/team/roster/' in i['href']:
-            roster_links.append('http://www.espn.com{}'.format(i['href']))
+            roster_links.append('https://www.espn.com{}'.format(i['href']))
     return roster_links
 
 def get_rosters(link, chromeDriver):
@@ -44,7 +45,7 @@ def get_rosters(link, chromeDriver):
         try:
             browser.get(link)
             break
-        except: TimeoutException:
+        except: TimeoutException or NoSuchElementException:
             logging.info('[CONNECTION TIME-UP]: Re-trying {}'.format(link))
             browser.quit()
 

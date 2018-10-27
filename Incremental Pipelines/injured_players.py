@@ -14,8 +14,13 @@ import pandas as pd
 import datetime
 import logging
 from bs4 import BeautifulSoup
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
+from functools import partial
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
 def truncate_table(conn):
@@ -30,17 +35,18 @@ def get_injury_links():
     for i in soup.find_all('a', href=True):
         if '/nba/team/roster/' in i['href']:
             link = i['href'].replace('/roster/', '/injuries/')
-            injuries_links.append('http://www.espn.com{}'.format(link))
+            injuries_links.append('https://www.espn.com{}'.format(link))
     return injuries_links
 
-def  extract_injured_players(link):
-    chromeDriver = '/Users/Philip/Downloads/chromedriver'
-    browser = webdriver.Chrome(executable_path=chromeDriver)
+def extract_injured_players(link, chromeDriver):
+    options = Options()
+    options.headless = True
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
     while True:
         try:
             browser.get(link)
             break
-        except TimeoutException:
+        except TimeoutException or NoSuchElementException:
             logging.info('[CONNECTION TIME-OUT]: Re-trying {}'.format(str(datetime.datetime.now())))
             browser.quit()
 
@@ -91,14 +97,18 @@ def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
+    chromeDriver = '/Users/Philip/Downloads/chromedriver'
     truncate_table(connection)
-    links = get_injury_links()
+
+    pool = ThreadPool()
+    results = pool.map(partial(extract_injured_players, chromeDriver=chromeDriver), get_injury_links())
+    pool.close()
+    pool.join()
+
     players = np.empty(shape=[0, 2])
-    for link in links:
-        try:
-            players = np.concatenate([players, extract_injured_players(link)])
-        except ValueError:
-            pass
+    for result in results:
+        if result.size > 0:
+            players = np.concatenate([players, result])
 
     injured_players_df = pd.DataFrame(players, index=None, columns=['name', 'team'])
     injured_players_df['player_id'] = injured_players_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg)), connection))
