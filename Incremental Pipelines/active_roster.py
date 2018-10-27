@@ -106,13 +106,7 @@ def main(arg1, arg2):
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
     chromeDriver = '/Users/Philip/Downloads/chromedriver 2'
 
-    pool = ThreadPool()
-    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
-    pool.close()
-    pool.join()
-
     results = create_threads(chromeDriver)
-
     active_rosters = np.empty(shape=[0,2])
     for roster in results:
         active_rosters = np.concatenate([active_rosters, roster])
