@@ -1,12 +1,12 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2018-10-27 19:07:21.467847
-INFO:root:Successfully connected to nba_stats_staging 2018-10-27 19:07:21.470583
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 19:07:21.470709
-INFO:root:ESPN players incrementals pipeline completed 2018-10-27 19:09:12.940101
-INFO:root:Beginning ESPN team incrementials pipeline 2018-10-27 19:09:12.953379
-INFO:root:ESPN team incrementals pipeline completed successfully 2018-10-27 19:09:16.673708
-INFO:root:Beginning ESPN team standings pipeline 2018-10-27 19:09:16.676524
-INFO:root:ESPN team standings pipeline completed successfully 2018-10-27 19:09:17.997668
-INFO:root:Beginning NBA Reference players incrementals pipeline 2018-10-27 19:09:18.000587
+INFO:root:Attempting to connect to nba_stats_staging database 2018-10-27 19:26:11.376781
+INFO:root:Successfully connected to nba_stats_staging 2018-10-27 19:26:11.379718
+INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 19:26:11.379851
+INFO:root:ESPN players incrementals pipeline completed 2018-10-27 19:27:59.481337
+INFO:root:Beginning ESPN team incrementials pipeline 2018-10-27 19:27:59.493686
+INFO:root:ESPN team incrementals pipeline completed successfully 2018-10-27 19:28:03.424141
+INFO:root:Beginning ESPN team standings pipeline 2018-10-27 19:28:03.427244
+INFO:root:ESPN team standings pipeline completed successfully 2018-10-27 19:28:04.680516
+INFO:root:Beginning NBA Reference players incrementals pipeline 2018-10-27 19:28:04.682743
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Robin Lopez", "f469f4c1190c57db640f9b5ababbafa1", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Robin Lopez", "f469f4c1190c57db640f9b5ababbafa1", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Marquese Chriss", "32e3077f56cb0c8bcfab5104407c1f72", "Did Not Dress", "Did Not Dress")
@@ -47,8 +47,8 @@ INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values 
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ryan Broekhoff", "28101816e96d10cf1b397cb14b4502f9")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Greg Monroe", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play")
 INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Greg Monroe", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play")
-INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-10-27 19:09:27.506685
-INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-10-27 19:09:27.522100
+INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-10-27 19:28:13.417424
+INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-10-27 19:28:13.432862
 INFO:root:Advanced Stats Dataframe Count: TEAM         146
 HOME_TEAM    146
 AWAY_TEAM    146
@@ -70,8 +70,8 @@ TS%          146
 PACE         146
 PIE          146
 dtype: int64
-INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-10-27 19:09:44.787362
-INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-10-27 19:09:44.789422
+INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-10-27 19:28:33.347676
+INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-10-27 19:28:33.349290
 INFO:root:Four Factors Dataframe Count: TEAM            146
 HOME_TEAM       146
 AWAY_TEAM       146
@@ -87,8 +87,8 @@ OPP_FTA_RATE    146
 OPP_TOV%        146
 OPP_OREB%       146
 dtype: int64
-INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-10-27 19:09:56.477528
-INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-10-27 19:09:56.490501
+INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-10-27 19:28:44.828878
+INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-10-27 19:28:44.843170
 INFO:root:Misc Stats Dataframe Count: TEAM              146
 HOME_TEAM         146
 AWAY_TEAM         146
@@ -104,8 +104,8 @@ OPP_2ND_PTS       146
 OPP_FBPS          146
 OPP_PITP          146
 dtype: int64
-INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-10-27 19:10:08.928204
-INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-10-27 19:10:08.930191
+INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-10-27 19:28:55.780707
+INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-10-27 19:28:55.782645
 INFO:root:Scoring Stats Dataframe Count: TEAM           146
 HOME_TEAM      146
 AWAY_TEAM      146
@@ -128,8 +128,8 @@ MIN            146
 FGM_%AST       146
 FGM_%UAST      146
 dtype: int64
-INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-10-27 19:10:21.487539
-INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-10-27 19:10:21.490067
+INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-10-27 19:29:06.446406
+INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-10-27 19:29:06.448231
 INFO:root:Traditional Stats Dataframe Count: TEAM         146
 HOME_TEAM    146
 AWAY_TEAM    146
@@ -156,9 +156,16 @@ BLK          146
 PF           146
 +/-          146
 dtype: int64
-INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-10-27 19:10:35.246711
-INFO:root:Updating ESPN seasons 2018-10-27 19:10:35.248470
-INFO:root:ESPN seasons update completed successfully 2018-10-27 19:10:35.305361
-INFO:root:Updating ESPN team names 2018-10-27 19:10:35.305551
-INFO:root:ESPN team names update completed successfully 2018-10-27 19:10:36.461156
-INFO:root:Beginning NBA Stats team name 2018-10-27 19:10:36.461430
+INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-10-27 19:29:19.147243
+INFO:root:Updating ESPN seasons 2018-10-27 19:29:19.149410
+INFO:root:ESPN seasons update completed successfully 2018-10-27 19:29:19.206281
+INFO:root:Updating ESPN team names 2018-10-27 19:29:19.206492
+INFO:root:ESPN team names update completed successfully 2018-10-27 19:29:20.378021
+INFO:root:Beginning NBA Stats team name 2018-10-27 19:29:20.378280
+INFO:root:NBA Stats team name update completed successfully 2018-10-27 19:29:22.205367
+INFO:root:Beginning NBA Reference player name update 2018-10-27 19:29:22.205661
+INFO:root:NBA Reference player name update completed successfully 2018-10-27 19:29:22.456495
+INFO:root:Refreshing active_rosters table 2018-10-27 19:29:22.456824
+INFO:root:Active_rosters table refresh complete 2018-10-27 19:32:40.709608
+INFO:root:Refreshing injured_players table 2018-10-27 19:32:40.710344
+INFO:root:Injured_players table refresh complete 2018-10-27 19:35:53.600219
