@@ -107,7 +107,6 @@ def main(arg):
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
 
     results = create_threads(chromeDriver)
-
     players = np.empty(shape=[0, 2])
     for result in results:
         if result.size > 0:
