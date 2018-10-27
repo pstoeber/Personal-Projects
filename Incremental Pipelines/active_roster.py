@@ -104,7 +104,12 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    chromeDriver = '/Users/Philip/Downloads/chromedriver'
+    chromeDriver = '/Users/Philip/Downloads/chromedriver 2'
+
+    pool = ThreadPool()
+    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
+    pool.close()
+    pool.join()
 
     results = create_threads(chromeDriver)
 
