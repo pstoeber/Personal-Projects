@@ -1,125 +1,164 @@
-INFO:root:Refreshing injured_players table 2018-10-27 02:43:39.422304
-INFO:root:Injured_players table refresh complete 2018-10-27 02:46:51.608597
-INFO:root:Refreshing active_rosters table 2018-10-27 02:48:34.428743
-INFO:root:Refreshing active_rosters table 2018-10-27 02:49:39.164300
-INFO:root:Refreshing active_rosters table 2018-10-27 02:50:01.829849
-INFO:root:Refreshing active_rosters table 2018-10-27 02:50:08.507685
-INFO:root:Refreshing active_rosters table 2018-10-27 02:54:29.425126
-INFO:root:Active_rosters table refresh complete 2018-10-27 02:57:50.438833
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 11:15:30.668055
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 11:17:51.172324
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 11:19:18.087353
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:27:18.807177
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:28:19.475234
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:32:52.331909
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:33:39.685549
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:34:20.081953
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:34:42.538841
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 12:39:21.279294
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:06:08.896038
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:08:27.918674
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:18:25.231899
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:19:46.226207
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:21:09.348556
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:22:21.733594
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:23:20.409254
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:29:22.304822
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:29:54.240286
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:31:01.243847
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:35:50.270590
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:36:32.422038
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:38:35.554004
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:39:53.045484
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:40:40.238435
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:41:29.507666
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:45:17.004667
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:49:14.297601
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:50:52.443597
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:52:16.360861
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:52:51.996419
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:55:01.587746
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:56:23.279581
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:57:37.355870
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 13:59:07.127544
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:00:15.747317
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:00:41.171468
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:01:07.183063
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:04:00.007128
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:04:32.568911
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:05:23.964180
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:08:45.041073
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:09:27.711597
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:10:51.477674
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:13:39.054456
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:16:24.785805
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:19:01.871975
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:25:03.992490
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:27:19.198915
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:31:27.333363
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:33:03.841587
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:34:27.022351
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:36:51.674755
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:40:04.470076
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:43:45.451893
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:46:48.254975
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:48:39.479949
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 14:50:32.051272
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:02:15.763918
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:03:13.803604
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:07:57.372664
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:08:29.063452
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:08:55.511206
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:17:04.028906
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:19:36.057783
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:21:14.908638
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:23:44.799715
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:25:12.830527
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:27:19.937297
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:36:49.861840
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:38:11.230243
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:40:22.289399
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:41:57.862170
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:42:15.172458
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:43:44.870350
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 15:47:27.720038
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:00:23.445305
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:08:13.352208
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:11:28.467715
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:14:46.446415
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:22:31.133542
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:30:02.957837
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:34:43.173259
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:36:48.364730
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 16:42:55.612991
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:02:47.491933
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:05:13.503632
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:07:13.199364
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:11:11.989271
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:13:15.822444
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:14:51.179650
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:18:31.181498
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:27:05.373536
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:30:32.378982
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:33:20.266701
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:37:09.968390
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:39:34.968401
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:43:36.241627
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:46:21.381671
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:47:04.069525
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:53:31.196881
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 17:59:30.131018
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:02:49.979393
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:03:41.232002
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:05:36.752641
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:15:49.361805
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:21:49.454336
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:23:02.604333
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:24:10.051154
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:26:08.076344
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:27:32.292446
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:28:00.801045
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:36:53.956603
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:37:33.320688
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:42:38.734125
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:49:36.500849
-INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 18:51:34.791982
+INFO:root:Attempting to connect to nba_stats_staging database 2018-10-27 19:07:21.467847
+INFO:root:Successfully connected to nba_stats_staging 2018-10-27 19:07:21.470583
+INFO:root:Beginning ESPN players incrementals pipeline 2018-10-27 19:07:21.470709
+INFO:root:ESPN players incrementals pipeline completed 2018-10-27 19:09:12.940101
+INFO:root:Beginning ESPN team incrementials pipeline 2018-10-27 19:09:12.953379
+INFO:root:ESPN team incrementals pipeline completed successfully 2018-10-27 19:09:16.673708
+INFO:root:Beginning ESPN team standings pipeline 2018-10-27 19:09:16.676524
+INFO:root:ESPN team standings pipeline completed successfully 2018-10-27 19:09:17.997668
+INFO:root:Beginning NBA Reference players incrementals pipeline 2018-10-27 19:09:18.000587
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Robin Lopez", "f469f4c1190c57db640f9b5ababbafa1", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Robin Lopez", "f469f4c1190c57db640f9b5ababbafa1", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Marquese Chriss", "32e3077f56cb0c8bcfab5104407c1f72", "Did Not Dress", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Marquese Chriss", "32e3077f56cb0c8bcfab5104407c1f72")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Zhou Qi", "32e3077f56cb0c8bcfab5104407c1f72")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Zhou Qi", "32e3077f56cb0c8bcfab5104407c1f72", "Did Not Dress", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dzanan Musa", "4dfd06e7d7716c114896f505a70c4c01", "Did Not Play", "Did Not Dress", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dzanan Musa", "4dfd06e7d7716c114896f505a70c4c01", "Did Not Play", "Did Not Play", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Kenneth Faried", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Kenneth Faried", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Theo Pinson", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Theo Pinson", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jahlil Okafor", "4dfd06e7d7716c114896f505a70c4c01", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jahlil Okafor", "4dfd06e7d7716c114896f505a70c4c01", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Frank Jackson", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Frank Jackson", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Tim Frazier", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Tim Frazier", "4dfd06e7d7716c114896f505a70c4c01")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ron Baker", "84fe98a0bf4ff6d8311ec44a8d535eb7", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ron Baker", "84fe98a0bf4ff6d8311ec44a8d535eb7", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Thomas Bryant", "598f77635e031239a8d283e67a6a7903", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Thomas Bryant", "598f77635e031239a8d283e67a6a7903", "Did Not Play", "Did Not Play", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Troy Brown", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Troy Brown", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jordan McRae", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jordan McRae", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Jason Smith", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Jason Smith", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ben McLemore", "598f77635e031239a8d283e67a6a7903", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ben McLemore", "598f77635e031239a8d283e67a6a7903", "Did Not Play", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Skal Labissiere", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Skal Labissiere", "598f77635e031239a8d283e67a6a7903")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Salah Mejri", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play", "Did Not Dress", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Salah Mejri", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play", "Did Not Play", "Did Not Dress")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Dennis Smith", "28101816e96d10cf1b397cb14b4502f9")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Dennis Smith", "28101816e96d10cf1b397cb14b4502f9")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Ryan Broekhoff", "28101816e96d10cf1b397cb14b4502f9")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Ryan Broekhoff", "28101816e96d10cf1b397cb14b4502f9")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.basic_box_stats values ("Greg Monroe", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play")
+INFO:root:[FAILED INSERT]: insert into nba_stats_staging.advanced_box_stats values ("Greg Monroe", "28101816e96d10cf1b397cb14b4502f9", "Did Not Play")
+INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-10-27 19:09:27.506685
+INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-10-27 19:09:27.522100
+INFO:root:Advanced Stats Dataframe Count: TEAM         146
+HOME_TEAM    146
+AWAY_TEAM    146
+GAME_DATE    146
+W/L          146
+MIN          146
+OFFRTG       146
+DEFRTG       146
+NETRTG       146
+AST%         146
+AST/TO       146
+AST_RATIO    146
+OREB%        146
+DREB%        146
+REB%         146
+TOV%         146
+EFG%         146
+TS%          146
+PACE         146
+PIE          146
+dtype: int64
+INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-10-27 19:09:44.787362
+INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-10-27 19:09:44.789422
+INFO:root:Four Factors Dataframe Count: TEAM            146
+HOME_TEAM       146
+AWAY_TEAM       146
+GAME_DATE       146
+W/L             146
+MIN             146
+EFG%            146
+FTA_RATE        146
+FTA             146
+RATE            146
+OPP_EFG%        146
+OPP_FTA_RATE    146
+OPP_TOV%        146
+OPP_OREB%       146
+dtype: int64
+INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-10-27 19:09:56.477528
+INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-10-27 19:09:56.490501
+INFO:root:Misc Stats Dataframe Count: TEAM              146
+HOME_TEAM         146
+AWAY_TEAM         146
+GAME_DATE         146
+W/L               146
+MIN               146
+PTS_OFF_TO        146
+2ND_PTS           146
+FBPS              146
+PITP              146
+OPP_PTS_OFF_TO    146
+OPP_2ND_PTS       146
+OPP_FBPS          146
+OPP_PITP          146
+dtype: int64
+INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-10-27 19:10:08.928204
+INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-10-27 19:10:08.930191
+INFO:root:Scoring Stats Dataframe Count: TEAM           146
+HOME_TEAM      146
+AWAY_TEAM      146
+GAME_DATE      146
+W/L            146
+MIN            146
+%FGA_2PT       146
+%FGA_3PT       146
+%PTS_2PT       146
+%PTS_2PT_MR    146
+%PTS_3PT       146
+%PTS_FBPS      146
+%PTS_FT        146
+%PTS_OFF_TO    146
+%PTS_PITP      146
+2FGM_%AST      146
+2FGM_%UAST     146
+3FGM_%AST      146
+3FGM_%UAST     146
+FGM_%AST       146
+FGM_%UAST      146
+dtype: int64
+INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-10-27 19:10:21.487539
+INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-10-27 19:10:21.490067
+INFO:root:Traditional Stats Dataframe Count: TEAM         146
+HOME_TEAM    146
+AWAY_TEAM    146
+GAME_DATE    146
+W/L          146
+MIN          146
+PTS          146
+FGM          146
+FGA          146
+FG%          146
+3PM          146
+3PA          146
+3P%          146
+FTM          146
+FTA          146
+FT%          146
+OREB         146
+DREB         146
+REB          146
+AST          146
+TOV          146
+STL          146
+BLK          146
+PF           146
++/-          146
+dtype: int64
+INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-10-27 19:10:35.246711
+INFO:root:Updating ESPN seasons 2018-10-27 19:10:35.248470
+INFO:root:ESPN seasons update completed successfully 2018-10-27 19:10:35.305361
+INFO:root:Updating ESPN team names 2018-10-27 19:10:35.305551
+INFO:root:ESPN team names update completed successfully 2018-10-27 19:10:36.461156
+INFO:root:Beginning NBA Stats team name 2018-10-27 19:10:36.461430
