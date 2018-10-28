@@ -20,6 +20,7 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
+from urllib3.exceptions import MaxRetryError
 from sqlalchemy import create_engine
 
 def create_threads(chromeDriver):
@@ -48,7 +49,7 @@ def get_rosters(link, chromeDriver):
         try:
             browser.get(link)
             break
-        except TimeoutException or NoSuchElementException:
+        except TimeoutException or NoSuchElementException or MaxRetryError:
             logging.info('[CONNECTION TIME-UP]: Re-trying {}'.format(link))
             browser.quit()
 
