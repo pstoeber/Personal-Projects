@@ -66,12 +66,16 @@ def create_update_statements(connection):
 
     for city in team_dict:
         for table in tables_list:
-            update_statement = "update " + table + " set team = \"" + team_dict[city] + "\" where team = \"" + city + "\""
-            sql_execute(connection, update_statement)
-            update_home_statement = "update " + table + " set home_team = \"" + team_dict[city] + "\" where home_team = \"" + city + "\""
-            sql_execute(connection, update_home_statement)
-            update_away_statement = "update " + table + " set away_team = \"" + team_dict[city] + "\" where away_team = \"" + city + "\""
-            sql_execute(connection, update_away_statement)
+            if table != 'player_info':
+                update_statement = "update " + table + " set team = \"" + team_dict[city] + "\" where team = \"" + city + "\""
+                sql_execute(connection, update_statement)
+                update_home_statement = "update " + table + " set home_team = \"" + team_dict[city] + "\" where home_team = \"" + city + "\""
+                sql_execute(connection, update_home_statement)
+                update_away_statement = "update " + table + " set away_team = \"" + team_dict[city] + "\" where away_team = \"" + city + "\""
+                sql_execute(connection, update_away_statement)
+            elif table == 'player_info':
+                player_update_statement = "update " + table + " set current_team = \"" + team_dict[city] + "\" where current_team = \"" + city + "\""
+                sql_execute(connection, player_update_statement)
 
     update_box_map_away = 'update box_score_map set away_team = "{}" where away_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
     sql_execute(connection, update_box_map_away)
