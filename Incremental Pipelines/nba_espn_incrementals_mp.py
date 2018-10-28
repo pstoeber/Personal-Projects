@@ -44,27 +44,18 @@ def player_id_scraper(team_link):
 
 ##Method used to scrap the individual player stat's from each player's web page
 def player_stat_scrapper(player):
-
-    header_list, table_names, stats = [], [], []
-    avg_df = pd.DataFrame()
-    avg_tot_df = pd.DataFrame()
-    misc_df = pd.DataFrame()
+    stats = []
+    avg_df, avg_tot_df, misc_df = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
     soup = BeautifulSoup(requests.get(player, timeout=None).content, "html.parser")
     name = soup.find("h1").get_text() #finding player name
-
     exp = get_exp(soup)
     table_heads, header, stats_raw = get_table_content(soup)
 
     if len(table_heads) != 3:
         return None
 
-    for i, n in zip(header, table_heads):
-        header = " ".join([j.get_text() for j in i]).split()
-        header.insert(0, 'player_id')
-        header_list.append(header) #creating list of all headers from each table
-        table_names.append(n.get_text()) #creating list to store table names
-
+    header_list, table_names = get_table_names(header, table_heads)
     for c, p in enumerate(stats_raw):
         row = ' '.join([str(i.get_text()) for i in p]).split()
         row.insert(0, name)
@@ -92,6 +83,15 @@ def get_table_content(soup):
     header = soup.find_all("tr", class_="colhead") #finding the header of each table
     stats_raw = soup.findAll(True, {'class':['oddrow', 'evenrow']}) #finding specific stats for seasons
     return table_heads, header, stats_raw
+
+def get_table_names(header, table_heads):
+    header_list, table_names = [], []
+    for i, n in zip(header, table_heads):
+        header = " ".join([j.get_text() for j in i]).split()
+        header.insert(0, 'player_id')
+        header_list.append(header) #creating list of all headers from each table
+        table_names.append(n.get_text()) #creating list to store table names
+    return header_list, table_names
 
 def truncate_tables(conn):
     truncate_list = ['player_info', 'RegularSeasonAverages', 'RegularSeasonTotals', 'RegularSeasonMiscTotals']
