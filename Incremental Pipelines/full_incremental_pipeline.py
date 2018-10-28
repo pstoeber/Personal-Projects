@@ -19,7 +19,7 @@ import nba_stats_misc_team_box_score
 import nba_stats_scoring_team_box_score
 import nba_stats_traditional_team_box_score
 import box_score_nba_ref_incrementals
-import nba_espn_incrementals
+import nba_espn_incrementals_mp
 import nba_espn_team_incrementals
 import nba_espn_team_standings_incrementals
 import espn_update_season_date
@@ -106,9 +106,9 @@ if __name__ == '__main__':
     logging.info('Successfully connected to nba_stats_staging {}'.format(str(datetime.datetime.now())))
     out_file = '/Users/Philip/Documents/NBA\ Database\ Backups/nba_stats_{}.sql'.format(str(datetime.date.today()))
 
-    back_up_db(out_file)
-    compress_backup(out_file)
-    nba_espn_incrementals.main()
+    #back_up_db(out_file)
+    #compress_backup(out_file)
+    nba_espn_incrementals_mp.main()
     nba_espn_team_incrementals.main()
     nba_espn_team_standings_incrementals.main()
     box_score_nba_ref_incrementals.main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
@@ -121,12 +121,12 @@ if __name__ == '__main__':
     espn_team_name_update.main()
     team_name_update_team_boxscore.main()
     player_name_nba_ref_boxscore.main()
-    espn_delete_max_season(connection)
-    insert_into_nba_stats(connection)
-    date_lookup_table.main()
+    #espn_delete_max_season(connection)
+    #insert_into_nba_stats(connection)
+    #date_lookup_table.main()
     active_roster.main(sys.argv[5], sys.argv[6])
     injured_players.main(sys.argv[5])
-    predictions_team_name_update.main()
-    pipeline_auditlog(connection)
-    recreate_database(connection)
-    liquibase_call()
+    #predictions_team_name_update.main()
+    #pipeline_auditlog(connection)
+    #recreate_database(connection)
+    #liquibase_call()
