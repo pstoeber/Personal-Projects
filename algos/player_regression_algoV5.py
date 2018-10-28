@@ -14,30 +14,29 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 import requests
+import itertools
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sqlalchemy import create_engine
 
-def get_games(chromeDriver, games_list):
-    #current_date = str(datetime.date.today()).split('-')  ## needed to get games listed for a current date
-    #link = "https://www.basketball-reference.com/boxscores/?month={}&day={}&year={}".format(current_date[1], current_date[2], current_date[0]) #spliced link
-    link = "https://www.basketball-reference.com/boxscores/?month=10&day=21&year=2018"
-    soup = BeautifulSoup(requests.get(link).content, "html.parser")
-    for games in soup.findAll('table', {'class':'teams'}):
-        for game in games.find_all('a', href=True):
-            if game.text.strip() != 'Final':
-                games_list.append(check_city(game.text))
-    return games_list
-
-def check_city(city_team_string):
-    city_swap_dict = {'LA Lakers':'Los Angeles Lakers'}
-    if city_team_string in city_swap_dict:
-        return city_swap_dict[city_team_string]
-    else:
-        return city_team_string
+def get_games(chromeDriver):
+    games_list = []
+    link = 'http://www.espn.com/nba/schedule'
+    options = Options()
+    options.headless = True
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+    browser.get(link)
+    games = browser.find_elements_by_xpath('//*[@id="sched-container"]/div[2]/table/tbody/tr')
+    for c, ele in enumerate(games):
+        away_team = ele.find_element_by_xpath('//*[@id="sched-container"]/div[2]/table/tbody/tr[{}]/td[1]'.format(str(c + 1))).text
+        home_team = ele.find_element_by_xpath('//*[@id="sched-container"]/div[2]/table/tbody/tr[{}]/td[2]'.format(str(c + 1))).text
+        games_list.append([away_team, home_team])
+    browser.quit()
+    return list(itertools.chain(*games_list))
 
 def extract_query(file):
     with open(file, 'r') as infile:
@@ -127,7 +126,6 @@ def plot_test_data(predictions, y_test):
     plt.show()
 
 if __name__ == '__main__':
-
     try:
         myConnection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_prod', autocommit=True)
     except:
@@ -135,9 +133,8 @@ if __name__ == '__main__':
         sys.exit(1)
 
     chromeDriver = '/Users/Philip/Downloads/chromedriver'
-    #current_date = str(datetime.date.today())
-    current_date = '2018-10-21'
-    team_list = get_games(chromeDriver, [])
+    current_date = str(datetime.date.today())
+    team_list = get_games(chromeDriver)
     total_points_df, total_points_list, r_list, prob = [], [], [], []
 
     train_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[1])]).format(current_date))
@@ -161,6 +158,7 @@ if __name__ == '__main__':
 
         total_points = aggregrate_total_points(test_lin_reg_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
                                                lin_input_coef.T, lin_intercept.item(), 'pts')
+
         total_points['game_date'] = str(current_date)
         insert_into_database(myConnection, total_points, 'player_prediction_results')
         total_points_df.append(total_points)
