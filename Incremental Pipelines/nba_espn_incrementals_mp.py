@@ -12,8 +12,6 @@ from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
 from sqlalchemy import create_engine
 
-##Method used to scrap team links. These links allow the individual player's
-##stats to be scraped from their individual stat's page
 def find_team_names():
     team_links = []
     link = 'https://www.espn.com/nba/teams'
@@ -31,7 +29,6 @@ def create_threads(function, iterable):
     pool.join()
     return results
 
-##Method used to scrape the links of individuals player's stat page
 def player_id_scraper(team_link):
     raw_links, player_links = [], []
     soup = BeautifulSoup(requests.get(team_link).content, "html.parser")
@@ -42,11 +39,8 @@ def player_id_scraper(team_link):
     player_links = sorted(set(player_links)) #filtering out repeats from the spliced links list
     return player_links
 
-##Method used to scrap the individual player stat's from each player's web page
 def player_stat_scrapper(player):
-    stats = []
     avg_df, avg_tot_df, misc_df = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-
     soup = BeautifulSoup(requests.get(player, timeout=None).content, "html.parser")
     name = soup.find("h1").get_text() #finding player name
     exp = get_exp(soup)

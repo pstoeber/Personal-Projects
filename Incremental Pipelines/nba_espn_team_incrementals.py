@@ -1,163 +1,125 @@
 import requests
 from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
 import re
 import pymysql
 import itertools
 import datetime
 import logging
+from sqlalchemy import create_engine
 
-def drop_tables(connection, table_names):
+def season_link_scraper(today):
+    start_season = datetime.datetime.strptime('2018-10-01', '%Y-%m-%d').date()
+    new_year = datetime.datetime.strptime('2019-01-01', '%Y-%m-%d').date()
+    end_season = datetime.datetime.strptime('2019-05-01', '%Y-%m-%d').date()
 
-    drop_statements = []
-    for table in table_names:
-        drop_statement = "drop table " + table
-        drop_statements.append(drop_statement)
-    return drop_statements
+    if today > start_season and today < new_year:
+        return today.year + 1
+    elif today >= new_year and today < end_season:
+        return today.year
 
-def season_link_scraper():
+def team_stat_scraper(team_link, year, conn):
+    soup = BeautifulSoup(requests.get(team_link).content, "html.parser")
+    header_list = get_headers(soup)
+    table_names = get_table_names(header_list.pop(0).split())
+    header_list = header_list[0].split()[1:]
 
-    date_time = str(datetime.date.today())
-    current_year = int(date_time[:date_time.index("-")])
-    if current_year == 2018:
-        return [current_year + 1]
-    elif current_year == 2019:
-        return [current_year]
+    season_totals_df = get_stats(soup)
+    pts_df = points_table(season_totals_df, table_names, header_list)
+    fg_df = fg_table(season_totals_df, table_names, header_list)
+    pt3_df = pt3_table(season_totals_df, table_names, header_list)
+    reb_df = reb_table(season_totals_df, table_names, header_list)
+    to_df = to_table(season_totals_df, table_names, header_list)
+    return {name:df for name, df in zip(table_names[1:], [pts_df, fg_df, pt3_df, reb_df, to_df])}
 
-def team_stat_scraper(team_link, year):
-    season_totals_list, header_list, table_names = [], [], []
-    table_names.append("Team_info")
+def get_headers(soup):
+    header_list= []
+    for i in soup.findAll(True, {'class':['colhead']}):
+        header_list.append(" ".join([p.text for p in i if '\xa0' not in p.text]))
+    return sorted(set(header_list))
 
-    link = requests.get(team_link)
-    content = link.content
-    soup = BeautifulSoup(content, "html.parser")
-
-    headers = soup.findAll(True, {'class':['colhead']})
-    for i in headers:
-        header_list.append(" ".join([p.get_text() for p in i]))
-
-    header_list = sorted(set(header_list))
-    table_names_raw = header_list.pop(1).split()
-
+def get_table_names(table_names_raw):
+    table_names = []
     for p, i in enumerate(table_names_raw):
         if i == "PCT":
             table_names.pop(table_names.index(table_names_raw[p -1]))
             i = table_names_raw[p -1] + "_" + i
         table_names.append(i)
+    table_names.insert(0, 'Team_info')
+    return table_names
 
-    team_stats_raw = soup.findAll(True, {'class':['oddrow', 'evenrow']})
-    for i in team_stats_raw:
-        season_totals_list.append(" ".join([p.get_text() for p in i]))
-
-    header_list = header_list[0].split()
-    iterated_header_list = [[header_list[1]], header_list[2:5], header_list[5:7], header_list[7:10], header_list[10:13], header_list[13:]]
-    return table_names, iterated_header_list, season_totals_list
-
-def create_table_statements(table_names, iterated_header_list, create_table_list):
-
-    special_char = re.compile(r"\W")
-    create_statement = "create table " + table_names[0] + " (team_id int,\nyear varchar(50),\n"
-
-    for field in iterated_header_list[0]:
-        if special_char.findall(field):
-            field = '`' + field + '`'
-
-        if field == "TEAM" or field == "DIFF":
-            create_statement += field + " varchar(50),\n"
-        else:
-            create_statement += field + " float(10),\n"
-
-    create_statement = create_statement[:-2] + ")"
-    create_table_list.append(create_statement)
-
-    if len(table_names) > 1:
-        return create_table_statements(table_names[1:], iterated_header_list[1:], create_table_list)
-    else:
-        return create_table_list
-
-def create_team_info_insert_statements(connection, season_total_list, table_names, iterated_header_list, year):
-
-    city_prefixes = ["New", "LA", "San", "Golden", "Oklahoma"]
-    cities = {}
-
-    for p, i in enumerate(season_total_list):
-        row = i.split()
-        if re.match('[0-9]', row[0]):
+def get_stats(soup):
+    season_totals_df = pd.DataFrame()
+    for i in soup.findAll(True, {'class':['oddrow', 'evenrow']}):
+        row = ' '.join([p.text for p in i]).split()
+        if not row[0][0].isalpha():
             row.pop(0)
+        row = check_team(row)
+        season_totals_df = pd.concat([season_totals_df, pd.DataFrame(np.array(row)).T])
+    return season_totals_df
 
-        if row[0] in city_prefixes:
-            row[0] = row[0] + " " + row[1]
-            row.pop(1)
-
-        sql_name = row[0]
-        if 'Lakers' in row[0]:
-            sql_name = 'Los Angeles Lakers'
-
-        find_team_id = 'select team_id from nba_stats.team_info where team like \'{}%\''.format(sql_name)
-        team_id = sql_execute(connection, [find_team_id])[0][0]
-        cities[row[0]] = int(team_id)
-    return cities
-
-def create_insert_statements(connection, season_total_list, table_names, iterated_header_list, year, cities):
-
+def check_team(row):
     city_prefixes = ["New", "LA", "San", "Golden", "Oklahoma"]
-    for i in season_total_list:
-        row = i.split()
-        if re.match('[0-9]', row[0]):
-            row.pop(0)
+    if row[0] in city_prefixes:
+        row[0] = row[0] + ' ' + row[1]
+        row.pop(1)
+    return row
 
-        if row[0] in city_prefixes:
-            row[0] = row[0] + " " + row[1]
-            row.pop(1)
+def points_table(df, table_names, header_list):
+    points_df = df.iloc[:, :4]
+    points_df.columns=header_list[:4]
+    return points_df
 
-        team_index = cities[row[0]]
+def fg_table(df, table_names, header_list):
+    fg_df = df.iloc[:, [0, 4, 5]]
+    fg_df.columns=header_list[:1] + header_list[4:6]
+    return fg_df
 
-        points_state = 'insert into ' + table_names[1] + ' values (' + str(team_index) + ', ' + str(year) + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ')'
-        sql_execute(connection, [points_state])
+def pt3_table(df, table_names, header_list):
+    pt3_df = df.iloc[:, [0, 6, 7, 8]]
+    pt3_df.columns=header_list[:1] + header_list[6:9]
+    return pt3_df
 
-        fg_state = 'insert into ' + table_names[2] + ' values (' + str(team_index) + ', ' + str(year) + ', ' + row[4] + ', ' + row[5] + ')'
-        sql_execute(connection, [fg_state])
+def reb_table(df, table_names, header_list):
+    reb_df = df.iloc[:, [0, 9, 10, 11]]
+    reb_df.columns=header_list[:1] + header_list[9:12]
+    return reb_df
 
-        fg3_state = 'insert into ' + table_names[3] + ' values (' + str(team_index) + ', ' + str(year) + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ')'
-        sql_execute(connection, [fg3_state])
+def to_table(df, table_names, header_list):
+    to_df = df.iloc[:, [0, 12, 13]]
+    to_df.columns=header_list[:1] + header_list[12:]
+    return to_df
 
-        rb_state = 'insert into ' + table_names[4] + ' values (' + str(team_index) + ', ' + str(year) + ', ' + row[9] + ', ' + row[10] + ', ' + row[11] + ')'
-        sql_execute(connection, [rb_state])
+def get_teams_id(conn, team_list):
+    id_dict = {}
+    for team in team_list:
+        get_id = 'select team_id from nba_stats.team_info where team like "{}%"'.format(team.replace('LA Lakers', 'Los Angeles'))
+        id_dict[team] = sql_execute(conn, get_id)[0]
+    return id_dict
 
-        to_state = 'insert into ' + table_names[5] + ' values (' + str(team_index) + ', ' + str(year) + ', ' + row[12] + ', ' + row[13] + ')'
-        sql_execute(connection, [to_state])
+def sql_execute(conn, sql):
+    exe = conn.cursor()
+    exe.execute(sql)
+    return exe.fetchone()
 
-def alter_team_info_table(connection):
-
-    alter_statement = 'alter table team_info drop column year'
-    sql_execute(connection, [alter_statement])
-
-def sql_execute(connection, input_list):
-    exe = connection.cursor()
-    for i in input_list:
-        exe.execute(i)
-    return exe.fetchall()
+def insert_into_database(df, table):
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
+    df.to_sql(con=engine, name=table, if_exists='replace', index=False)
 
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
-    years_list = season_link_scraper()
+    year = season_link_scraper(datetime.date.today())
     logging.info('Beginning ESPN team incrementials pipeline {}'.format(str(datetime.datetime.now())))
-    for c, year in enumerate(years_list):
-        team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"
-        table_names, iterated_header_list, season_totals_list = team_stat_scraper(team_link, year)
 
-        if c < 1:
-            drop_table_statements = drop_tables(myConnection, table_names)
-            sql_execute(myConnection, drop_table_statements)
-            create_table_list = create_table_statements(table_names, iterated_header_list, [])
-            sql_execute(myConnection, create_table_list)
-
-            cities = create_team_info_insert_statements(myConnection, season_totals_list, table_names, iterated_header_list, year)
-
-        create_insert_statements(myConnection, season_totals_list, table_names, iterated_header_list, year, cities)
-
-    alter_team_info_table(myConnection)
-    logging.info('ESPN team incrementals pipeline completed successfully {}'.format(str(datetime.datetime.now())))
+    team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"
+    team_id_dict = {}
+    for c, (k, v) in enumerate(team_stat_scraper(team_link, year, myConnection).items()):
+        if c == 0:
+            team_id_dict = get_teams_id(myConnection, v.loc[:, 'TEAM'].tolist())
+        v['TEAM'] = v.loc[:, 'TEAM'].apply(lambda x: team_id_dict[x])
+        insert_into_database(v, k)
 
 if __name__ == '__main__':
     main()
