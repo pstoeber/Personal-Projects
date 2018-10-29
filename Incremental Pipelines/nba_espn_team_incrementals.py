@@ -26,7 +26,8 @@ def team_stat_scraper(team_link, year, conn):
     header_list = header_list[0].split()[1:]
 
     season_totals_df = get_stats(soup)
-    pts_df = points_table(season_totals_df, table_names, header_list)
+    season_totals_df.columns=header_list
+    pts_df = points_table(season_totals_df, conn, table_names)
     fg_df = fg_table(season_totals_df, table_names, header_list)
     pt3_df = pt3_table(season_totals_df, table_names, header_list)
     reb_df = reb_table(season_totals_df, table_names, header_list)
@@ -66,7 +67,7 @@ def check_team(row):
         row.pop(1)
     return row
 
-def points_table(df, table_names, header_list):
+def points_table(df, conn, table_names):
     points_df = df.iloc[:, :4]
     points_df.columns=header_list[:4]
     return points_df
@@ -95,13 +96,13 @@ def get_teams_id(conn, team_list):
     id_dict = {}
     for team in team_list:
         get_id = 'select team_id from nba_stats.team_info where team like "{}%"'.format(team.replace('LA Lakers', 'Los Angeles'))
-        id_dict[team] = sql_execute(conn, get_id)[0]
+        id_dict[team] = sql_execute(conn, get_id)[0][0]
     return id_dict
 
 def sql_execute(conn, sql):
     exe = conn.cursor()
     exe.execute(sql)
-    return exe.fetchone()
+    return exe.fetchall()
 
 def insert_into_database(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
@@ -115,6 +116,8 @@ def main():
 
     team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"
     team_id_dict = {}
+
+    team_stat_scraper(team_link, year, myConnection)
     for c, (k, v) in enumerate(team_stat_scraper(team_link, year, myConnection).items()):
         if c == 0:
             team_id_dict = get_teams_id(myConnection, v.loc[:, 'TEAM'].tolist())
