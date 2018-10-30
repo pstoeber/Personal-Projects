@@ -23,7 +23,7 @@ def find_team_names():
     return team_links
 
 def create_threads(function, iterable):
-    pool = ThreadPool()
+    pool = Pool()
     results = pool.map(function, iterable)
     pool.close()
     pool.join()
