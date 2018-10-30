@@ -1,2 +1,10 @@
-INFO:root:Refreshing injured_players table 2018-10-29 19:59:37.438742
-INFO:root:Injured_players table refresh complete 2018-10-29 20:02:32.018478
+INFO:root:Attempting to connect to nba_stats_staging database 2018-10-29 21:54:00.046926
+INFO:root:Successfully connected to nba_stats_staging 2018-10-29 21:54:00.049647
+INFO:root:Deleting Max season from ESPN tables 2018-10-29 21:54:00.049736
+INFO:root:Deletion from ESPN tables complete 2018-10-29 21:54:00.112394
+INFO:root:Beginning insert into nba_stats from nba_stats_staging 2018-10-29 21:54:00.112526
+INFO:root:Insert completed 2018-10-29 21:54:00.454994
+INFO:root:Dropping nba_stats_test database 2018-10-29 21:54:00.455219
+INFO:root:nba_stats_test schema re-created 2018-10-29 21:54:00.587805
+INFO:root:Calling liquibase for nba_stats_test refresh 2018-10-29 21:54:00.588011
+INFO:root:Incrementials Pipeline completed 2018-10-29 22:03:16.149925
