@@ -28,7 +28,7 @@ def team_stat_scraper(team_link, year, conn):
 
     season_totals_df = get_stats(soup)
     slice_list = [[0,1,2,3], [0,4,5], [0,6,7,8], [0,9,10,11], [0,12,13]]
-    return gen_tables(season_totals_df
+    return gen_tables(season_totals_df)
     
 def get_headers(soup):
     header_list= []
