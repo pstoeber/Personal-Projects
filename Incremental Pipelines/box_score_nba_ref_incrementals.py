@@ -55,7 +55,7 @@ def get_links(link):
     return box_score_list
 
 def create_pools(function, iterable):
-    pool = ThreadPool()
+    pool = Pool()
     results = pool.map(function, iterable)
     pool.close()
     pool.join()

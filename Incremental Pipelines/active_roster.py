@@ -24,7 +24,7 @@ from urllib3.exceptions import MaxRetryError
 from sqlalchemy import create_engine
 
 def create_threads(chromeDriver):
-    pool = ThreadPool()
+    pool = Pool()
     results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
     pool.close()
     pool.join()

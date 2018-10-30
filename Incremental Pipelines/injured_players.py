@@ -24,7 +24,7 @@ from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
 def create_threads(chromeDriver):
-    pool = ThreadPool()
+    pool = Pool()
     results = pool.map(partial(extract_injured_players, chromeDriver=chromeDriver), get_injury_links())
     pool.close()
     pool.join()
@@ -61,13 +61,18 @@ def extract_injured_players(link, chromeDriver):
         if player_content[2] == 'Out':
             injured_player_list.append([player_content[0], ' '.join([i for i in team])])
         else:
-            ruled_out_list = ['out', 'ruled out', 'did not make the trip', 'off', 'night off', 'miss', 'missed', 'won\'t take the court']
-            for crit in ruled_out_list:
-                if crit in player_content[3]:
-                    injured_player_list.append([player_content[0], ' '.join([i for i in team])])
-                    break
+            if check_update(player_content[3]):
+                injured_player_list.append([player_content[0], ' '.join([i for i in team])])
     browser.quit()
     return np.array(injured_player_list)
+
+def check_update(player_update):
+    injured_player_list = []
+    ruled_out_list = ['out', 'ruled', 'off', 'miss', 'missed']
+    for up in player_update.split():
+        if up in ruled_out_list:
+            return True
+    return False
 
 def truncate_table(conn):
     truncate_table_statement = 'truncate table injuries'
