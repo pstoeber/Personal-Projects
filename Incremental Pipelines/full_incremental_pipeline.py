@@ -3,8 +3,9 @@ Script to wrap all incremental pipelines together
 
 command line call:
 
-python3 full_incremental_pipeline.py sql\ ddl/basic_box_score_stats.sql sql\ ddl/advanced_box_score_stats.sql sql\ ddl/box_score_map_ddl.sql sql\ ddl/game_results_ddl.sql sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql
+python3 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql
 """
+
 import subprocess
 import os
 import sys

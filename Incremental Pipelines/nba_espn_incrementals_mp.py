@@ -63,7 +63,7 @@ def player_stat_scrapper(player):
     avg_df.columns=header_list[0]
     avg_tot_df.columns=header_list[1]
     misc_df.columns=header_list[2]
-    return [exp, [table_names[0], avg_df], [table_names[1], avg_tot_df], [table_names[2], misc_df]]
+    return [exp, [table_names[0], avg_df], [table_names[1], avg_tot_df], [table_names[2], misc_df]] 
 
 def get_exp(soup):
     try:

@@ -7,6 +7,7 @@ import pymysql
 import itertools
 import datetime
 import logging
+from operator import itemgetter
 from sqlalchemy import create_engine
 
 def season_link_scraper(today):
@@ -26,13 +27,9 @@ def team_stat_scraper(team_link, year, conn):
     header_list = header_list[0].split()[1:]
 
     season_totals_df = get_stats(soup)
-    pts_df = points_table(season_totals_df, table_names, header_list)
-    fg_df = fg_table(season_totals_df, table_names, header_list)
-    pt3_df = pt3_table(season_totals_df, table_names, header_list)
-    reb_df = reb_table(season_totals_df, table_names, header_list)
-    to_df = to_table(season_totals_df, table_names, header_list)
-    return {name:df for name, df in zip(table_names[1:], [pts_df, fg_df, pt3_df, reb_df, to_df])}
-
+    slice_list = [[0,1,2,3], [0,4,5], [0,6,7,8], [0,9,10,11], [0,12,13]]
+    return gen_tables(season_totals_df
+    
 def get_headers(soup):
     header_list= []
     for i in soup.findAll(True, {'class':['colhead']}):
@@ -66,30 +63,14 @@ def check_team(row):
         row.pop(1)
     return row
 
-def points_table(df, table_names, header_list):
-    points_df = df.iloc[:, :4]
-    points_df.columns=header_list[:4]
-    return points_df
-
-def fg_table(df, table_names, header_list):
-    fg_df = df.iloc[:, [0, 4, 5]]
-    fg_df.columns=header_list[:1] + header_list[4:6]
-    return fg_df
-
-def pt3_table(df, table_names, header_list):
-    pt3_df = df.iloc[:, [0, 6, 7, 8]]
-    pt3_df.columns=header_list[:1] + header_list[6:9]
-    return pt3_df
-
-def reb_table(df, table_names, header_list):
-    reb_df = df.iloc[:, [0, 9, 10, 11]]
-    reb_df.columns=header_list[:1] + header_list[9:12]
-    return reb_df
-
-def to_table(df, table_names, header_list):
-    to_df = df.iloc[:, [0, 12, 13]]
-    to_df.columns=header_list[:1] + header_list[12:]
-    return to_df
+def gen_tables(df, table_names, header_list, slice_list, year):
+    table_dict = {}
+    for slice, name in zip(slice_list, table_names[1:]):
+        table = df.iloc[:, slice]
+        table.columns=list(itemgetter(*slice)(header_list))
+        table.insert(loc=1, column='year', value=year)
+        table_dict[name] = table
+    return table_dict
 
 def get_teams_id(conn, team_list):
     id_dict = {}
@@ -105,6 +86,7 @@ def sql_execute(conn, sql):
 
 def insert_into_database(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
+    print(df)
     df.to_sql(con=engine, name=table, if_exists='replace', index=False)
 
 def main():
