@@ -28,8 +28,8 @@ def team_stat_scraper(team_link, year, conn):
 
     season_totals_df = get_stats(soup)
     slice_list = [[0,1,2,3], [0,4,5], [0,6,7,8], [0,9,10,11], [0,12,13]]
-    return gen_tables(season_totals_df
-    
+    return gen_tables(season_totals_df, table_names, header_list, slice_list, year)
+
 def get_headers(soup):
     header_list= []
     for i in soup.findAll(True, {'class':['colhead']}):
@@ -86,7 +86,6 @@ def sql_execute(conn, sql):
 
 def insert_into_database(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
-    print(df)
     df.to_sql(con=engine, name=table, if_exists='replace', index=False)
 
 def main():

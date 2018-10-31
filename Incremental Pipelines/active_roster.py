@@ -19,13 +19,13 @@ from functools import partial
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from urllib3.exceptions import MaxRetryError
 from sqlalchemy import create_engine
 
-def create_threads(chromeDriver):
+def create_threads(driver):
     pool = Pool()
-    results = pool.map(partial(get_rosters, chromeDriver=chromeDriver), get_roster_links())
+    results = pool.map(partial(get_rosters, driver=driver), get_roster_links())
     pool.close()
     pool.join()
     return results
@@ -40,10 +40,11 @@ def get_roster_links():
             roster_links.append('https://www.espn.com{}'.format(i['href']))
     return roster_links
 
-def get_rosters(link, chromeDriver):
+def get_rosters(link, driver):
     options = Options()
     options.headless = True
-    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+    options.add_argument('load-extension=' + '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi')
+    browser = webdriver.Firefox(executable_path=driver, firefox_options=options)
 
     while True:
         try:
@@ -65,6 +66,7 @@ def get_rosters(link, chromeDriver):
                 break
         roster_list.append([' '.join([i for i in name[1:]]), ' '.join([i for i in team])])
     browser.quit()
+    print(np.array(roster_list))
     return np.array(roster_list)
 
 def truncate_table(connection):
@@ -105,9 +107,9 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    chromeDriver = '/Users/Philip/Downloads/chromedriver 2'
+    driver = '/Users/Philip/Downloads/geckodriver'
 
-    results = create_threads(chromeDriver)
+    results = create_threads(driver)
     active_rosters = np.empty(shape=[0,2])
     for roster in results:
         active_rosters = np.concatenate([active_rosters, roster])

@@ -23,9 +23,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
-def create_threads(chromeDriver):
+def create_threads(driver):
     pool = Pool()
-    results = pool.map(partial(extract_injured_players, chromeDriver=chromeDriver), get_injury_links())
+    results = pool.map(partial(extract_injured_players, driver=driver), get_injury_links())
     pool.close()
     pool.join()
     return results
@@ -41,10 +41,11 @@ def get_injury_links():
             injuries_links.append('https://www.espn.com{}'.format(link))
     return injuries_links
 
-def extract_injured_players(link, chromeDriver):
+def extract_injured_players(link, driver):
     options = Options()
     options.headless = True
-    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+    options.add_argument('load-extension=' + '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi')
+    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
     while True:
         try:
             browser.get(link)
@@ -109,9 +110,9 @@ def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
-    chromeDriver = '/Users/Philip/Downloads/chromedriver'
+    driver = '/Users/Philip/Downloads/chromedriver'
 
-    results = create_threads(chromeDriver)
+    results = create_threads(driver)
     players = np.empty(shape=[0, 2])
     for result in results:
         if result.size > 0:
