@@ -30,6 +30,7 @@ def team_stat_scraper(team_link, year, conn):
     slice_list = [[0,1,2,3], [0,4,5], [0,6,7,8], [0,9,10,11], [0,12,13]]
     return gen_tables(season_totals_df, table_names, header_list, slice_list, year)
 
+
 def get_headers(soup):
     header_list= []
     for i in soup.findAll(True, {'class':['colhead']}):
