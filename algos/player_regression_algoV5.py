@@ -26,9 +26,7 @@ from sqlalchemy import create_engine
 def get_games(chromeDriver):
     games_list = []
     link = 'http://www.espn.com/nba/schedule'
-    options = Options()
-    options.headless = True
-    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+    browser = gen_browser(chromeDriver)
     browser.get(link)
     games = browser.find_elements_by_xpath('//*[@id="sched-container"]/div[2]/table/tbody/tr')
     for c, ele in enumerate(games):
@@ -37,6 +35,11 @@ def get_games(chromeDriver):
         games_list.append([away_team, home_team])
     browser.quit()
     return list(itertools.chain(*games_list))
+
+def gen_browser(chromeDriver):
+    options = Options()
+    options.headless = True
+    return webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
 
 def extract_query(file):
     with open(file, 'r') as infile:
