@@ -5,10 +5,8 @@ python3 injured_players.py Incremental\ Pipelines/sql\ ddl/active_rosters_player
 """
 
 import pymysql
-import re
 import requests
 import sys
-import time
 import numpy as np
 import pandas as pd
 import datetime
@@ -18,6 +16,9 @@ from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
@@ -44,22 +45,22 @@ def get_injury_links():
 def extract_injured_players(link, driver):
     options = Options()
     options.headless = True
-    options.add_argument('load-extension=' + '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi')
+    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
     browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
+    browser.get(link)
     while True:
         try:
-            browser.get(link)
+            wait = WebDriverWait(browser, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="fittPageContainer"]/div[3]')))
             break
         except TimeoutException or NoSuchElementException:
-            logging.info('[CONNECTION TIME-OUT]: Re-trying {}'.format(str(datetime.datetime.now())))
-            browser.quit()
+            browser.refresh()
+            logging.info('[CONNECTION TIME-OUT]: Re-trying {} at {}'.format(link, str(datetime.datetime.now())))
 
-    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
+    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
     injured_player_list = []
-    injured_players = browser.find_elements_by_class_name('ContentList')  #//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section
-    for player in injured_players[:-1]:
+    for player in browser.find_elements_by_class_name('ContentList')[:-1]:
         player_content = player.text.split('\n')
-        if player_content[2] == 'Out':
+        if player_content[2] in ['Out', 'Suspension']:
             injured_player_list.append([player_content[0], ' '.join([i for i in team])])
         else:
             if check_update(player_content[3]):
@@ -69,7 +70,7 @@ def extract_injured_players(link, driver):
 
 def check_update(player_update):
     injured_player_list = []
-    ruled_out_list = ['out', 'ruled', 'off', 'miss', 'missed']
+    ruled_out_list = ['out', 'ruled', 'off', 'miss', 'missed', 'concussion', '(concussion)']
     for up in player_update.split():
         if up in ruled_out_list:
             return True
@@ -110,7 +111,7 @@ def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
-    driver = '/Users/Philip/Downloads/chromedriver'
+    driver = '/Users/Philip/Downloads/chromedriver 2'
 
     results = create_threads(driver)
     players = np.empty(shape=[0, 2])
