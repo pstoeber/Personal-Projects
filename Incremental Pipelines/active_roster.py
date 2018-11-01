@@ -17,10 +17,12 @@ from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.firefox.options import Options
-from urllib3.exceptions import MaxRetryError
+from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
 def create_threads(driver):
@@ -43,19 +45,20 @@ def get_roster_links():
 def get_rosters(link, driver):
     options = Options()
     options.headless = True
-    options.add_argument('load-extension=' + '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi')
-    browser = webdriver.Firefox(executable_path=driver, firefox_options=options)
+    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
+    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
+    browser.get(link)
 
     while True:
         try:
-            browser.get(link)
+            wait = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, 'fittPageContainer')))
             break
-        except TimeoutException or NoSuchElementException or MaxRetryError:
-            logging.info('[CONNECTION TIME-UP]: Re-trying {}'.format(link))
-            browser.quit()
+        except TimeoutException or NoSuchElementException:
+            browser.refresh()
+            print('Failed to connect to page')
 
-    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
-    body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[4]/section/table')
+    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
+    body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table')
     roster_list = []
     for i in body.text.split('\n')[1:]:
         name = []
@@ -66,7 +69,6 @@ def get_rosters(link, driver):
                 break
         roster_list.append([' '.join([i for i in name[1:]]), ' '.join([i for i in team])])
     browser.quit()
-    print(np.array(roster_list))
     return np.array(roster_list)
 
 def truncate_table(connection):
@@ -107,7 +109,8 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    driver = '/Users/Philip/Downloads/geckodriver'
+    #driver = '/Users/Philip/Downloads/geckodriver'
+    driver = '/Users/Philip/Downloads/chromedriver 2'
 
     results = create_threads(driver)
     active_rosters = np.empty(shape=[0,2])

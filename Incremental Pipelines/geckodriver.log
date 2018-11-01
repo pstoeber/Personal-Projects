@@ -9202,3 +9202,115 @@ JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.
 JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
 JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
 * Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1540955333207	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.gqRk9mzNVzka"
+1540955333207	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.rx0XNGX4EqCa"
+1540955333207	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.5Bb4NbC2c9zU"
+1540955333208	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.7tLPD8nKwxsu"
+1540955333208	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.J7aV3o44ROLQ"
+1540955333208	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.DM82Il5meiWR"
+1540955333208	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.mGidhUFieG4B"
+1540955333208	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.y9BhqVRlyurY"
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+*** You are running in headless mode.
+1540955336403	Marionette	INFO	Listening on port 49443
+1540955336477	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336560	Marionette	INFO	Listening on port 49442
+1540955336597	Marionette	INFO	Listening on port 49445
+1540955336614	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336652	Marionette	INFO	Listening on port 49444
+1540955336690	Marionette	INFO	Listening on port 49446
+1540955336697	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336698	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336792	Marionette	INFO	Listening on port 49439
+1540955336830	Marionette	INFO	Listening on port 49441
+1540955336870	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336884	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955336954	Marionette	WARN	TLS certificate errors will be ignored for this session
+1540955337018	Marionette	INFO	Listening on port 49440
+1540955337110	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1540955444344	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "load-extension={d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" "-foreground" "-no-remote" "-profile" "/var/folders/m5/nrsmwdrn7m51wttw8b8cgsh40000gn/T/rust_mozprofile.ivOVDy0Z0pVa"
+*** You are running in headless mode.
+1540955445691	Marionette	INFO	Listening on port 50679
+1540955445784	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 76: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=AW-817714641, line 129: unreachable code after return statement
+JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js, line 89: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x1F0016,name=PCameras::Msg_AllDone) Channel error: cannot send/recv
+
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 808, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 729
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 794, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 729
