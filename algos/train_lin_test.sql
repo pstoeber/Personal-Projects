@@ -51,5 +51,5 @@ inner join basic_box_stats as basic on ( (box_view.game_hash = basic.game_hash) 
 inner join advanced_box_stats as adv on ( (box_view.game_hash = adv.game_hash) and (
         play_m.player_id = adv.player_id) )
 inner join player_info as play on play_m.player_id = play.player_id
-where lu.season > 1994
+where lu.season > 2015
 order by box_view.game_date desc;
