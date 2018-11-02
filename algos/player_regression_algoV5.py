@@ -16,9 +16,6 @@ import sys
 import requests
 import itertools
 #from bs4 import BeautifulSoup
-from multiprocessing import Pool
-from functools import partial
-from multiprocessing.dummy import Pool as ThreadPool
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from sklearn.model_selection import train_test_split
@@ -63,32 +60,35 @@ def escape_special_char(name_string):
     else:
         return name_string
 
-
-#def gen_threads(thread_count, function, ):
-#    if thread_count > 8:
-#        thread_count = 8
-
-#    pool = Pool(thread_count)
-    #results = pool.map(<ADD FUNCTION HERE>)
-
-
-def lin_test(query, conn, train_df):
-    test_lin_reg_df = gen_df(conn, query)
-    test_lin_reg_df.loc[:, 'minutes_played'] = test_lin_reg_df.loc[:, 'minutes_played'].apply(time_convert)
-    test_lin_reg_df = concat_drop(test_lin_reg_df, ['home_away'], ['home_away', 'fg', '3p', 'ft'])
+def lin_test(test_df, train_df, team, current_date):
+    test_df.loc[:, 'minutes_played'] = test_df.loc[:, 'minutes_played'].apply(time_convert)
+    test_df = concat_drop(test_df, ['home_away'], ['home_away', 'fg', '3p', 'ft'])
 
     lin_input_coef, lin_intercept, r_square = gen_lin_reg_coef(train_df.loc[:, 'minutes_played':'defensive_rating'], \
-                                                               test_lin_reg_df.loc[:, 'minutes_played':'defensive_rating'], \
+                                                               test_df.loc[:, 'minutes_played':'defensive_rating'], \
                                                                train_df.loc[:, 'pts'], \
-                                                               test_lin_reg_df.loc[:, 'pts'])
+                                                               test_df.loc[:, 'pts'])
 
-    total_points = aggregrate_total_points(test_lin_reg_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
+    total_points = aggregrate_total_points(test_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
                                            lin_input_coef.T, lin_intercept.item(), 'pts')
+    total_points['game_date'] = str(current_date)
+    linear_reg_np_arr = np.array([team, str(current_date), total_points.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
+    linear_reg_pred_df = pd.DataFrame(linear_reg_np_arr, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
 
-    return [total_points, total_points.iloc[:, -2].sum(), r_square]
+    insert_into_database(total_points, 'player_prediction_results')
+    insert_into_database(linear_reg_pred_df, 'total_points_predictions')
+    return total_points, total_points.iloc[:, -2].sum(), r_square
 
-#def
+def log_test(test_df, train_df, team, current_date):
+    test_df = concat_drop(test_df, ['home_away', 'win_lose'], ['home_away', 'win_lose']).mean().to_frame().T
+    win_prob = gen_log_coef(train_df.drop('W', axis=1), test_df.drop('W', axis=1), \
+                                         train_df.loc[:, 'W'], test_df.loc[:, 'W'])
 
+    win_prob_df = pd.DataFrame(win_prob, index=None, columns=['lose_probability', 'win_probability'])
+    win_prob_df['team'] = team
+    win_prob_df['game_date'] = str(current_date)
+    insert_into_database(win_prob_df, 'win_probability_results')
+    return win_prob
 
 def gen_df(conn, sql):
     return pd.read_sql(sql=sql, con=conn)
@@ -133,7 +133,7 @@ def gen_log_coef(X_train, X_test, y_train, y_test):
     lg.fit(X_train, y_train)
     return lg.predict_proba(X_test)
 
-def insert_into_database(conn, df, table_name):
+def insert_into_database(df, table_name):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name=table_name, if_exists='append', index=False)
 
@@ -170,10 +170,6 @@ if __name__ == '__main__':
     driver = '/Users/Philip/Downloads/chromedriver'
     current_date = str(datetime.date.today())
     team_list = get_games(driver)
-    total_points_df, total_points_list, r_list, prob = [], [], [], []
-
-
-    #train_lin_reg_df = pd.DataFrame()
 
     train_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[1])]).format(current_date))
     train_lin_reg_df.loc[:, 'minutes_played'] = train_lin_reg_df.loc[:, 'minutes_played'].apply(time_convert)
@@ -181,87 +177,19 @@ if __name__ == '__main__':
     #X_train, X_test, y_train, y_test = train_split(train_lin_reg_df.loc[:, 'minutes_played':'defensive_rating'], train_lin_reg_df.loc[:, 'pts'])
     #gen_lin_reg_coef(X_train, X_test, y_train, y_test)
 
-    #train_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[2])]).format(current_date))
-    #train_log_df = concat_drop(train_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose'])
+    train_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[2])]).format(current_date))
+    train_log_df = concat_drop(train_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose'])
 
-    #train_lin_reg_df = pd.DataFrame()
-
-    #test_lin_reg_df = gen_test_lin_df(myConnection, ' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team))
-    input_list = []
+    lin_results, log_results = [], []
     for team in team_list:
-        query = ' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team)
-        #input_list.append((gen_df(myConnection, query), train_lin_reg_df))
-        input_list.append(' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team))
+        lin_query = ' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team)
+        lin_results.append([lin_test(gen_df(myConnection, lin_query), train_lin_reg_df, team, current_date)])
 
+        log_query = ' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team)
+        log_results.append([log_test(gen_df(myConnection, log_query), train_log_df, team, current_date)])
 
-    thread_count = len(input_list)
-    #print(input_list)
-    print(len(input_list))
-    print(team_list)
-
-    if thread_count > 8:
-        thread_count = 8
-
-    #print(input_list)
-
-    #print(list(zip(input_list, itertools.repeat(myConnection), itertools.repeat(train_lin_reg_df))))
-
-    #pool = Pool()
-    #results = pool.apply_async(lin_test, zip(input_list, itertools.repeat(myConnection), itertools.repeat(train_lin_reg_df)))
-    #pool.close()
-    #pool.join()
-
-    #results = pool.starmap(lin_test, zip(input_list, itertools.repeat(myConnection), itertools.repeat(train_lin_reg_df)))
-
-    for i in results:
-        print(i)
-    #query = """select play.name, player.player_id, bm.team, bm.home_away, basic.minutes_played, basic.fg, basic.fga, basic.fg_pct, basic.3p, basic.3pa, basic.3p_pct, basic.ft, basic.ft_pct, basic.orb, basic.drb, basic.trb, basic.ast, basic.stl, basic.blk, basic.tov, basic.pf, adv.true_shooting_pct, adv.effective_fg_pct, adv.3P_attempt_rate, adv.FT_attempt_rate, adv.offensive_reb_rate, adv.defensive_reb_rate, adv.total_reb_pct, adv.assist_pct, adv.steal_pct, adv.block_pct, adv.turnover_pct, #adv.usage_pct, adv.offensive_rating, adv.defensive_rating, basic.pts from (  select game_hash, team, game_date, home_away from box_scores_map_view where team like 'Portland%' and game_date < '2018-11-01' order by game_date desc limit 9  ) as bm inner join game_date_lookup as lu on bm.game_date = lu.day  inner join (  select name, team, player_id from active_rosters where player_id not in (select player_id from injured_players) and team like 'Portland%'  ) as player on bm.team = #player.team  inner join basic_box_stats as basic on ( (bm.game_hash = basic.game_hash) and (player.player_id = basic.player_id) ) inner join advanced_box_stats as adv on ( (bm.game_hash = adv.game_hash) and (player.player_id = adv.player_id) ) inner join player_info as play on player.player_id = play.player_id where bm.team like 'Portland%' and lu.season = 2019 and basic.minutes_played not like '00:00:00'"""
-
-
-#
-
-    #for team in team_list:
-
-        #test_lin_reg_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[3])]).format(team, current_date, team, team))
-        #test_lin_reg_df.loc[:, 'minutes_played'] = test_lin_reg_df.loc[:, 'minutes_played'].apply(time_convert)
-        #test_lin_reg_df = concat_drop(test_lin_reg_df, ['home_away'], ['home_away', 'fg', '3p', 'ft'])
-
-        #
-
-        #lin_input_coef, lin_intercept, r_square = gen_lin_reg_coef(train_lin_reg_df.loc[:, 'minutes_played':'defensive_rating'], \
-        #                                                           test_lin_reg_df.loc[:, 'minutes_played':'defensive_rating'], \
-        #                                                           train_lin_reg_df.loc[:, 'pts'], \
-        #                                                           test_lin_reg_df.loc[:, 'pts'])
-
-        #total_points = aggregrate_total_points(test_lin_reg_df, ['player_id', 'name', 'team'], 'minutes_played', 'defensive_rating', \
-        #                                       lin_input_coef.T, lin_intercept.item(), 'pts')
-
-        #total_points['game_date'] = str(current_date)
-        #insert_into_database(myConnection, total_points, 'player_prediction_results')
-        #total_points_df.append(total_points)
-        #total_points_list.append(total_points.iloc[:, -2].sum())
-        #r_list.append(r_square)
-
-        #linear_reg_np_arr = np.array([team, str(current_date), total_points.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
-        #linear_reg_pred_df = pd.DataFrame(linear_reg_np_arr, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
-        #insert_into_database(myConnection, linear_reg_pred_df, 'total_points_predictions')
-
-
-
-
-        #test_log_df = gen_df(myConnection, ' '.join([i for i in extract_query(sys.argv[4])]).format(team, current_date, team))
-        #test_log_df = concat_drop(test_log_df, ['home_away', 'win_lose'], ['home_away', 'win_lose']).mean().to_frame().T
-        #win_prob = gen_log_coef(train_log_df.drop('W', axis=1), test_log_df.drop('W', axis=1), \
-        #                                     train_log_df.loc[:, 'W'], test_log_df.loc[:, 'W'])
-
-        #win_prob_df = pd.DataFrame(win_prob, index=None, columns=['lose_probability', 'win_probability'])
-        #win_prob_df['team'] = team
-        #win_prob_df['game_date'] = str(current_date)
-    #    insert_into_database(myConnection, win_prob_df, 'win_probability_results')
-        #prob.append(win_prob)
-
-    #for i in range(0, len(total_points_df), 2):
-    #    print('R-Squared Value: {}'.format(r_list[i]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(r_list[i+1]))
-    #    print(pd.concat([total_points_df[i], total_points_df[i+1]], axis=1))
-    #    print('Total Score: {}'.format(total_points_list[i]), '\t\t\t\t\t', 'Total Score: {}'.format(total_points_list[i+1]))
-    #    print('Win Probability: {}'.format(prob[i]), '\t\t\t', 'Win Probability: {}'.format(prob[i+1]), '\n\n')
+    for i in range(0, len(lin_results), 2):
+        print('R-Squared Value: {}'.format(lin_results[i][0][2]), '\t\t\t\t\t\t', 'R-Squared Value: {}'.format(lin_results[i+1][0][2]))
+        print(pd.concat([lin_results[i][0][0], lin_results[i+1][0][0]], axis=1))
+        print('Total Score: {}'.format(lin_results[i][0][1]), '\t\t\t\t\t', 'Total Score: {}'.format(lin_results[i+1][0][1]))
+        print('Win Probability: {}'.format(log_results[i]), '\t\t\t', 'Win Probability: {}'.format(log_results[i+1]), '\n\n')\
