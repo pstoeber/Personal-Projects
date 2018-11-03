@@ -3,92 +3,99 @@ scraper designed to gather team stats from individual games from
 stats.nba.com/teams/boxscores-advanced/
 """
 
-import re
 import datetime
-import itertools
 import numpy as np
 import pandas as pd
 import pymysql
 import requests
 import sys
-import time
 import logging
-from collections import defaultdict
 from sqlalchemy import create_engine
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from contextlib import closing
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 
 def find_max_date(conn):
     exe = conn.cursor()
     exe.execute('select max(game_date) from nba_stats.box_score_map')
     return exe.fetchall()[0][0]
 
-def stat_scraper(link):
+def stat_scraper(link, driver):
+    options = Options()
+#    options.headless = True
+    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
+    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
+    browser.get(link)
 
-    columns, stats = [], []
-    chromeDriver = '/Users/Philip/Downloads/chromedriver'
-    browser = webdriver.Chrome(executable_path=chromeDriver)
     while True:
         try:
-            browser.get(link)
-            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click() ## Change to option 1
-            time.sleep(5)
-
-            browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
-            time.sleep(5)
+            wait = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[2]/div[1]')))
             break
-        except:
-            logging.info('[CONNECTION TIME-OUT]: re-trying advanced pipeline')
+        except TimeoutException or NoSuchElementException:
+            browser.refresh()
+            print('failed to find page')
+            logging.info('Failed to connect to page')
 
+    browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click()
+    browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
     table = browser.find_element_by_class_name('nba-stat-table')
-    for c, row in enumerate(table.text.split('\n')):
-        row = row.split()
-        if c < 2:
-            columns += row
-        if c > 1 and len(row) > 1:
-            sub_row = (home_away_team_aligner(row[:4]))
-            stats.append(sub_row + row[4:])
-    columns = column_list_format(columns)
-    return pd.DataFrame(np.array(stats), index=None, columns=columns)
+    content = table.get_attribute('innerHTML')
+    df = pd.read_html(content)[0]
+    browser.quit()
+    return format_matchup(df)
 
-def column_list_format(columns):
+def format_matchup(df):
+    matchup_df = df.iloc[:, :3]
+    home_away = np.empty(shape=[1, 4])
 
-    game_date = columns[columns.index('GAME')] + '_' + columns[columns.index('DATE')]
-    ast_ratio = columns[columns.index('AST')] + '_' + columns[columns.index('RATIO')]
-    columns.pop(columns.index('UP'))
-    columns.pop(columns.index('MATCH'))
-    return columns[:1] + ['HOME_TEAM', 'AWAY_TEAM'] + [game_date] + columns[3:10] + [ast_ratio] + columns[12:]
+    match_up_list = matchup_df.apply(lambda x: parse_teams(x), axis=1)
+    for match in match_up_list:
+        home_away = np.concatenate([home_away, match], axis=0)
 
-def home_away_team_aligner(row):
+    home_away_df = pd.DataFrame(home_away, index=None, columns=['Team', 'Home_Team', 'Away_Team', 'Game Date'])
 
-    if row[2] == '@':
-        return [row[0]] + [row[3]] + [row[1]]
-    else:
-        return row[:2] + [row[3]]
+    final_df = pd.merge(home_away_df, df, how='inner', on=['Team', 'Game Date'])
+    final_df.drop(['Match Up', 'Season'], axis=1, inplace=True)
+    return final_df
+
+def parse_teams(row):
+    match_up = row.loc['Match Up'].split()
+    return_row = []
+    if match_up[1] == 'vs.':
+        return_row = [i for i in [row.loc['Team'], match_up[0], match_up[2], row.loc['Game Date']]]
+        return np.array(return_row).reshape(1,4)
+    elif match_up[1] == '@':
+        return_row = [i for i in [row.loc['Team'], match_up[2], match_up[0], row.loc['Game Date']]]
+        return np.array(return_row).reshape(1,4)
 
 def convert_date(date_str):
     return datetime.datetime.strptime(date_str, '%m/%d/%Y').date()
 
+def insert_into_database(df, max_date):
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
+    df[df.loc[:, 'Game Date'] > max_date].to_sql(con=engine, name='advanced_team_boxscore_stats', if_exists='replace', index=False)
+
 def main():
     myConnection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
+    driver = '/Users/Philip/Downloads/chromedriver 2'
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     link = 'https://stats.nba.com/teams/boxscores-advanced/'
+
     max_date = find_max_date(myConnection)
     logging.info('Beginning NBA Stats Advanced Team Stats incrementals pipeline {}'.format(str(datetime.datetime.now())))
-    stat_df = stat_scraper(link)
-    stat_df['GAME_DATE'] = stat_df.loc[:, 'GAME_DATE'].apply(convert_date)
-    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
+    stat_df = stat_scraper(link, driver)
+    stat_df['Game Date'] = stat_df.loc[:, 'Game Date'].apply(convert_date)
 
-    if stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].empty:
+    if stat_df[stat_df.loc[:, 'Game Date'] > max_date].empty:
         print('No new data.')
         sys.exit(1)
 
-    stat_df[stat_df.loc[:, 'GAME_DATE'] > max_date].to_sql(con=engine, name='advanced_team_boxscore_stats', if_exists='replace', index=False)
+    insert_into_database(stat_df, max_date)
     logging.info('Advanced Stats Dataframe Count: {}'.format(str(stat_df.count())))
     logging.info('NBA Stats Advanced Team Stats incrementals pipeline completed successfully {}'.format(str(datetime.datetime.now())))
 

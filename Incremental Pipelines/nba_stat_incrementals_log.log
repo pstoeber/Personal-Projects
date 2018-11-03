@@ -1,15 +1,15 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2018-11-02 19:22:22.603468
-INFO:root:Successfully connected to nba_stats_staging 2018-11-02 19:22:22.606255
-INFO:root:Backing up nba_stats_backup database 2018-11-02 19:22:22.606355
-INFO:root:Backing up complete 2018-11-02 19:22:29.360041
-INFO:root:Compressing backup of nba_stats_backup database 2018-11-02 19:22:29.360320
-INFO:root:Compression complete 2018-11-02 19:22:41.619813
-INFO:root:Beginning ESPN players incrementals pipeline 2018-11-02 19:22:41.619979
-INFO:root:ESPN players incrementals pipeline completed 2018-11-02 19:23:47.452385
-INFO:root:Beginning ESPN team incrementials pipeline 2018-11-02 19:23:47.469081
-INFO:root:Beginning ESPN team standings pipeline 2018-11-02 19:23:50.205638
-INFO:root:ESPN team standings pipeline completed successfully 2018-11-02 19:23:51.063053
-INFO:root:Beginning NBA Reference players incrementals pipeline 2018-11-02 19:23:51.063369
+INFO:root:Attempting to connect to nba_stats_staging database 2018-11-03 13:29:05.312448
+INFO:root:Successfully connected to nba_stats_staging 2018-11-03 13:29:05.315224
+INFO:root:Backing up nba_stats_backup database 2018-11-03 13:29:05.315376
+INFO:root:Backing up complete 2018-11-03 13:29:12.535785
+INFO:root:Compressing backup of nba_stats_backup database 2018-11-03 13:29:12.536019
+INFO:root:Compression complete 2018-11-03 13:29:25.273603
+INFO:root:Beginning ESPN players incrementals pipeline 2018-11-03 13:29:25.273784
+INFO:root:ESPN players incrementals pipeline completed 2018-11-03 13:30:43.834350
+INFO:root:Beginning ESPN team incrementials pipeline 2018-11-03 13:30:43.849479
+INFO:root:Beginning ESPN team standings pipeline 2018-11-03 13:30:45.245479
+INFO:root:ESPN team standings pipeline completed successfully 2018-11-03 13:30:46.483466
+INFO:root:Beginning NBA Reference players incrementals pipeline 2018-11-03 13:30:46.483722
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
@@ -48,779 +48,796 @@ INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxsco
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
 INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=02&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=01&year=2018
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010ATL.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010BOS.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CHO.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010CLE.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010PHI.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811010POR.html
-INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-11-02 19:23:54.456969
-INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-11-02 19:23:54.473301
-INFO:root:Advanced Stats Dataframe Count: TEAM         232
-HOME_TEAM    232
-AWAY_TEAM    232
-GAME_DATE    232
-W/L          232
-MIN          232
-OFFRTG       232
-DEFRTG       232
-NETRTG       232
-AST%         232
-AST/TO       232
-AST_RATIO    232
-OREB%        232
-DREB%        232
-REB%         232
-TOV%         232
-EFG%         232
-TS%          232
-PACE         232
-PIE          232
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020BRK.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020CHI.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020DAL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020GSW.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020ORL.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020PHO.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020UTA.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/201811020WAS.html
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:[FAILED TO BOXSCORE DATA]: https://www.basketball-reference.com/boxscores/?month=11&day=03&year=2018
+INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-11-03 13:30:49.765647
+INFO:root:Beginning NBA Stats Advanced Team Stats incrementals pipeline 2018-11-03 13:30:49.781719
+INFO:root:Failed to connect to page
+INFO:root:Failed to connect to page
+INFO:root:Failed to connect to page
+INFO:root:Failed to connect to page
+INFO:root:Advanced Stats Dataframe Count: Team         248
+Home_Team    248
+Away_Team    248
+Game Date    248
+W/L          248
+MIN          248
+OffRtg       248
+DefRtg       248
+NetRtg       248
+AST%         248
+AST/TO       248
+ASTRatio     248
+OREB%        248
+DREB%        248
+REB%         248
+TOV%         248
+eFG%         248
+TS%          248
+PACE         248
+PIE          248
 dtype: int64
-INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-11-02 19:24:13.956990
-INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-11-02 19:24:13.959081
-INFO:root:Four Factors Dataframe Count: TEAM            232
-HOME_TEAM       232
-AWAY_TEAM       232
-GAME_DATE       232
-W/L             232
-MIN             232
-EFG%            232
-FTA_RATE        232
-FTA             232
-RATE            232
-OPP_EFG%        232
-OPP_FTA_RATE    232
-OPP_TOV%        232
-OPP_OREB%       232
+INFO:root:NBA Stats Advanced Team Stats incrementals pipeline completed successfully 2018-11-03 13:31:41.374879
+INFO:root:Beginning NBA Stats four factors Team Stats incrementals pipeline 2018-11-03 13:31:41.376832
+INFO:root:Four Factors Dataframe Count: Team           248
+Home_Team      248
+Away_Team      248
+Game Date      248
+W/L            248
+MIN            248
+eFG%           248
+FTARate        248
+TOV%           248
+OREB%          248
+OppeFG%        248
+OppFTA Rate    248
+OppTOV%        248
+OppOREB%       248
 dtype: int64
-INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-11-02 19:24:26.869369
-INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-11-02 19:24:26.901081
-INFO:root:Misc Stats Dataframe Count: TEAM              232
-HOME_TEAM         232
-AWAY_TEAM         232
-GAME_DATE         232
-W/L               232
-MIN               232
-PTS_OFF_TO        232
-2ND_PTS           232
-FBPS              232
-PITP              232
-OPP_PTS_OFF_TO    232
-OPP_2ND_PTS       232
-OPP_FBPS          232
-OPP_PITP          232
+INFO:root:NBA Stats four factors incrementals pipeline completed successfully 2018-11-03 13:31:48.469707
+INFO:root:Beginning NBA Stats Misc Team Stats incrementals pipeline 2018-11-03 13:31:48.484017
+INFO:root:Misc Stats Dataframe Count: Team             248
+Home_Team        248
+Away_Team        248
+Game Date        248
+W/L              248
+MIN              248
+PTSOFF TO        248
+2ndPTS           248
+FBPs             248
+PITP             248
+Opp PTSOFF TO    248
+Opp2nd PTS       248
+OppFBPs          248
+OppPITP          248
 dtype: int64
-INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-11-02 19:24:41.494357
-INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-11-02 19:24:41.496264
-INFO:root:Scoring Stats Dataframe Count: TEAM           232
-HOME_TEAM      232
-AWAY_TEAM      232
-GAME_DATE      232
-W/L            232
-MIN            232
-%FGA_2PT       232
-%FGA_3PT       232
-%PTS_2PT       232
-%PTS_2PT_MR    232
-%PTS_3PT       232
-%PTS_FBPS      232
-%PTS_FT        232
-%PTS_OFF_TO    232
-%PTS_PITP      232
-2FGM_%AST      232
-2FGM_%UAST     232
-3FGM_%AST      232
-3FGM_%UAST     232
-FGM_%AST       232
-FGM_%UAST      232
+INFO:root:NBA Stats Misc Team Stats incrementals pipeline completed successfully2018-11-03 13:31:55.613469
+INFO:root:Beginning NBA Stats Scoring Team Stats incrementals pipeline 2018-11-03 13:31:55.615010
+INFO:root:Scoring Stats Dataframe Count: Team          248
+Home_Team     248
+Away_Team     248
+Game Date     248
+W/L           248
+MIN           248
+%FGA2PT       248
+%FGA3PT       248
+%PTS2PT       248
+%PTS2PT MR    248
+%PTS3PT       248
+%PTSFBPs      248
+%PTSFT        248
+%PTSOff TO    248
+%PTSPITP      248
+2FGM%AST      248
+2FGM%UAST     248
+3FGM%AST      248
+3FGM%UAST     248
+FGM%AST       248
+FGM%UAST      248
 dtype: int64
-INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-11-02 19:24:54.498072
-INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-11-02 19:24:54.499948
-INFO:root:Traditional Stats Dataframe Count: TEAM         232
-HOME_TEAM    232
-AWAY_TEAM    232
-GAME_DATE    232
-W/L          232
-MIN          232
-PTS          232
-FGM          232
-FGA          232
-FG%          232
-3PM          232
-3PA          232
-3P%          232
-FTM          232
-FTA          232
-FT%          232
-OREB         232
-DREB         232
-REB          232
-AST          232
-TOV          232
-STL          232
-BLK          232
-PF           232
-+/-          232
+INFO:root:NBA Stats Scoring Team Stats incrementals pipeline completed successfully 2018-11-03 13:32:03.226011
+INFO:root:Beginning NBA Stats Traditional Team Stats incrementals pipeline 2018-11-03 13:32:03.228166
+INFO:root:Traditional Stats Dataframe Count: Team         248
+Home_Team    248
+Away_Team    248
+Game Date    248
+W/L          248
+MIN          248
+PTS          248
+FGM          248
+FGA          248
+FG%          248
+3PM          248
+3PA          248
+3P%          248
+FTM          248
+FTA          248
+FT%          248
+OREB         248
+DREB         248
+REB          248
+AST          248
+TOV          248
+STL          248
+BLK          248
+PF           248
++/-          248
 dtype: int64
-INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-11-02 19:25:39.096161
-INFO:root:Updating ESPN seasons 2018-11-02 19:25:39.097761
-INFO:root:ESPN seasons update completed successfully 2018-11-02 19:25:39.162558
-INFO:root:Updating ESPN team names 2018-11-02 19:25:39.163000
-INFO:root:ESPN team names update completed successfully 2018-11-02 19:25:40.316569
-INFO:root:Beginning NBA Stats team name 2018-11-02 19:25:40.316792
-INFO:root:NBA Stats team name update completed successfully 2018-11-02 19:25:41.876164
-INFO:root:Beginning NBA Reference player name update 2018-11-02 19:25:41.876465
-INFO:root:NBA Reference player name update completed successfully 2018-11-02 19:25:42.061337
-INFO:root:Deleting Max season from ESPN tables 2018-11-02 19:25:42.061557
-INFO:root:Deletion from ESPN tables complete 2018-11-02 19:25:42.228601
-INFO:root:Beginning insert into nba_stats from nba_stats_staging 2018-11-02 19:25:42.228834
-INFO:root:Insert completed 2018-11-02 19:25:42.477306
-INFO:root:Beginning generation of date lookup table 2018-11-02 19:25:42.477534
-INFO:root:Date lookup table generated 2018-11-02 19:27:48.125011
-INFO:root:Refreshing active_rosters table 2018-11-02 19:27:48.125373
-INFO:root:Active_rosters table refresh complete 2018-11-02 19:30:37.147117
-INFO:root:Refreshing injured_players table 2018-11-02 19:30:37.147758
-INFO:root:Injured_players table refresh complete 2018-11-02 19:32:24.949702
-INFO:root:Dropping nba_stats_test database 2018-11-02 19:32:25.196646
-INFO:root:nba_stats_test schema re-created 2018-11-02 19:32:25.323801
-INFO:root:Calling liquibase for nba_stats_test refresh 2018-11-02 19:32:25.324018
-INFO:root:Incrementials Pipeline completed 2018-11-02 19:41:17.025402
+INFO:root:NBA Stats Traditional Team Stats incrementals pipeline completed successfully 2018-11-03 13:32:11.793182
+INFO:root:Updating ESPN seasons 2018-11-03 13:32:11.795276
+INFO:root:ESPN seasons update completed successfully 2018-11-03 13:32:11.853230
+INFO:root:Updating ESPN team names 2018-11-03 13:32:11.853434
+INFO:root:ESPN team names update completed successfully 2018-11-03 13:32:13.010440
+INFO:root:Beginning NBA Stats team name 2018-11-03 13:32:13.010704
+INFO:root:NBA Stats team name update completed successfully 2018-11-03 13:32:14.973653
+INFO:root:Beginning NBA Reference player name update 2018-11-03 13:32:14.973869
+INFO:root:NBA Reference player name update completed successfully 2018-11-03 13:32:15.259878
+INFO:root:Deleting Max season from ESPN tables 2018-11-03 13:32:15.260103
+INFO:root:Deletion from ESPN tables complete 2018-11-03 13:32:15.453764
+INFO:root:Beginning insert into nba_stats from nba_stats_staging 2018-11-03 13:32:15.454029
+INFO:root:Insert completed 2018-11-03 13:32:15.715729
+INFO:root:Beginning generation of date lookup table 2018-11-03 13:32:15.715912
+INFO:root:Date lookup table generated 2018-11-03 13:34:15.135778
+INFO:root:Refreshing active_rosters table 2018-11-03 13:34:15.136172
+INFO:root:Active_rosters table refresh complete 2018-11-03 13:37:27.637717
+INFO:root:Refreshing injured_players table 2018-11-03 13:37:27.638393
+INFO:root:Injured_players table refresh complete 2018-11-03 13:40:12.518763
+INFO:root:Dropping nba_stats_test database 2018-11-03 13:40:12.902101
+INFO:root:nba_stats_test schema re-created 2018-11-03 13:40:13.034916
+INFO:root:Calling liquibase for nba_stats_test refresh 2018-11-03 13:40:13.035156
+INFO:root:Incrementials Pipeline completed 2018-11-03 13:48:22.481303
