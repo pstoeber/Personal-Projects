@@ -14,6 +14,11 @@ import datetime
 import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 from sqlalchemy import create_engine
 
 def season_scraper(today):
@@ -39,11 +44,14 @@ def drop_table(conn):
 def team_standing_scrap(standing_stats_link, year, chromeDriver):
 
     teams, team_standing_stats = {}, []
-
+    options = Options()
+    options.headless = True
+    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
 
     soup = BeautifulSoup(requests.get(standing_stats_link).content, "html.parser")
 
-#    standing_stats = soup.findAll(True, {'class':['Table2__td']})
+    standing_stats = soup.findAll(True, {'class':['Table2__td']})
 
     conference_list = get_conference(soup)
     print(conference_list)
@@ -52,24 +60,30 @@ def team_standing_scrap(standing_stats_link, year, chromeDriver):
     print(header_list)
 
 
-    row = []
-    for c, data in enumerate(soup.findAll('td', {'class':['Table2__td']})):
-        row.append(data.text)
-        if (c+1) % 15 == 0:
-            print(row)
-            row = []
-        #print(table.text)
+    browser.get(standing_stats_link)
+    for i in range(len(browser.find_elements_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[2]/div/section'))):
+        #for p in i.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[2]/div/section/div[1]/section/table/tbody/tr'):
+        print(browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[{}]/div/section'.format(str(i+1))).text)
+        print('\n\n\n')
+                                        #//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[2]/div/section/div[1]/section/table/tbody
+        print(i.text)
+
+    #tables = pd.read_html(standing_stats_link)
+    #print(tables)
+
+    #for table in tables:
+    #    print(table)
 
 
 
-        #for row in table.findAll('td'):
-        #    print(row.text)
+    #for i in soup.findAll('table'):
+    #    print(i.text)
+    #    for p in i.findAll('tr'):
+    #        print(p.text)
+
 
 
     #get_stats(standing_stats_link, conference_list, chromeDriver, len(header_list))
-
-    #//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[1]/section
-    #//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[2]/section
 
 
 
@@ -87,6 +101,7 @@ def team_standing_scrap(standing_stats_link, year, chromeDriver):
     #        else:
     #            team_standing_stats.append(line.get_text())
     #    except IndexError:
+    #        print(line.text)
     #        team_standing_stats.append(line.text)
 
     #counter = 0
