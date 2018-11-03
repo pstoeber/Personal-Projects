@@ -46,6 +46,7 @@ def stat_scraper(link, driver):
     table = browser.find_element_by_class_name('nba-stat-table')
     content = table.get_attribute('innerHTML')
     df = pd.read_html(content)[0]
+    browser.quit()
     return format_matchup(df)
 
 def format_matchup(df):
