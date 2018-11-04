@@ -56,7 +56,7 @@ def get_rosters(link, driver):
             break
         except TimeoutException or NoSuchElementException:
             browser.refresh()
-            print('Failed to connect to page')
+            logging.info('Failed to connect to page')
 
     team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
     body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table')
