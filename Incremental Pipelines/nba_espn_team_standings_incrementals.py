@@ -5,76 +5,143 @@ Data will be landed into table TEAM_STANDINGS within the nba_stats databaseself.
 
 import re
 import requests
+import numpy as np
+import pandas as pd
 from bs4 import BeautifulSoup
 import pymysql
 import itertools
 import datetime
 import logging
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from sqlalchemy import create_engine
 
-def season_scraper():
-    date_time = str(datetime.date.today())
-    current_year = int(date_time[:date_time.index("-")])
-    if current_year == 2018:
-        return [current_year + 1]
-    elif current_year == 2019:
-        return [current_year]
+def season_scraper(today):
+    start_season = datetime.datetime.strptime('2018-10-01', '%Y-%m-%d').date()
+    new_year = datetime.datetime.strptime('2019-01-01', '%Y-%m-%d').date()
+    end_season = datetime.datetime.strptime('2019-05-01', '%Y-%m-%d').date()
+
+    if today > start_season and today < new_year:
+        return today.year + 1
+    elif today >= new_year and today < end_season:
+        return today.year
+
+
+
 
 def drop_table(conn):
     drop_statment = 'drop table nba_stats_staging.team_standings'
     sql_execute(drop_statment, conn)
 
-def team_standing_scrap(standing_stats_link, year):
 
-    teams, header_list, conference_list, team_standing_stats = {}, [], [], []
 
-    link = requests.get(standing_stats_link)
-    content = link.content
-    soup = BeautifulSoup(content, "html.parser")
 
-    conference = soup.findAll(True, {'class':['Table2__Title']})
-    header = soup.findAll(True, {'class':['tar subHeader__item--content Table2__th']})
-    standing_stats = soup.findAll(True, {'class':['Table2__td']})
+def team_standing_scrap(standing_stats_link, year, chromeDriver):
 
-    for conf in conference:
-        conference_list.append(conf.get_text())
+    teams, team_standing_stats = {}, []
 
-    for line in header:
-        if line.get_text() != '':
-            header_list.append(line.get_text())
 
-    header_list = sorted(set(header_list), key = header_list.index)
+    soup = BeautifulSoup(requests.get(standing_stats_link).content, "html.parser")
 
-    index_find = re.compile('[A-Z]{3,4}')
-    conference_index = 0
+#    standing_stats = soup.findAll(True, {'class':['Table2__td']})
 
-    for line in standing_stats:
-        try:
-            if len(teams) == 15:
-                conference_index = 1
-            if '--' in line.get_text() or line.get_text()[2].isalpha() or '/' in line.get_text():
-                for match in re.finditer(index_find, line.get_text()):
-                    teams[line.get_text()[match.end() -1:]] = conference_list[conference_index]
-            else:
-                team_standing_stats.append(line.get_text())
-        except IndexError:
-            team_standing_stats.append(line.text)
+    conference_list = get_conference(soup)
+    print(conference_list)
 
-    counter = 0
-    row = ''
-    team_standing = []
+    header_list = sorted(set(get_header(soup)))
+    print(header_list)
 
-    for stat in team_standing_stats:
-        row += str(stat) + ' '
-        counter += 1
-        if counter == len(header_list):
-            team_standing.append(row.split())
-            counter = 0
-            row = ''
 
-    standing_dict = {}
-    for team, standing_stats in zip(teams, team_standing):
-        standing_dict[team, teams[team], year] = standing_stats
-    return standing_dict, header_list
+    row = []
+    for c, data in enumerate(soup.findAll('td', {'class':['Table2__td']})):
+        row.append(data.text)
+        if (c+1) % 15 == 0:
+            print(row)
+            row = []
+        #print(table.text)
+
+
+
+        #for row in table.findAll('td'):
+        #    print(row.text)
+
+
+    #get_stats(standing_stats_link, conference_list, chromeDriver, len(header_list))
+
+    #//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[1]/section
+    #//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[2]/section
+
+
+
+
+    #index_find = re.compile('[A-Z]{3,4}')
+    #conference_index = 0
+
+    #for line in standing_stats:
+    #    try:
+    #        if len(teams) == 15:
+    #            conference_index = 1
+    #        if '--' in line.get_text() or line.get_text()[2].isalpha() or '/' in line.get_text():
+    #            for match in re.finditer(index_find, line.get_text()):
+    #                teams[line.get_text()[match.end() -1:]] = conference_list[conference_index]
+    #        else:
+    #            team_standing_stats.append(line.get_text())
+    #    except IndexError:
+    #        team_standing_stats.append(line.text)
+
+    #counter = 0
+    #row = ''
+    #team_standing = []
+
+    #for stat in team_standing_stats:
+    #    row += str(stat) + ' '
+    #    counter += 1
+    #    if counter == len(header_list):
+    #        team_standing.append(row.split())
+    #        counter = 0
+    #        row = ''
+
+    #standing_dict = {}
+    #for team, standing_stats in zip(teams, team_standing):
+    #    standing_dict[team, teams[team], year] = standing_stats
+
+
+    #return standing_dict, header_list
+
+def get_conference(soup):
+    return [i.text for i in soup.findAll(True, {'class':['Table2__Title']})]
+
+def get_header(soup):
+    return [i.text for i in soup.findAll(True, {'class':['tar subHeader__item--content Table2__th']}) if i.text != '']
+
+def get_stats(link, conference_list, chromeDriver, head_len):
+    rows = []
+    options = Options()
+    options.headless = True
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
+    browser.get(link)
+
+    for c, conf in enumerate(conference_list):
+        stats = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[{}]/section/table/tbody'.format(c+1))
+        #print(stats.text)
+        row = ''
+        for p, data in enumerate(stats.text.split()):
+            #row += str(data)
+            print(data)
+            #if (p+1) % head_len == 0:
+            #    rows.append(row)
+            #    print(row)
+            #    row = ''
+
+        #for i in stats:
+        #    print(i.text)
+
+#//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[1]/section/table/tbody
+#//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[2]/section/table/tbody
+#//*[@id="fittPageContainer"]/div[3]/div[2]/div[1]/div/section/section/div[2]/div/section/div/div[{}]/section
+
+
+
 
 def int_check(input):
     try:
@@ -134,17 +201,21 @@ def sql_execute(query, connection):
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
-    years_list = season_scraper()
+    year = season_scraper(datetime.date.today())
     logging.info('Beginning ESPN team standings pipeline {}'.format(str(datetime.datetime.now())))
-    for c, year in enumerate(years_list):
-        standing_stats_link = 'http://www.espn.com/nba/standings/_/season/' + str(year)
-        standing_dict, header_list = team_standing_scrap(standing_stats_link, str(year))
-        if c < 1:
-            drop_table(myConnection)
-            create_standing_table(myConnection, header_list)
-        create_insert_statements(standing_dict, myConnection)
+    chromeDriver = '/Users/Philip/Downloads/chromedriver'
+    standing_stats_link = 'http://www.espn.com/nba/standings/_/season/' + str(year)
+    team_standing_scrap(standing_stats_link, str(year), chromeDriver)
 
-    update_statements(myConnection)
+    #for c, year in enumerate(years_list):
+    #    standing_stats_link = 'http://www.espn.com/nba/standings/_/season/' + str(year)
+    #    standing_dict, header_list = team_standing_scrap(standing_stats_link, str(year))
+    #    if c < 1:
+    #        drop_table(myConnection)
+    #        create_standing_table(myConnection, header_list)
+    #    create_insert_statements(standing_dict, myConnection)
+
+    #update_statements(myConnection)
     logging.info('ESPN team standings pipeline completed successfully {}'.format(str(datetime.datetime.now())))
 
 if __name__ == '__main__':
