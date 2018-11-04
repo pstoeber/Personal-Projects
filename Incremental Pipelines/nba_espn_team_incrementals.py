@@ -76,13 +76,13 @@ def get_teams_id(conn, team_list):
     id_dict = {}
     for team in team_list:
         get_id = 'select team_id from nba_stats.team_info where team like "{}%"'.format(team.replace('LA Lakers', 'Los Angeles'))
-        id_dict[team] = sql_execute(conn, get_id)[0][0]
+        id_dict[team] = sql_execute(conn, get_id)[0]
     return id_dict
 
 def sql_execute(conn, sql):
     exe = conn.cursor()
     exe.execute(sql)
-    return exe.fetchall()
+    return exe.fetchone()
 
 def insert_into_database(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
@@ -96,8 +96,6 @@ def main():
 
     team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"
     team_id_dict = {}
-
-    team_stat_scraper(team_link, year, myConnection)
     for c, (k, v) in enumerate(team_stat_scraper(team_link, year, myConnection).items()):
         if c == 0:
             team_id_dict = get_teams_id(myConnection, v.loc[:, 'TEAM'].tolist())
