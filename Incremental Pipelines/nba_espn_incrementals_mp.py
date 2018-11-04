@@ -112,13 +112,13 @@ def main():
     player_links = create_threads(player_id_scraper, find_team_names())
     player_stats = create_threads(player_stat_scrapper, list(itertools.chain.from_iterable(player_links)))
     truncate_tables(myConnection)
-    for stat in player_stats:
+    for c, stat in enumerate(player_stats):
         if stat != None:
             player_bool = True
             player_id = 0
-            for c, (k, v) in enumerate(stat.items()):
+            for k, v in stat.items():
                 if k == 'dem':
-                    player_bool, player_id = find_player_id(myConnection, v[0], v[1], v[2], c)
+                    player_bool, player_id = find_player_id(myConnection, v[0], v[1], v[2], (c+1))
                 else:
                     engine(v, player_bool, player_id, k)
 
