@@ -40,30 +40,22 @@ def player_id_scraper(team_link):
     return player_links
 
 def player_stat_scrapper(player):
-    avg_df, avg_tot_df, misc_df = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     soup = BeautifulSoup(requests.get(player, timeout=None).content, "html.parser")
     name = soup.find("h1").get_text() #finding player name
     exp = get_exp(soup)
-    table_heads, header, stats_raw = get_table_content(soup)
+    team = soup.find('li', class_='last').get_text()
 
-    if len(table_heads) != 3:
+    if name == None:
         return None
 
-    header_list, table_names = get_table_names(header, table_heads)
-    for c, p in enumerate(stats_raw):
-        row = ' '.join([str(i.get_text()) for i in p]).split()
-        row.insert(0, name)
-        if len(row) == len(header_list[0]):
-            avg_df = pd.concat([avg_df, pd.DataFrame(np.array(row)).T])
-        elif len(row) == len(header_list[1]):
-            avg_tot_df = pd.concat([avg_tot_df, pd.DataFrame(np.array(row)).T])
-        elif len(row) == len(header_list[2]):
-            misc_df = pd.concat([misc_df, pd.DataFrame(np.array(row)).T])
-
-    avg_df.columns=header_list[0]
-    avg_tot_df.columns=header_list[1]
-    misc_df.columns=header_list[2]
-    return [exp, [table_names[0], avg_df], [table_names[1], avg_tot_df], [table_names[2], misc_df]]
+    table_dict = {'dem':[name, team, exp]}
+    for df in pd.read_html(player)[1:]:
+        table_name = df.iloc[0,0].replace(' ', '')
+        df.columns = df.iloc[1]
+        df = df.reindex(df.index.drop([0,1])).iloc[:-1, :]
+        df.insert(loc=0, column='player_id', value=name)
+        table_dict[table_name] = df
+    return table_dict
 
 def get_exp(soup):
     try:
@@ -72,35 +64,18 @@ def get_exp(soup):
     except AttributeError:
         return 0
 
-def get_table_content(soup):
-    table_heads = soup.find_all("tr", class_="stathead") #finding the names of tables on web page
-    header = soup.find_all("tr", class_="colhead") #finding the header of each table
-    stats_raw = soup.findAll(True, {'class':['oddrow', 'evenrow']}) #finding specific stats for seasons
-    return table_heads, header, stats_raw
-
-def get_table_names(header, table_heads):
-    header_list, table_names = [], []
-    for i, n in zip(header, table_heads):
-        header = " ".join([j.get_text() for j in i]).split()
-        header.insert(0, 'player_id')
-        header_list.append(header) #creating list of all headers from each table
-        table_names.append(n.get_text()) #creating list to store table names
-    return header_list, table_names
-
 def truncate_tables(conn):
     truncate_list = ['player_info', 'RegularSeasonAverages', 'RegularSeasonTotals', 'RegularSeasonMiscTotals']
     for table in truncate_list:
         sql_execute(conn, 'truncate table {}'.format(table))
 
-def find_player_id(conn, df, exp, index):
-    find_player_name = df.iloc[0, 0]
-    find_player_team = df.iloc[-1, 2]
+def find_player_id(conn, name, team, exp, index):
     try:
-        player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name_check(find_player_name)))[0][0]
+        player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name_check(name)))[0][0]
         return True, player_id
     except:
         player_id = sql_execute(conn, 'select max(player_id) from nba_stats.player_info')[0][0] + index
-        sql_execute(conn, 'insert into player_info values({}, "{}", "{}", {})'.format(str(player_id), find_player_name, find_player_team, exp))
+        sql_execute(conn, 'insert into player_info values({}, "{}", "{}", {})'.format(str(player_id), name, team, exp))
         return False, player_id
 
 def name_check(name):
@@ -137,16 +112,16 @@ def main():
     player_links = create_threads(player_id_scraper, find_team_names())
     player_stats = create_threads(player_stat_scrapper, list(itertools.chain.from_iterable(player_links)))
     truncate_tables(myConnection)
-
-    for p, player in enumerate(player_stats):
-        if player != None:
+    for stat in player_stats:
+        if stat != None:
             player_bool = True
-            player_id = ''
-            for c, stat in enumerate(player):
-                if c == 0:
-                    player_bool, player_id = find_player_id(myConnection, player[c+1][1], stat, p)
+            player_id = 0
+            for c, (k, v) in enumerate(stat.items()):
+                if k == 'dem':
+                    player_bool, player_id = find_player_id(myConnection, v[0], v[1], v[2], c)
                 else:
-                    engine(stat[1], player_bool, str(player_id), stat[0].replace(' ', ''))
+                    engine(v, player_bool, player_id, k)
+
     logging.info('ESPN players incrementals pipeline completed {}'.format(str(datetime.datetime.now())))
 
 if __name__ == '__main__':
