@@ -23,10 +23,12 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sqlalchemy import create_engine
 
-def get_games(driver):
+def get_games(chromeDriver):
     games_list = []
     link = 'http://www.espn.com/nba/schedule'
-    browser = gen_browser(driver)
+    options = Options()
+    options.headless = True
+    browser = webdriver.Chrome(executable_path=chromeDriver, chrome_options=options)
     browser.get(link)
     games = browser.find_elements_by_xpath('//*[@id="sched-container"]/div[2]/table/tbody/tr')
     for c, ele in enumerate(games):
@@ -132,7 +134,7 @@ def gen_log_coef(X_train, X_test, y_train, y_test):
     lg = LogisticRegression()
     lg.fit(X_train, y_train)
     return lg.predict_proba(X_test)
-  
+
 def insert_into_database(df, table_name):
 
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
