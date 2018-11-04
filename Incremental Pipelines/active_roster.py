@@ -23,6 +23,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
+from urllib3.exceptions import MaxRetryError
 from sqlalchemy import create_engine
 
 def create_threads(driver):
