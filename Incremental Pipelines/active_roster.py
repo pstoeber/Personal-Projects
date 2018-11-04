@@ -59,18 +59,11 @@ def get_rosters(link, driver):
             logging.info('Failed to connect to page')
 
     team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
-    body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table')
-    roster_list = []
-    for i in body.text.split('\n')[1:]:
-        name = []
-        for p in i.split():
-            if p not in ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F']:
-                name.append(p)
-            else:
-                break
-        roster_list.append([' '.join([i for i in name[1:]]), ' '.join([i for i in team])])
+    body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table').get_attribute('innerHTML')
+    roster_df = pd.read_html(body)[1]
+    roster_df.insert(loc=2, column='team', value=' '.join([i for i in team]))
     browser.quit()
-    return np.array(roster_list)
+    return roster_df.iloc[:, 1:3]
 
 def truncate_table(connection):
     truncate_table_statement = 'truncate table active_rosters'
@@ -110,17 +103,15 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    #driver = '/Users/Philip/Downloads/geckodriver'
     driver = '/Users/Philip/Downloads/chromedriver 2'
 
+    rosters_df = pd.DataFrame()
     results = create_threads(driver)
-    active_rosters = np.empty(shape=[0,2])
     for roster in results:
-        active_rosters = np.concatenate([active_rosters, roster])
+        rosters_df = pd.concat([rosters_df, roster])
 
     truncate_table(myConnection)
-    rosters_df = pd.DataFrame(active_rosters, index=None, columns=['name', 'team'])
-    rosters_df['player_id'] = rosters_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
+    rosters_df['player_id'] = rosters_df.loc[:, 'Name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
     team_info_df = gen_df(myConnection, gen_cmd_str(extract_command(arg2)))
 
     active_rosters_df = pd.merge(rosters_df[rosters_df['player_id'] != 0], team_info_df, how='inner', left_on='team', right_on='team')
