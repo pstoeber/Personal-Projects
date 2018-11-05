@@ -11,6 +11,9 @@ import requests
 import sys
 import logging
 from sqlalchemy import create_engine
+from multiprocessing import Pool
+from multiprocessing.dummy import Pool as ThreadPool
+from functools import partial
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,16 +28,22 @@ def find_max_date(conn):
     exe.execute('select max(game_date) from nba_stats.box_score_map')
     return exe.fetchall()[0][0]
 
+def create_pools(driver, content):
+    pool = Pool(5)
+    results = pool.map(partial(stat_scraper, driver=driver), content)
+    pool.close()
+    pool.join()
+    return results
+
 def stat_scraper(link, driver):
     options = Options()
-#    options.headless = True
     options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
     browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
-    browser.get(link)
+    browser.get(link[1])
 
     while True:
         try:
-            wait = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[2]/div[1]')))
+            wait = WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[2]/div[1]')))
             break
         except TimeoutException or NoSuchElementException:
             browser.refresh()
@@ -47,7 +56,7 @@ def stat_scraper(link, driver):
     content = table.get_attribute('innerHTML')
     df = pd.read_html(content)[0]
     browser.quit()
-    return format_matchup(df)
+    return {link[0]:format_matchup(df)}
 
 def format_matchup(df):
     matchup_df = df.iloc[:, :3]
@@ -76,28 +85,31 @@ def parse_teams(row):
 def convert_date(date_str):
     return datetime.datetime.strptime(date_str, '%m/%d/%Y').date()
 
-def insert_into_database(df, max_date):
+def insert_into_database(df, max_date, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
-    df[df.loc[:, 'Game Date'] > max_date].to_sql(con=engine, name='advanced_team_boxscore_stats', if_exists='replace', index=False)
+    df[df.loc[:, 'Game Date'] > max_date].to_sql(con=engine, name=table, if_exists='replace', index=False)
 
 def main():
     myConnection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
     driver = '/Users/Philip/Downloads/chromedriver 2'
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
-    link = 'https://stats.nba.com/teams/boxscores-advanced/'
+    logging.info('Starting NBA Stats incrementals pipeline {}'.format(str(datetime.datetime.now())))
+    content = [['advanced_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-advanced/'],
+               ['figure4_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-four-factors/'],
+               ['team_misc_boxscore_stats', 'https://stats.nba.com/teams/boxscores-misc/'],
+               ['team_scoring_boxscore_stats', 'https://stats.nba.com/teams/boxscores-scoring/'],
+               ['traditional_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-traditional/']]
 
     max_date = find_max_date(myConnection)
-    logging.info('Beginning NBA Stats Advanced Team Stats incrementals pipeline {}'.format(str(datetime.datetime.now())))
-    stat_df = stat_scraper(link, driver)
-    stat_df['Game Date'] = stat_df.loc[:, 'Game Date'].apply(convert_date)
-
-    if stat_df[stat_df.loc[:, 'Game Date'] > max_date].empty:
-        print('No new data.')
-        sys.exit(1)
-
-    insert_into_database(stat_df, max_date)
-    logging.info('Advanced Stats Dataframe Count: {}'.format(str(stat_df.count())))
-    logging.info('NBA Stats Advanced Team Stats incrementals pipeline completed successfully {}'.format(str(datetime.datetime.now())))
+    for stat_dict in create_pools(driver, content):
+        table = list(stat_dict.keys())[0]
+        stat_df = list(stat_dict.values())[0]
+        stat_df['Game Date'] = stat_df.loc[:, 'Game Date'].apply(convert_date)
+        if stat_df[stat_df.loc[:, 'Game Date'] > max_date].empty:
+                print('No new data.')
+                sys.exit(1)
+        insert_into_database(stat_df, max_date, table)
+    logging.info('NBA Stats incrementals pipeline completed {}'.format(str(datetime.datetime.now())))
 
 if __name__ == '__main__':
     main()

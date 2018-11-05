@@ -14,11 +14,12 @@ import shutil
 import datetime
 import logging
 import hashlib
-import nba_stats_adv_team_box_score
-import nba_stats_fig4_team_box_score
-import nba_stats_misc_team_box_score
-import nba_stats_scoring_team_box_score
-import nba_stats_traditional_team_box_score
+#import nba_stats_adv_team_box_score
+#import nba_stats_fig4_team_box_score
+#import nba_stats_misc_team_box_score
+#import nba_stats_scoring_team_box_score
+#import nba_stats_traditional_team_box_score
+import nba_stats_team_boxscores
 import box_score_nba_ref_incrementals
 import nba_espn_incrementals_mp
 import nba_espn_team_incrementals
@@ -113,11 +114,12 @@ if __name__ == '__main__':
     nba_espn_team_incrementals.main()
     nba_espn_team_standings_incrementals.main()
     box_score_nba_ref_incrementals.main()
-    nba_stats_adv_team_box_score.main()
-    nba_stats_fig4_team_box_score.main()
-    nba_stats_misc_team_box_score.main()
-    nba_stats_scoring_team_box_score.main()
-    nba_stats_traditional_team_box_score.main()
+    #nba_stats_adv_team_box_score.main()
+    #nba_stats_fig4_team_box_score.main()
+    #nba_stats_misc_team_box_score.main()
+    #nba_stats_scoring_team_box_score.main()
+    #nba_stats_traditional_team_box_score.main()
+    nba_stats_team_boxscores.main()
     espn_update_season_date.main()
     espn_team_name_update.main()
     team_name_update_team_boxscore.main()
