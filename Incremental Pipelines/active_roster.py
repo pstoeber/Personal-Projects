@@ -46,17 +46,17 @@ def get_roster_links():
 def get_rosters(link, driver):
     options = Options()
     options.headless = True
-    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
+    options.add_argument('--load-extension=/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0')
     browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
     browser.get(link)
 
     while True:
         try:
-            wait = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, 'fittPageContainer')))
+            wait = WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table')))
             break
         except TimeoutException or NoSuchElementException:
             browser.refresh()
-            logging.info('Failed to connect to page')
+            logging.info('Failed to connect to page {}'.format(link))
 
     team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
     body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table').get_attribute('innerHTML')

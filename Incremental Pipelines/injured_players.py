@@ -45,12 +45,12 @@ def get_injury_links():
 def extract_injured_players(link, driver):
     options = Options()
     options.headless = True
-    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
+    options.add_argument('--load-extension=/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0')
     browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
     browser.get(link)
     while True:
         try:
-            wait = WebDriverWait(browser, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="fittPageContainer"]/div[3]')))
+            wait = WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="fittPageContainer"]/div[3]')))
             break
         except TimeoutException or NoSuchElementException:
             browser.refresh()
