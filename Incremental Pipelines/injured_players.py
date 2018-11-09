@@ -14,19 +14,11 @@ import logging
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
-from functools import partial
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.options import Options
 from sqlalchemy import create_engine
 
-def create_threads(driver):
+def create_threads():
     pool = Pool()
-    results = pool.map(partial(extract_injured_players, driver=driver), get_injury_links())
+    results = pool.map(extract_injured_players, get_injury_links())
     pool.close()
     pool.join()
     return results
@@ -42,31 +34,23 @@ def get_injury_links():
             injuries_links.append('https://www.espn.com{}'.format(link))
     return injuries_links
 
-def extract_injured_players(link, driver):
-    options = Options()
-    options.headless = True
-    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
-    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
-    browser.get(link)
-    while True:
-        try:
-            wait = WebDriverWait(browser, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="fittPageContainer"]/div[3]')))
-            break
-        except TimeoutException or NoSuchElementException:
-            browser.refresh()
-            logging.info('[CONNECTION TIME-OUT]: Re-trying {} at {}'.format(link, str(datetime.datetime.now())))
+def extract_injured_players(link):
+    soup = BeautifulSoup(requests.get(link).content, 'html.parser')
+    team_raw = soup.find('h1', class_='headline__h1 dib').text.split()[:-1]
+    team = ' '.join([i for i in team_raw])
+    injured = soup.findAll(True, {'class':['ContentList']})
 
-    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
-    injured_player_list = []
-    for player in browser.find_elements_by_class_name('ContentList')[:-1]:
-        player_content = player.text.split('\n')
-        if player_content[2] in ['Out', 'Suspension']:
-            injured_player_list.append([player_content[0], ' '.join([i for i in team])])
-        else:
-            if check_update(player_content[3]):
-                injured_player_list.append([player_content[0], ' '.join([i for i in team])])
-    browser.quit()
-    return np.array(injured_player_list)
+    injuries = []
+    for i in injured:
+        players = i.findAll('h3', class_='di n8')
+        status = i.findAll('span', class_='TextStatus TextStatus--red fw-medium ml2')
+        bio = i.findAll('div', class_='clr-gray-04 pt3 n8')
+        for p, s, b in zip(players, status, bio):
+            if s.text in ['Out', 'Suspension']:
+                injuries.append([p.text, team])
+            elif check_update(b.text):
+                injuries.append([p.text, team])
+    return np.array(injuries)
 
 def check_update(player_update):
     injured_player_list = []
@@ -111,9 +95,8 @@ def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
-    driver = '/Users/Philip/Downloads/chromedriver 2'
 
-    results = create_threads(driver)
+    results = create_threads()
     players = np.empty(shape=[0, 2])
     for result in results:
         if result.size > 0:

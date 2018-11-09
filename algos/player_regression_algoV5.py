@@ -42,7 +42,6 @@ def gen_browser(driver):
     options = Options()
     options.headless = True
     options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
-    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
     return webdriver.Chrome(executable_path=driver, chrome_options=options)
 
 def extract_query(file):

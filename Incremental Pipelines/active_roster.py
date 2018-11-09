@@ -15,20 +15,11 @@ import logging
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
-from functools import partial
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.options import Options
-from urllib3.exceptions import MaxRetryError
 from sqlalchemy import create_engine
 
-def create_threads(driver):
+def create_threads():
     pool = Pool()
-    results = pool.map(partial(get_rosters, driver=driver), get_roster_links())
+    results = pool.map(get_rosters, get_roster_links())
     pool.close()
     pool.join()
     return results
@@ -43,26 +34,12 @@ def get_roster_links():
             roster_links.append('https://www.espn.com{}'.format(i['href']))
     return roster_links
 
-def get_rosters(link, driver):
-    options = Options()
-    options.headless = True
-    options.add_extensions = '/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0'
-    browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
-    browser.get(link)
+def get_rosters(link):
+    soup = BeautifulSoup(requests.get(link).content, 'html.parser')
+    team = soup.find("h1", class_="headline__h1 dib").get_text().split()[:-1]
 
-    while True:
-        try:
-            wait = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, 'fittPageContainer')))
-            break
-        except TimeoutException or NoSuchElementException:
-            browser.refresh()
-            logging.info('Failed to connect to page')
-
-    team = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[1]/h1').text.split()[:-1]
-    body = browser.find_element_by_xpath('//*[@id="fittPageContainer"]/div[3]/div[1]/div/section/section/div[4]/section/table').get_attribute('innerHTML')
-    roster_df = pd.read_html(body)[1]
+    roster_df = pd.read_html(link)[-1]
     roster_df.insert(loc=2, column='team', value=' '.join([i for i in team]))
-    browser.quit()
     return roster_df.iloc[:, 1:3]
 
 def truncate_table(connection):
@@ -103,10 +80,9 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
-    driver = '/Users/Philip/Downloads/chromedriver 2'
 
     rosters_df = pd.DataFrame()
-    results = create_threads(driver)
+    results = create_threads()
     for roster in results:
         rosters_df = pd.concat([rosters_df, roster])
 

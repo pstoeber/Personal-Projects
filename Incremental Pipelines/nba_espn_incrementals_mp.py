@@ -43,7 +43,7 @@ def player_stat_scrapper(player):
     soup = BeautifulSoup(requests.get(player, timeout=None).content, "html.parser")
     name = soup.find("h1").get_text() #finding player name
     exp = get_exp(soup)
-    team = soup.find('li', class_='last').get_text()
+    team = get_team(soup)
 
     if name == None:
         return None
@@ -63,6 +63,12 @@ def get_exp(soup):
         return int(re.search("Experience(.*\d)", bio).group(1)) #extracting years of experience
     except AttributeError:
         return 0
+
+def get_team(soup):
+    try:
+        return soup.find('li', class_='last').get_text()
+    except AttributeError:
+        return 'No Team'
 
 def truncate_tables(conn):
     truncate_list = ['player_info', 'RegularSeasonAverages', 'RegularSeasonTotals', 'RegularSeasonMiscTotals']
