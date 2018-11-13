@@ -82,6 +82,13 @@ def create_update_statements(connection):
     update_box_map_home = 'update box_score_map set home_team = "{}" where home_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
     sql_execute(connection, update_box_map_home)
 
+    updated_pred_boston = 'update nba_stats.total_points_predictions set team = "{}" where team = "{}"'.format('Boston Celtics', 'Boston')
+    sql_execute(connection, updated_pred_boston)
+    updated_pred_clip = 'update nba_stats.total_points_predictions set team = "{}" where team = "{}"'.format('LA Clippers', 'LA')
+    sql_execute(connection, updated_pred_clip)
+    updated_pred_boston = 'update nba_stats.total_points_predictions set team = "{}" where team = "{}"'.format('Portland Trail Blazers', 'Portland')
+    sql_execute(connection, updated_pred_boston)
+
 def update_team_info(connection):
 
     nets_insert = "insert into team_info values (33, \"Vancouver Grizzlies\")"

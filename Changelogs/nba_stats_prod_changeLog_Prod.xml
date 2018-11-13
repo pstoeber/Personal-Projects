@@ -1133,4 +1133,21 @@
       </createView>
     </changeSet>
 
+    <changeSet id="93" author="Philip">
+      <createTable tableName="lasso_alphas">
+        <column name="alphas" type="float"></column>
+        <column name="r_squared" type="float"></column>
+        <column name="home_away" type="varchar(10)"></column>
+        <column name="date" type="date"></column>
+      </createTable>
+    </changeSet>
+
+    <changeSet id="94" author="Philip">
+      <sql>
+        insert into lasso_alphas
+        select *
+        from nba_stats.lasso_alphas;
+      </sql>
+    </changeSet>
+
 </databaseChangeLog>
