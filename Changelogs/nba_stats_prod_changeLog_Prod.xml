@@ -1135,7 +1135,7 @@
 
     <changeSet id="93" author="Philip">
       <createTable tableName="lasso_alphas">
-        <column name="alphas" type="float"></column>
+        <column name="alpha" type="float"></column>
         <column name="r_squared" type="float"></column>
         <column name="home_away" type="varchar(10)"></column>
         <column name="date" type="date"></column>

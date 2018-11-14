@@ -27,6 +27,16 @@ def get_games():
         schedule = np.concatenate([schedule, game])
     return pd.DataFrame(schedule, index=None, columns=['away', 'home'])
 
+def extract_alpha(conn):
+    alpha_query = 'select alpha from nba_stats.lasso_alphas where date = (select max(date) from lasso_alphas) order by home_away desc'
+    alphas = execute_sql(conn, alpha_query)
+    return [float(alphas[0]['alpha']), float(alphas[1]['alpha'])]
+
+def execute_sql(conn, sql):
+    exe = conn.cursor(pymysql.cursors.DictCursor)
+    exe.execute(sql)
+    return exe.fetchall()
+
 def format_team(team):
     return ' '.join([i for i in team.split()[:-1]])
 
@@ -57,11 +67,6 @@ def gen_test_dfs(conn, team_list, test_query):
         df_list.append(test_df)
     return df_list
 
-def extract_alpha(conn):
-    alpha_query = 'select alphas from lasso_alphas where date = (select max(date) from lasso_alphas) order by home_away desc'
-    alphas = execute_sql(conn, alpha_query)
-    return float(alphas[0]['alphas']), float(alphas[1]['alphas'])
-
 def fit_lasso_model(train_df, test_list, alpha):
     lasso = Lasso(alpha)
     train_df = train_df.fillna(0)
@@ -70,6 +75,7 @@ def fit_lasso_model(train_df, test_list, alpha):
     for test in test_list:
         pred_df = test.loc[:, :'team']
         predictions = lasso.predict(test.loc[:, 'minutes_played':])
+        predictions[predictions < 0] = 0
         pred_df['pts'] = predictions
         pred_df['game_date'] = datetime.date.today()
 
@@ -84,11 +90,6 @@ def insert_into_database(df, table_name):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name=table_name, if_exists='append', index=False)
 
-def execute_sql(conn, sql):
-    exe = conn.cursor(pymysql.cursors.DictCursor)
-    exe.execute(sql)
-    return exe.fetchall()
-
 if __name__ == '__main__':
     try:
         connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_prod')
@@ -97,17 +98,13 @@ if __name__ == '__main__':
         sys.exit(1)
 
     schedule = get_games()
-    home_train_query = gen_cmd_str(extract_file(sys.argv[1]))
-    away_train_query = gen_cmd_str(extract_file(sys.argv[2]))
-    home_train_df = gen_df(connection, home_train_query)
-    away_train_df = gen_df(connection, away_train_query)
-    home_train_df['minutes_played'] = home_train_df.loc[:, 'minutes_played'].apply(time_convert)
-    away_train_df['minutes_played'] = away_train_df.loc[:, 'minutes_played'].apply(time_convert)
+    train_dict = {'home':gen_cmd_str(extract_file(sys.argv[1])), 'away':gen_cmd_str(extract_file(sys.argv[2]))}
+    alphas = extract_alpha(connection)
 
-    test_query = gen_cmd_str(extract_file(sys.argv[3]))
-    home_tests = gen_test_dfs(connection, schedule.loc[:, 'home'].tolist(), test_query)
-    away_tests = gen_test_dfs(connection, schedule.loc[:, 'away'].tolist(), test_query)
-    home_alpha, away_alpha = extract_alpha(connection)
+    for c, (k, v) in enumerate(train_dict.items()):
+        train_df = gen_df(connection, v)
+        train_df['minutes_played'] = train_df.loc[:, 'minutes_played'].apply(time_convert)
 
-    fit_lasso_model(home_train_df[home_train_df.loc[:, 'minutes_played'] >= 300], home_tests, home_alpha)
-    fit_lasso_model(away_train_df[away_train_df.loc[:, 'minutes_played'] >= 300], away_tests, away_alpha)
+        test_query = gen_cmd_str(extract_file(sys.argv[3]))
+        tests = gen_test_dfs(connection, schedule.loc[:, k].tolist(), test_query)
+        fit_lasso_model(train_df[train_df.loc[:, 'minutes_played'] >= 360], tests, alphas[c])

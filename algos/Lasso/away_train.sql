@@ -33,7 +33,7 @@ from (
      from box_scores_map_view as m
             inner join game_date_lookup as lu on m.game_date = lu.day
      where m.game_date < current_date and
-           lu.season > 2011 and
+           lu.season > 2009 and
            m.home_away = 'Away'
      order by game_date desc
 

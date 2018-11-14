@@ -36,7 +36,7 @@ def time_convert(minutes_played):
 
 def get_alphas(df, flag):
     X_test, X_train, y_test, y_train = train_test_split(df.loc[:, 'minutes_played':], df['pts'], test_size=.33)
-    alphas = np.logspace(-4, -1,100)
+    alphas = np.logspace(-4, -1, 100)
     scores = np.empty_like(alphas)
 
     for i, a in enumerate(alphas):
@@ -47,10 +47,8 @@ def get_alphas(df, flag):
     cv_score, cv_alpha = cross_validate(df.loc[:, 'minutes_played':], df['pts'], alphas)
     plot_alphas(alphas, scores, cv_score, cv_alpha, flag)
     date = datetime.date.today()
-
     if np.amax(scores) > cv_score:
-        alpha_index = np.where(np.amax(scores))[0]
-        return np.array([float(np.take(alphas, alpha_index)[0]), float(np.amax(scores)), flag, date])
+        return np.array([float(np.take(alphas, np.argmax(scores))), float(np.amax(scores)), flag, date])
     else:
         return np.array([float(cv_alpha), float(cv_score), flag, date])
 
