@@ -135,7 +135,6 @@ def gen_log_coef(X_train, X_test, y_train, y_test):
     return lg.predict_proba(X_test)
 
 def insert_into_database(df, table_name):
-
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name=table_name, if_exists='append', index=False)
 

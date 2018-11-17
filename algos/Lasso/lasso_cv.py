@@ -76,7 +76,6 @@ def plot_alphas(alphas, scores, cv_score, cv_alpha, flag):
     pdf.close()
 
 if __name__ == '__main__':
-
     try:
         connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_prod')
     except:

@@ -156,8 +156,8 @@
         <column name="season" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="own" type="float"></column>
-        <column name="opp" type="float"></column>
+        <column name="own_3pt_pct" type="float"></column>
+        <column name="opp_3pt_pct" type="float"></column>
         <column name="ft_pct" type="float"></column>
       </createTable>
     </changeSet>
@@ -178,8 +178,8 @@
         <column name="season" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="own" type="float"></column>
-        <column name="opp" type="float"></column>
+        <column name="own_fg_pct" type="float"></column>
+        <column name="opp_fg_pct" type="float"></column>
       </createTable>
     </changeSet>
 
@@ -199,8 +199,8 @@
         <column name="season" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="own" type="float"></column>
-        <column name="opp" type="float"></column>
+        <column name="own_pts" type="float"></column>
+        <column name="opp_pts" type="float"></column>
         <column name="diff" type="float"></column>
       </createTable>
     </changeSet>
@@ -221,9 +221,9 @@
         <column name="season" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="off" type="float"></column>
-        <column name="def" type="float"></column>
-        <column name="tot" type="float"></column>
+        <column name="off_reb" type="float"></column>
+        <column name="def_reb" type="float"></column>
+        <column name="tot_reb" type="float"></column>
       </createTable>
     </changeSet>
 
@@ -243,8 +243,8 @@
         <column name="season" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="own" type="float"></column>
-        <column name="opp" type="float"></column>
+        <column name="own_to" type="float"></column>
+        <column name="opp_to" type="float"></column>
       </createTable>
     </changeSet>
 
@@ -1147,6 +1147,23 @@
         insert into lasso_alphas
         select *
         from nba_stats.lasso_alphas;
+      </sql>
+    </changeSet>
+
+    <changeSet id="95" author="Philip">
+      <createTable tableName="c_values">
+        <column name="C_value" type="float"></column>
+        <column name="score" type="float"></column>
+        <column name="home_away" type="varchar(10)"></column>
+        <column name="date" type="date"></column>
+      </createTable>
+    </changeSet>
+
+    <changeSet id="96" author="Philip">
+      <sql>
+        insert into c_values
+        select *
+        from nba_stats.c_values;
       </sql>
     </changeSet>
 

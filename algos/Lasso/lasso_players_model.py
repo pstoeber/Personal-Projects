@@ -28,7 +28,7 @@ def get_games():
     return pd.DataFrame(schedule, index=None, columns=['away', 'home'])
 
 def extract_alpha(conn):
-    alpha_query = 'select alpha from nba_stats.lasso_alphas where date = (select max(date) from lasso_alphas) order by home_away desc'
+    alpha_query = 'select alpha from lasso_alphas where date = (select max(date) from lasso_alphas) order by home_away desc'
     alphas = execute_sql(conn, alpha_query)
     return [float(alphas[0]['alpha']), float(alphas[1]['alpha'])]
 
@@ -83,8 +83,12 @@ def fit_lasso_model(train_df, test_list, alpha):
         total_pts = np.array([pred_df.iloc[0,2], str(datetime.date.today()), pred_df.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
         total_pts_df = pd.DataFrame(total_pts, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
 
+        print(pred_df)
+        print(total_pts_df)
+
         insert_into_database(pred_df, 'player_prediction_results')
         insert_into_database(total_pts_df, 'total_points_predictions')
+    return
 
 def insert_into_database(df, table_name):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
