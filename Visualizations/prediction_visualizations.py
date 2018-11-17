@@ -23,6 +23,7 @@ def extract_data(conn, sql):
 def player_pred_to_actual_pts(df):
     sns.set_style('whitegrid')
     plt.title('Predicted Points Vs. Actual Points')
+    plt.xticks(rotation=90)
     df.groupby(['team', 'game_date'])
     sns.barplot(x='name', y='pts', data=df, hue='flag', palette='plasma_r')
     plt.show()
@@ -56,8 +57,8 @@ if __name__ == '__main__':
         print('Failed to connect to database')
         sys.exit(1)
 
-    #player_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[1])))
-    #player_pred_to_actual_pts(player_pred_df)
+    player_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[1])))
+    player_pred_to_actual_pts(player_pred_df)
     #win_lose_prob_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[2])))
     #win_lose_prob(win_lose_prob_df)
     total_pts_pred_df = extract_data(connection, create_cmd_str(extract_sql(sys.argv[3])))
