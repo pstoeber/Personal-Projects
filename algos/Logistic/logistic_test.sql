@@ -92,4 +92,4 @@ inner join points as pts on ( (bm.target_id = pts.team_id) and (bm.season -1 = p
 inner join rebound_pct as reb on ( (bm.target_id = reb.team_id) and (bm.season -1 = reb.season) )
 inner join turnovers as t on ( (bm.target_id = t.team_id) and (bm.season -1 = t.season) )
 inner join points as opp_pts on ( (bm.opp_id = opp_pts.team_id) and (bm.season -1 = opp_pts.season) )
-inner join team_standings as stand on ( (bm.target = stand.team) and (bm.season = stand.season) )
+inner join team_standings as stand on ( (bm.target = stand.team) and (bm.season -1 = stand.season) )

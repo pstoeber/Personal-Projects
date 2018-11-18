@@ -65,8 +65,6 @@ def fit_logistic_model(train_df, tests, C):
         win_prob['team'] = test.iloc[0, 0]
         win_prob['game_date'] = datetime.date.today()
         insert_into_database(win_prob)
-
-        print(win_prob)
     return
 
 def execute_sql(conn, sql):

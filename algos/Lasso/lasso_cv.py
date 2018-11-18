@@ -1,5 +1,7 @@
 """
 Cross-Validation of lasso regression
+
+python3 lasso_cv.py home_train.sql away_train.sql 
 """
 
 import numpy as np
