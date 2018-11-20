@@ -76,13 +76,13 @@ def gen_hash(row):
     return  hashlib.md5(row.encode('utf-8')).hexdigest()
 
 def recreate_database(conn):
-    logging.info('Dropping nba_stats_prod database {}'.format(str(datetime.datetime.now())))
+    logging.info('Dropping nba_stats_test database {}'.format(str(datetime.datetime.now())))
     sql_execute(conn, 'drop database nba_stats_prod')
     sql_execute(conn, 'create database nba_stats_prod')
     logging.info('nba_stats_test schema re-created {}'.format(str(datetime.datetime.now())))
 
 def liquibase_call():
-    logging.info('Calling liquibase for nba_stats_prod refresh {}'.format(str(datetime.datetime.now())))
+    logging.info('Calling liquibase for nba_stats_test refresh {}'.format(str(datetime.datetime.now())))
     os.system("""liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
                  --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLog_Prod.xml" \

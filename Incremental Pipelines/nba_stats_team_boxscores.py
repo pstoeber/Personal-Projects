@@ -47,7 +47,7 @@ def stat_scraper(link, driver):
 
     while True:
         try:
-            wait = WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table')))
+            wait = WebDriverWait(browser, 90).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table')))
             break
         except TimeoutException or NoSuchElementException:
             browser.refresh()
