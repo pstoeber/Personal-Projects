@@ -40,7 +40,7 @@ def stat_scraper(link, driver):
     #options.headless = True
     options.accept_untrusted_certs = True
     options.assume_untrusted_cert_issuer = True
-    options.add_argument('--load-extension=/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.4_0')
+    options.add_argument('--load-extension=/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/3.34.0_0')
     browser = webdriver.Chrome(executable_path=driver, chrome_options=options)
     browser.get(link[1])
     browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click()
