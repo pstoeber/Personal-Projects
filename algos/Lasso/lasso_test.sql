@@ -90,7 +90,7 @@ inner join advanced_box_stats as adv on ( (bm.game_hash = adv.game_hash) and (pl
 inner join team_advanced_boxscore_stats as a_stats on ( (bm.game_hash = a_stats.game_hash) and (bm.target = a_stats.team) )
 left outer join RegularSeasonAverages as reg_avg on ( (basic.player_id = reg_avg.player_id) and (bm.season-1 = reg_avg.season) )
 inner join points as opp_pts on ( (bm.opp_id = opp_pts.team_id) and (bm.season -1 = opp_pts.season) )
-inner join team_misc_boxscore_stats as misc on ( (bm.game_hash = misc.game_hash) and (bm.target -1 = misc.team) )
+inner join team_misc_boxscore_stats as misc on ( (bm.game_hash = misc.game_hash) and (bm.target = misc.team) )
 inner join player_info as play on player.player_id = play.player_id
 where bm.target like '{}%' and
       basic.minutes_played not like '00:00:00'
