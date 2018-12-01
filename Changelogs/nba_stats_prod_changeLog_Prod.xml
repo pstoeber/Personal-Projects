@@ -1102,11 +1102,15 @@
         select tp.team,
                tp.game_date,
                tp.predicted_total_pts,
-               trad.pts as actual_pts,
-               tp.r_squared
+               (case
+                  when m.home_away = 'Home' then r.home_score
+                  else r.away_score
+                end) as actual_pts,
+                tp.r_squared
         from total_points_predictions as tp
         inner join box_scores_map_view as m on tp.team = m.team and tp.game_date = m.game_date
-        inner join team_traditional_boxscore_stats as trad on m.team = trad.team and m.game_hash = trad.game_hash
+        inner join game_results as r on m.game_hash = r.game_hash
+        order by tp.game_date desc;
       </createView>
     </changeSet>
 
@@ -1119,17 +1123,24 @@
         from total_points_predictions as tp
         inner join (
 
-            select team, game_date, predicted_total_pts as pts, 'predicted' as flag
-            from total_points_predictions
+                  select team, game_date, predicted_total_pts as pts, 'predicted' as flag
+                  from total_points_predictions
 
-            union
+                  union
 
-            select m.team, m.game_date, trad.pts as pts, 'actual' as flag
-            from box_scores_map_view as m
-            inner join team_traditional_boxscore_stats as trad on m.team = trad.team and m.game_hash = trad.game_hash
+                  select m.team,
+                         m.game_date,
+                         (case
+                          when m.home_away = 'Home' then r.home_score
+                          else r.away_score
+                          end) as actual_pts,
+                         'actual' as flag
+                  from total_points_predictions as tp
+                         inner join box_scores_map_view as m on tp.team = m.team and tp.game_date = m.game_date
+                         inner join game_results as r on m.game_hash = r.game_hash
+                  order by game_date asc
 
-            order by game_date asc
-            ) as points on tp.team = points.team and tp.game_date = points.game_date;
+                  ) as points on tp.team = points.team and tp.game_date = points.game_date;
       </createView>
     </changeSet>
 

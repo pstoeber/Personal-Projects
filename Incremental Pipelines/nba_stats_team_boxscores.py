@@ -46,13 +46,10 @@ def stat_scraper(link, driver):
     time.sleep(20)
     browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/div[1]/div[1]/div/div/label/select/option[1]').click()
 
-    #while True:
     try:
         wait = WebDriverWait(browser, 120).until(EC.presence_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table')))
-        break
     except TimeoutException or NoSuchElementException:
         browser.refresh()
-        print('failed to find page')
         logging.info('Failed to connect to page')
 
     browser.find_element_by_xpath('/html/body/main/div[2]/div/div[2]/div/div/nba-stat-table/div[3]/div/div/select/option[1]').click()
