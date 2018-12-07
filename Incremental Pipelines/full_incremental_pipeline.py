@@ -32,12 +32,14 @@ def back_up_db(out_file):
     logging.info('Backing up nba_stats_backup database {}'.format(str(datetime.datetime.now())))
     os.system('mysqldump -u root -p nba_stats > {}'.format(out_file))
     logging.info('Backing up complete {}'.format(str(datetime.datetime.now())))
+    return
 
 def compress_backup(out_file):
     logging.info('Compressing backup of nba_stats_backup database {}'.format(str(datetime.datetime.now())))
     shutil.make_archive('nba_stats_backup', 'zip', "/Users/Philip/Documents/NBA Database Backups", 'nba_stats_{}.sql'.format(str(datetime.date.today())))
     os.system('mv "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/nba_stats_backup.zip" "/Users/Philip/Documents/NBA Database Backups"')
     logging.info('Compression complete {}'.format(str(datetime.datetime.now())))
+    return
 
 def espn_delete_max_season(conn):
     logging.info('Deleting Max season from ESPN tables {}'.format(str(datetime.datetime.now())))
@@ -57,6 +59,7 @@ def espn_delete_max_season(conn):
         delete = 'delete from nba_stats.{} where {} = 2019'.format(table, field)
         sql_execute(conn, delete)
     logging.info('Deletion from ESPN tables complete {}'.format(str(datetime.datetime.now())))
+    return
 
 def insert_into_nba_stats(conn):
     logging.info('Beginning insert into nba_stats from nba_stats_staging {}'.format(str(datetime.datetime.now())))
@@ -71,6 +74,7 @@ def insert_into_nba_stats(conn):
 def pipeline_auditlog(conn):
     pipeline_insert = 'insert into nba_stats.pipeline_auditlog values ("{}", "{}")'.format(gen_hash(str(datetime.datetime.now())), str(datetime.datetime.now()))
     sql_execute(conn, pipeline_insert)
+    return
 
 def gen_hash(row):
     return  hashlib.md5(row.encode('utf-8')).hexdigest()
@@ -80,6 +84,7 @@ def recreate_database(conn):
     sql_execute(conn, 'drop database nba_stats_prod')
     sql_execute(conn, 'create database nba_stats_prod')
     logging.info('nba_stats_test schema re-created {}'.format(str(datetime.datetime.now())))
+    return
 
 def liquibase_call():
     logging.info('Calling liquibase for nba_stats_test refresh {}'.format(str(datetime.datetime.now())))
@@ -90,6 +95,7 @@ def liquibase_call():
                  --username=root \
                  --password=Sk1ttles update""")
     logging.info('Incrementials Pipeline completed {}'.format(str(datetime.datetime.now())))
+    return
 
 def sql_execute(conn, sql):
     exe = conn.cursor()
@@ -105,6 +111,8 @@ if __name__ == '__main__':
 
     back_up_db(out_file)
     compress_backup(out_file)
+    active_roster.main(sys.argv[1], sys.argv[2])
+    injured_players.main(sys.argv[1])
     nba_espn_incrementals_mp.main()
     nba_espn_team_incrementals.main()
     nba_espn_team_standings_incrementals.main()
@@ -117,8 +125,6 @@ if __name__ == '__main__':
     espn_delete_max_season(connection)
     insert_into_nba_stats(connection)
     date_lookup_table.main()
-    active_roster.main(sys.argv[1], sys.argv[2])
-    injured_players.main(sys.argv[1])
     predictions_team_name_update.main()
     pipeline_auditlog(connection)
     recreate_database(connection)

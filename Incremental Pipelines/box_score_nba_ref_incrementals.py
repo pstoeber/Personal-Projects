@@ -50,7 +50,7 @@ def get_links(link):
             link = 'https://www.basketball-reference.com' + a['href']
             box_score_list.append(link)
         else:
-            logging.info('[FAILED TO BOXSCORE DATA]: {}'.format(link))
+            logging.info('[NON-VALID BOXSCORE LINK]: {}'.format(a['href']))
             pass
     return box_score_list
 
@@ -121,6 +121,7 @@ def create_insert_statements(conn, game_tag, score):
     game_results = """insert into nba_stats_staging.game_results
                       values ("{}", {}, {})""".format(score[0], score[1], score[2])
     sql_execute(conn, game_results)
+    return
 
 def sql_execute(conn, insert_statement):
     exe = conn.cursor()
@@ -130,6 +131,7 @@ def sql_execute(conn, insert_statement):
 def insert_stats(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
     df.to_sql(con=engine, name=table, if_exists='append', index=False)
+    return
 
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
