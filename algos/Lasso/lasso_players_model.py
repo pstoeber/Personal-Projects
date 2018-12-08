@@ -65,7 +65,7 @@ def days_of_rest(df):
 def gen_test_dfs(conn, team_list, test_query):
     df_list = []
     for team in team_list:
-        test_df = gen_df(conn, test_query.format(team, team, team, team, team))
+        test_df = gen_df(conn, test_query.format(team, team, team, team))
         test_df['minutes_played'] = test_df.loc[:, 'minutes_played'].apply(time_convert)
         test_df = test_df.fillna(0).groupby(['player_id', 'name', 'team'], sort=False)
         max_dates = test_df['game_date'].max().reset_index().loc[:, 'game_date'].apply(lambda x: (datetime.date.today() - x).days)

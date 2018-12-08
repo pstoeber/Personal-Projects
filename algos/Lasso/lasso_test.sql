@@ -1,4 +1,5 @@
 
+
 select basic.player_id,
        play.name,
        bm.target as team,
@@ -33,57 +34,32 @@ select basic.player_id,
        opp_pts.diff,
        misc.FBPS,
        misc.second_chance_pts
-from (
+from (select gm.game_hash, gm.target, gm.opp, gm.game_date, gm.season, t.team_id as opp_id
 
-      select m.game_hash,
-             bm.target,
-             t_opp.team_id as opp_id,
-             bm.game_date,
-             bm.season
-      from(
+      from (select m.game_hash, m.home_team as target, m.away_team as opp, m.game_date, lu.season
+            from box_score_map as m
+                   inner join game_date_lookup as lu on m.game_date = lu.day
+            where m.home_team like '{}%'
 
-          select game_hash
-          from box_scores_map_view
-          where team like '{}%'
-          order by game_date desc limit 7
+            union
 
-          ) as m
-
-      inner join (
-
-         select m.game_hash,
-                m.home_team as target,
-                m.away_team as opp,
-                m.game_date,
-                lu.season
-         from box_score_map as m
-                inner join game_date_lookup as lu on m.game_date = lu.day
-         where m.home_team like '{}%'
-
-         union
-
-         select m.game_hash,
-                m.away_team as target,
-                m.home_team as opp,
-                m.game_date,
-                lu.season
-         from box_score_map as m
-                inner join game_date_lookup as lu on m.game_date = lu.day
-         where m.away_team like '{}%'
-
-          ) as bm on m.game_hash = bm.game_hash
-      inner join team_info as t_opp on bm.opp = t_opp.team
-
-     ) as bm
+            select m.game_hash, m.away_team as target, m.home_team as opp, m.game_date, lu.season
+            from box_score_map as m
+                   inner join game_date_lookup as lu on m.game_date = lu.day
+            where m.away_team like '{}%') as gm
+             inner join team_info as t on gm.opp = t.team
+      order by game_date desc
+      limit 11) as bm
+       inner join team_info as t_opp on bm.opp = t_opp.team
 
 inner join (
 
-      select name, team, player_id
-      from active_rosters
-      where player_id not in (select player_id from injured_players) and
-            team like '{}%'
+          select name, team, player_id
+          from active_rosters
+          where player_id not in (select player_id from injured_players) and
+                team like '{}%'
 
-      ) as player on bm.target = player.team
+          ) as player on bm.target = player.team
 
 inner join basic_box_stats as basic on ( (bm.game_hash = basic.game_hash) and (player.player_id = basic.player_id) )
 inner join advanced_box_stats as adv on ( (bm.game_hash = adv.game_hash) and (player.player_id = adv.player_id) )
@@ -93,4 +69,4 @@ inner join points as opp_pts on ( (bm.opp_id = opp_pts.team_id) and (bm.season -
 inner join team_misc_boxscore_stats as misc on ( (bm.game_hash = misc.game_hash) and (bm.target = misc.team) )
 inner join player_info as play on player.player_id = play.player_id
 where bm.target like '{}%' and
-      basic.minutes_played not like '00:00:00'
+      basic.minutes_played not like '00:00:00';

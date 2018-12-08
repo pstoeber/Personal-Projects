@@ -1,19 +1,19 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2018-12-06 07:07:34.503566
-INFO:root:Successfully connected to nba_stats_staging 2018-12-06 07:07:34.537344
-INFO:root:Backing up nba_stats_backup database 2018-12-06 07:07:34.537507
-INFO:root:Backing up complete 2018-12-06 07:07:43.309466
-INFO:root:Compressing backup of nba_stats_backup database 2018-12-06 07:07:43.309763
-INFO:root:Compression complete 2018-12-06 07:07:55.381965
-INFO:root:Refreshing active_rosters table 2018-12-06 07:07:55.382160
-INFO:root:Active_rosters table refresh complete 2018-12-06 07:08:00.859507
-INFO:root:Refreshing injured_players table 2018-12-06 07:08:00.861651
-INFO:root:Injured_players table refresh complete 2018-12-06 07:08:04.045388
-INFO:root:Beginning ESPN players incrementals pipeline 2018-12-06 07:08:04.047410
-INFO:root:ESPN players incrementals pipeline completed 2018-12-06 07:09:19.855569
-INFO:root:Beginning ESPN team incrementials pipeline 2018-12-06 07:09:19.876365
-INFO:root:Beginning ESPN team standings pipeline 2018-12-06 07:09:21.793422
-INFO:root:ESPN team standings pipeline completed successfully 2018-12-06 07:09:22.420434
-INFO:root:Beginning NBA Reference players incrementals pipeline 2018-12-06 07:09:22.422439
+INFO:root:Attempting to connect to nba_stats_staging database 2018-12-08 09:46:19.959173
+INFO:root:Successfully connected to nba_stats_staging 2018-12-08 09:46:19.987101
+INFO:root:Backing up nba_stats_backup database 2018-12-08 09:46:19.987259
+INFO:root:Backing up complete 2018-12-08 09:46:33.149387
+INFO:root:Compressing backup of nba_stats_backup database 2018-12-08 09:46:33.149796
+INFO:root:Compression complete 2018-12-08 09:46:45.054902
+INFO:root:Refreshing active_rosters table 2018-12-08 09:46:45.055108
+INFO:root:Active_rosters table refresh complete 2018-12-08 09:46:49.809701
+INFO:root:Refreshing injured_players table 2018-12-08 09:46:49.812317
+INFO:root:Injured_players table refresh complete 2018-12-08 09:46:53.216420
+INFO:root:Beginning ESPN players incrementals pipeline 2018-12-08 09:46:53.218928
+INFO:root:ESPN players incrementals pipeline completed 2018-12-08 09:48:06.220915
+INFO:root:Beginning ESPN team incrementials pipeline 2018-12-08 09:48:06.238706
+INFO:root:Beginning ESPN team standings pipeline 2018-12-08 09:48:07.062977
+INFO:root:ESPN team standings pipeline completed successfully 2018-12-08 09:48:08.071163
+INFO:root:Beginning NBA Reference players incrementals pipeline 2018-12-08 09:48:08.073010
 INFO:root:[NON-VALID BOXSCORE LINK]: https://www.sports-reference.com/
 INFO:root:[NON-VALID BOXSCORE LINK]: https://www.baseball-reference.com/
 INFO:root:[NON-VALID BOXSCORE LINK]: https://www.pro-football-reference.com/
@@ -49,20 +49,20 @@ INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=logout
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=ad_free_browsing
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=5&year=2018
 INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=7&year=2018
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=9&year=2018
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BOS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
@@ -77,39 +77,39 @@ INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BOS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/POR/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/UTA/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=ad_free_browsing
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
@@ -366,97 +366,100 @@ INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=logout
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=ad_free_browsing
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=4&year=2018
 INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=6&year=2018
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050ATL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050ATL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/b/bealbr01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/c/collijo01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050BRK.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050BRK.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/g/georgpa01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050CLE.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050CLE.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/c/curryst01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/t/thomptr01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050LAL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050LAL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/j/jamesle01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050MEM.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050MEM.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/c/conlemi01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/h/harrito02.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050MIL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050MIL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/g/griffbl01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/j/johnsst04.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050MIN.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050MIN.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/t/townska01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/t/townska01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050NOP.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050NOP.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/r/randlju01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050ORL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050ORL.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/m/murraja01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/v/vucevni01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/?month=12&day=8&year=2018
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812050TOR.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812050TOR.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070BRK.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070BRK.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/l/leonaka01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/d/davised01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070CHI.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070CHI.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/l/lavinza01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/w/westbru01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070CHO.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070CHO.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/w/walkeke02.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/j/jokicni01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070CLE.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070CLE.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/f/foxde01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/k/koufoko01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070DET.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070DET.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /players/b/butleji01.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /players/e/embiijo01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/s/simmobe01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070MIL.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070MIL.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/a/antetgi01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/a/antetgi01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070NOP.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070NOP.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/r/randlju01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/r/randlju01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070ORL.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070ORL.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/b/bogdabo02.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/g/gordoaa01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070PHO.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070PHO.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/a/adebaba01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/a/aytonde01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/pbp/201812070SAS.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /boxscores/shot-chart/201812070SAS.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/d/derozde01.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /players/m/mcgeeja01.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BOS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
@@ -471,39 +474,39 @@ INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/TOR/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHI/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/IND/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BOS/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DET/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHO/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ORL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/WAS/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIA/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/BRK/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NYK/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CHI/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/ATL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/CLE/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/GSW/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DEN/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAC/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/OKC/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MEM/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/LAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/POR/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAC/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/MIN/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/UTA/2019.html
-INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/DAL/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/NOP/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/SAS/2019.html
+INFO:root:[NON-VALID BOXSCORE LINK]: /teams/HOU/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /teams/PHO/2019.html
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/?do=ad_free_browsing
 INFO:root:[NON-VALID BOXSCORE LINK]: /my/
@@ -725,24 +728,24 @@ INFO:root:[NON-VALID BOXSCORE LINK]: //www.sports-reference.com/about.html
 INFO:root:[NON-VALID BOXSCORE LINK]: //www.sports-reference.com/privacy.html
 INFO:root:[NON-VALID BOXSCORE LINK]: //www.sports-reference.com/termsofuse.html
 INFO:root:[NON-VALID BOXSCORE LINK]: //www.sports-reference.com/data_use.html
-INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-12-06 07:09:25.878653
-INFO:root:Starting NBA Stats incrementals pipeline 2018-12-06 07:09:25.882590
-INFO:root:NBA Stats incrementals pipeline completed 2018-12-06 07:10:11.026965
-INFO:root:Updating ESPN seasons 2018-12-06 07:10:11.031042
-INFO:root:ESPN seasons update completed successfully 2018-12-06 07:10:11.093556
-INFO:root:Updating ESPN team names 2018-12-06 07:10:11.095462
-INFO:root:ESPN team names update completed successfully 2018-12-06 07:10:12.324420
-INFO:root:Beginning NBA Stats team name 2018-12-06 07:10:12.325734
-INFO:root:NBA Stats team name update completed successfully 2018-12-06 07:10:14.914082
-INFO:root:Beginning NBA Reference player name update 2018-12-06 07:10:14.915278
-INFO:root:NBA Reference player name update completed successfully 2018-12-06 07:10:15.106099
-INFO:root:Deleting Max season from ESPN tables 2018-12-06 07:10:15.107483
-INFO:root:Deletion from ESPN tables complete 2018-12-06 07:10:15.278530
-INFO:root:Beginning insert into nba_stats from nba_stats_staging 2018-12-06 07:10:15.279949
-INFO:root:Insert completed 2018-12-06 07:10:15.525658
-INFO:root:Beginning generation of date lookup table 2018-12-06 07:10:15.527006
-INFO:root:Date lookup table generated 2018-12-06 07:12:18.767135
-INFO:root:Dropping nba_stats_test database 2018-12-06 07:12:18.804237
-INFO:root:nba_stats_test schema re-created 2018-12-06 07:12:18.926726
-INFO:root:Calling liquibase for nba_stats_test refresh 2018-12-06 07:12:18.928135
-INFO:root:Incrementials Pipeline completed 2018-12-06 07:20:34.537534
+INFO:root:NBA Reference players incrementals pipeline completed successfully 2018-12-08 09:48:11.660844
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-08 09:48:11.664995
+INFO:root:NBA Stats incrementals pipeline completed 2018-12-08 09:48:56.259715
+INFO:root:Updating ESPN seasons 2018-12-08 09:48:56.264065
+INFO:root:ESPN seasons update completed successfully 2018-12-08 09:48:56.337596
+INFO:root:Updating ESPN team names 2018-12-08 09:48:56.339325
+INFO:root:ESPN team names update completed successfully 2018-12-08 09:48:57.655454
+INFO:root:Beginning NBA Stats team name 2018-12-08 09:48:57.656887
+INFO:root:NBA Stats team name update completed successfully 2018-12-08 09:49:00.172759
+INFO:root:Beginning NBA Reference player name update 2018-12-08 09:49:00.173778
+INFO:root:NBA Reference player name update completed successfully 2018-12-08 09:49:00.379243
+INFO:root:Deleting Max season from ESPN tables 2018-12-08 09:49:00.380718
+INFO:root:Deletion from ESPN tables complete 2018-12-08 09:49:00.568447
+INFO:root:Beginning insert into nba_stats from nba_stats_staging 2018-12-08 09:49:00.570037
+INFO:root:Insert completed 2018-12-08 09:49:00.828990
+INFO:root:Beginning generation of date lookup table 2018-12-08 09:49:00.830494
+INFO:root:Date lookup table generated 2018-12-08 09:51:04.681607
+INFO:root:Dropping nba_stats_test database 2018-12-08 09:51:04.723394
+INFO:root:nba_stats_test schema re-created 2018-12-08 09:51:04.853865
+INFO:root:Calling liquibase for nba_stats_test refresh 2018-12-08 09:51:04.855091
+INFO:root:Incrementials Pipeline completed 2018-12-08 09:59:29.184898
