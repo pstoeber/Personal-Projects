@@ -27,6 +27,7 @@ import predictions_team_name_update
 import date_lookup_table
 import active_roster
 import injured_players
+import nba_stats_player_boxscores_inc
 
 def back_up_db(out_file):
     logging.info('Backing up nba_stats_backup database {}'.format(str(datetime.datetime.now())))
@@ -87,7 +88,7 @@ def recreate_database(conn):
     return
 
 def liquibase_call():
-    logging.info('Calling liquibase for nba_stats_test refresh {}'.format(str(datetime.datetime.now())))
+    logging.info('Calling liquibase for nba_stats_prod refresh {}'.format(str(datetime.datetime.now())))
     os.system("""liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
                  --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLog_Prod.xml" \
@@ -118,6 +119,7 @@ if __name__ == '__main__':
     nba_espn_team_standings_incrementals.main()
     box_score_nba_ref_incrementals.main()
     nba_stats_team_boxscores.main()
+    nba_stats_player_boxscores_inc.main()
     espn_update_season_date.main()
     espn_team_name_update.main()
     team_name_update_team_boxscore.main()

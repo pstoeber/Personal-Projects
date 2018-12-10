@@ -3,7 +3,7 @@ import logging
 import datetime
 
 def update_names(connection):
-    table_list = ['basic_box_stats', 'advanced_box_stats']
+    table_list = ['basic_box_stats', 'advanced_box_stats', 'player_usage_stats', 'player_misc_stats', 'player_scoring_stats']
     update_name_dict = {'James Webb':'James Webb III',
                         'James Ennis':'James Ennis III',
                         'Wade Baldwin':'Wade Baldwin IV',
@@ -54,11 +54,57 @@ def update_names(connection):
                         'C.J. Williams':'CJ Williams',
                         'Marvin Bagley':'Marvin Bagley III',
                         'Jaren Jackson':'Jaren Jackson Jr.',
-                        'Wendell Carter':'Wendell Carter Jr.'}
+                        'Wendell Carter':'Wendell Carter Jr.',
+                        'Cedric Henderson':'Cedric E. Henderson',
+                        'Flip Murray':'Ronald Murray',
+                        'Clar. Weatherspoon':'Clarence Weatherspoon',
+                        'Dan Schayes':'Danny Schayes',
+                        'Wang Zhi-zhi':'ZhiZhi Wang',
+                        'Nene':'Nene Hilario',
+                        'Charles R. Jones':'Charles Jones',
+                        'Ike Austin':'Isaac Austin',
+                        'Richard Manning':'Rich Manning',
+                        'William Avery':'Will Avery',
+                        'Hot Rod Williams':'Elhassan Williams',
+                        'Norman Richardson':'Norm Richardson',
+                        'Joe Crispin':'Joseph Crispin',
+                        'Ruben Boumtje-Boumtje':'Ruben Boumtje Boumtje',
+                        'Viktor Khryapa':'Victor Khryapa',
+                        'Michael McDonald':'Mike McDonald',
+                        'DJ Mbenga':'Didier Ilunga-Mbenga',
+                        'Boniface Ndong':'Boniface N\'Dong',
+                        'Dwayne Jones':'Dwayne Jones II',
+                        'Walter Herrmann':'Walter Herrmann Heinrich',
+                        'DJ Strawberry':'D.J. Strawberry',
+                        'DJ White':'D.J. White',
+                        'Roko Ukic':'Roko-Leni Ukic',
+                        'AJ Price':'A.J. Price',
+                        'Sun Sun':'Sun Yue',
+                        'Perry Jones III':'Perry Jones',
+                        'Viacheslav Kravtsov':'Slava Kravtsov',
+                        'Gigi Datome':'Luigi Datome',
+                        'Erik Murphy':'Erik Jay Murphy',
+                        'PJ Hairston':'P.J. Hairston',
+                        'RJ Hunter':'R.J. Hunter',
+                        'Juancho Hernangomez':'Juan Hernangomez',
+                        'Wes Iwundu':'Wesley Iwundu',
+                        'TJ Leaf':'T.J. Leaf',
+                        'Maxi Kleber':'Maximilian Kleber',
+                        'Frank Mason':'Frank Mason III',
+                        'Svi Mykhailiuk':'Sviatoslav Mykhailiuk',
+                        'Harry Giles III':'Harry Giles',
+                        'Robert Williams III':'Robert Williams',
+                        'Walter Lemon Jr.':'Walt Lemon Jr.',
+                        'JJ O\'Brien':'J.J. O\'Brien',
+                        'Vincent Hunter':'Vince Hunter'}
 
     for k, v in update_name_dict.items():
-        for table in table_list:
-            update = 'update {} set name = "{}" where name = "{}"'.format(table, v, k)
+        for c, table in enumerate(table_list):
+            if c < 2:
+                field = ' name'
+            else:
+                field = 'player'
+            update = 'update {} set {} = "{}" where {} = "{}"'.format(table, field, v, field, k)
             sql_execute(connection, update)
 
 def sql_execute(connection, update):
