@@ -75,6 +75,8 @@ def execute_sql(conn, sql):
 def insert_into_database(df):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name='win_probability_results', if_exists='append', index=False)
+    engine.dispose()
+    return
 
 if __name__ == '__main__':
     try:

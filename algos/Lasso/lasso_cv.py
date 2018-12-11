@@ -68,6 +68,7 @@ def insert_into_database(row):
     cols = ['alpha', 'r_squared', 'home_away', 'date']
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     pd.DataFrame(row.reshape(1,4), columns=cols).to_sql(con=engine, name='lasso_alphas', if_exists='append', index=False)
+    return
 
 def plot_alphas(alphas, scores, cv_score, cv_alpha, flag):
     plt.figure()
@@ -81,6 +82,7 @@ def plot_alphas(alphas, scores, cv_score, cv_alpha, flag):
     pdf = PdfPages('{}_cross_validation_plots.pdf'.format(flag))
     pdf.savefig(plot)
     pdf.close()
+    return
 
 if __name__ == '__main__':
     try:

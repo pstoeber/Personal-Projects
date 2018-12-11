@@ -98,6 +98,8 @@ def fit_lasso_model(train_df, test_list, alpha):
 def insert_into_database(df, table_name):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name=table_name, if_exists='append', index=False)
+    engine.dispose()
+    return
 
 if __name__ == '__main__':
     try:

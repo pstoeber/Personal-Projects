@@ -1,6 +1,8 @@
 """
 Cross-validation of C hyper-parameter in LogisticRegression
 model using LogisticRegressionCV
+
+python3 logistic_cv.py home_train.sql away_train.sql
 """
 
 import sys
