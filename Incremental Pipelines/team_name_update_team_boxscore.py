@@ -56,7 +56,8 @@ def create_update_statements(connection):
                  "DET":"Detroit Pistons",
                  "SEA":"Seattle Super Sonics",
                  "VAN":"Vancouver Grizzlies",
-                 "Seattle Super Sonics":"Oklahoma City Thunder"}
+                 "Seattle Super Sonics":"Oklahoma City Thunder",
+                 "New Jersey Nets":"Brooklyn Nets"}
     #print(len(team_dict))
     tables_list = ["advanced_team_boxscore_stats",
                    "figure4_team_boxscore_stats",
