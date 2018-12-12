@@ -1290,7 +1290,7 @@
 
     <changeSet id="104" author="Philip">
       <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_scoring_stats"
+          baseTableName="player_usage_stats"
           constraintName="player_usage_stats_player_id_fk"
           referencedColumnNames="player_id"
           referencedTableName="player_info"/>
@@ -1298,7 +1298,7 @@
 
     <changeSet id="105" author="Philip">
       <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="player_scoring_stats"
+          baseTableName="player_usage_stats"
           constraintName="player_usage_stats_game_hash_fk"
           referencedColumnNames="game_hash"
           referencedTableName="box_score_map"/>

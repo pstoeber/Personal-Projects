@@ -87,10 +87,6 @@ def fit_lasso_model(train_df, test_list, alpha):
         r_square = lasso.score(test.loc[:, 'minutes_played':], test['pts'])
         total_pts = np.array([pred_df.iloc[0,2], str(datetime.date.today()), pred_df.iloc[:, -2].sum().astype(float), r_square]).reshape(1,4)
         total_pts_df = pd.DataFrame(total_pts, index=None, columns=['team', 'game_date', 'predicted_total_pts', 'r_squared'])
-
-        print(pred_df)
-        print(total_pts)
-
         insert_into_database(pred_df, 'player_prediction_results')
         insert_into_database(total_pts_df, 'total_points_predictions')
     return
