@@ -131,6 +131,7 @@ def sql_execute(conn, insert_statement):
 def insert_stats(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
     df.to_sql(con=engine, name=table, if_exists='append', index=False)
+    engine.dispose()
     return
 
 def main():

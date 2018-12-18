@@ -731,3 +731,20 @@ INFO:root:Dropping nba_stats_test database 2018-12-18 08:04:01.025640
 INFO:root:nba_stats_test schema re-created 2018-12-18 08:04:01.197766
 INFO:root:Calling liquibase for nba_stats_prod refresh 2018-12-18 08:04:01.199069
 INFO:root:Incrementials Pipeline completed 2018-12-18 08:07:54.813568
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:17:27.027448
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:24:41.971984
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:26:34.089197
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:27:04.545601
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:27:28.339414
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:28:36.424048
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:30:01.966947
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:33:25.862375
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:34:07.213720
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:35:50.606926
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:36:28.798391
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:37:26.839119
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:39:20.260463
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:43:27.763448
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:43:47.630995
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:45:00.010110
+INFO:root:Starting NBA Stats incrementals pipeline 2018-12-18 17:45:09.554848
