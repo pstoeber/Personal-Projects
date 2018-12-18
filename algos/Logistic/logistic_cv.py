@@ -88,3 +88,4 @@ if __name__ == '__main__':
         train_df.drop('win_lose', axis=1, inplace=True)
         c_val = opt_c_val(train_df, flag)
         insert_into_database(c_val)
+        print(c_val)

@@ -18,23 +18,14 @@ select basic.player_id,
        a_stats.pace,
        a_stats.pie,
        adv.offensive_rating,
-       p_misc.pts_off_to,
-       p_misc.second_chance_pts,
-       p_misc.fbps as indv_fbps,
-       p_misc.pitp,
+       adv.defensive_rating,
        p_score.pct_2pt_fga,
        p_score.pct_3pt_fga,
-       p_score.pct_pt_2pt,
-       p_score.pct_pts_2pt_mr,
-       p_score.pct_pts_3pt,
        p_score.pct_pts_fbps,
        p_score.pct_pts_ft,
        p_score.pct_pts_off_to,
-       p_usg.pct_fgm,
        p_usg.pct_fga,
-       p_usg.pct_3pm,
        p_usg.pct_3pa,
-       p_usg.pct_ftm,
        p_usg.pct_fta,
        p_usg.pct_stl,
        reg_avg.fg_a as tot_fg_a,
@@ -62,7 +53,7 @@ from (
      inner join game_date_lookup as lu on b.game_date = lu.day
      inner join team_info as team on b.away_team = team.team
      where b.game_date < current_date and
-           lu.season > 2006
+           lu.season > 2001
 
      ) as box_view
 
@@ -72,8 +63,6 @@ inner join basic_box_stats as basic on ( (box_view.game_hash = basic.game_hash) 
 play_m.player_id = basic.player_id) )
 inner join advanced_box_stats as adv on ( (box_view.game_hash = adv.game_hash) and (
 play_m.player_id = adv.player_id) )
-inner join player_misc_stats as p_misc on ( (box_view.game_hash = p_misc.game_hash) and (
-play_m.player_id = p_misc.player_id) )
 inner join player_scoring_stats as p_score on ( (box_view.game_hash = p_score.game_hash) and (
 play_m.player_id = p_score.player_id) )
 inner join player_usage_stats as p_usg on ( (box_view.game_hash = p_usg.game_hash) and (

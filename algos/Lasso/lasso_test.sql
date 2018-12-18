@@ -19,23 +19,14 @@ select basic.player_id,
        a_stats.pace,
        a_stats.pie,
        adv.offensive_rating,
-       p_misc.pts_off_to,
-       p_misc.second_chance_pts,
-       p_misc.fbps as indv_fbps,
-       p_misc.pitp,
+       adv.defensive_rating,
        p_score.pct_2pt_fga,
        p_score.pct_3pt_fga,
-       p_score.pct_pt_2pt,
-       p_score.pct_pts_2pt_mr,
-       p_score.pct_pts_3pt,
        p_score.pct_pts_fbps,
        p_score.pct_pts_ft,
        p_score.pct_pts_off_to,
-       p_usg.pct_fgm,
        p_usg.pct_fga,
-       p_usg.pct_3pm,
        p_usg.pct_3pa,
-       p_usg.pct_ftm,
        p_usg.pct_fta,
        p_usg.pct_stl,
        reg_avg.fg_a as tot_fg_a,
@@ -67,7 +58,7 @@ from (select gm.game_hash, gm.target, gm.opp, gm.game_date, gm.season, t.team_id
             where m.away_team like '{}%') as gm
              inner join team_info as t on gm.opp = t.team
       order by game_date desc
-      limit 11) as bm
+      limit 9) as bm
 inner join team_info as t_opp on bm.opp = t_opp.team
 
 inner join (
@@ -83,8 +74,6 @@ inner join basic_box_stats as basic on ( (bm.game_hash = basic.game_hash) and (
 player.player_id = basic.player_id) )
 inner join advanced_box_stats as adv on ( (bm.game_hash = adv.game_hash) and (
 player.player_id = adv.player_id) )
-inner join player_misc_stats as p_misc on ( (bm.game_hash = p_misc.game_hash) and (
-player.player_id = p_misc.player_id) )
 inner join player_scoring_stats as p_score on ( (bm.game_hash = p_score.game_hash) and (
 player.player_id = p_score.player_id) )
 inner join player_usage_stats as p_usg on ( (bm.game_hash = p_usg.game_hash) and (

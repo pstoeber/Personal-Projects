@@ -54,7 +54,7 @@ def extract_injured_players(link):
 
 def check_update(player_update):
     injured_player_list = []
-    ruled_out_list = ['out', 'ruled', 'off', 'miss', 'missed', 'concussion', '(concussion)']
+    ruled_out_list = ['out', 'ruled', 'off', 'miss', 'missed', 'concussion', '(concussion)', 'doubtful']
     for up in player_update.split():
         if up in ruled_out_list:
             return True
@@ -85,6 +85,8 @@ def check_name(name):
 def insert_into_database(conn, df):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name='injuries', if_exists='replace', index=False)
+    engine.dispose()
+    return
 
 def sql_execute(sql, conn):
     exe = conn.cursor()

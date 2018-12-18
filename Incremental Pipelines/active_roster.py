@@ -75,6 +75,8 @@ def sql_execute(query, connection):
 def insert_into_database(conn, df):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats"))
     df.to_sql(con=engine, name='active_rosters', if_exists='replace', index=False)
+    engine.dispose()
+    return
 
 def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)

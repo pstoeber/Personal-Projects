@@ -96,6 +96,6 @@ if __name__ == '__main__':
         train_df = gen_df(connection, v)
         train_df.loc[:, 'minutes_played'] = train_df.loc[:, 'minutes_played'].apply(time_convert)
         train_df = days_of_rest(train_df)
-        alpha = get_alphas(train_df[train_df['minutes_played'] >= 720].loc[:, 'pts':].fillna(0), k)
+        alpha = get_alphas(train_df[train_df['minutes_played'] >= 420].loc[:, 'pts':].fillna(0), k)
         insert_into_database(alpha)
         print(alpha)
