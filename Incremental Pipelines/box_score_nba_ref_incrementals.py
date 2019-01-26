@@ -109,6 +109,7 @@ def insert_stats(df, table):
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Beginning NBA Reference players incrementals pipeline {}'.format(str(datetime.datetime.now())))
+    set_start_method('forkserver', force=True)
     myConnection = gen_db_conn()
     box_score_links = get_links(gen_dates(myConnection))
     threads = count_threads(len(box_score_links))

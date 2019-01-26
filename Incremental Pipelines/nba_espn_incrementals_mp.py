@@ -7,6 +7,7 @@ import pymysql
 import itertools
 import logging
 from bs4 import BeautifulSoup
+from multiprocessing import set_start_method
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
@@ -112,12 +113,8 @@ def insert_into_database(engine, df, table):
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Beginning ESPN players incrementals pipeline {}'.format(str(datetime.datetime.now())))
-
-    try:
-        myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
-    except:
-        print('Failed to conenct to nba_stats_staging environment')
-        sys.exit(1)
+    set_start_method('forkserver', force=True)
+    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
 
     player_links = create_threads(player_id_scraper, find_team_names())
     player_stats = create_threads(player_stat_scraper, list(itertools.chain.from_iterable(player_links)))
