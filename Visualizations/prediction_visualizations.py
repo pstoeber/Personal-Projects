@@ -21,12 +21,13 @@ def extract_data(conn, sql):
     return pd.read_sql(sql=sql, con=conn, index_col=None)
 
 def player_pred_to_actual_pts(df):
-    sns.set_style('whitegrid')
-    plt.title('Predicted Points Vs. Actual Points')
-    plt.xticks(rotation=90)
-    df.groupby(['team', 'game_date'])
-    sns.barplot(x='name', y='pts', data=df, hue='flag', palette='plasma_r')
-    plt.show()
+    for i, data in df.groupby(['team', 'game_date']):
+        sns.set_style('whitegrid')
+        plt.title('{team} Predicted Points Vs. Actual Points {date}'.format(team=i[0], date=i[1]))
+        plt.xticks(rotation=90)
+        sns.barplot(x='name', y='pts', data=data, hue='flag', palette='plasma_r')
+        plt.show()
+    return
 
 def win_lose_prob(df):
     plt.title('Win Probability Vs. Lose Probability')

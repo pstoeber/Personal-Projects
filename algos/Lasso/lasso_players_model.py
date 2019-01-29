@@ -22,7 +22,7 @@ def get_games():
     raw_schedule = pd.read_html(link)[0]
     schedule = np.empty(shape=[0,2])
     for away, home in zip(raw_schedule.iloc[:, 0], raw_schedule.iloc[:, 1]):
-        game = np.array([format_team(away), format_team(home)]).reshape(1,2)
+        game = np.array([gen_cmd_str(away.split()[:-1]), gen_cmd_str(home.split()[:-1])]).reshape(1,2)
         schedule = np.concatenate([schedule, game])
     return pd.DataFrame(schedule, index=None, columns=['away', 'home'])
 
@@ -35,9 +35,6 @@ def execute_sql(conn, sql):
     exe = conn.cursor(pymysql.cursors.DictCursor)
     exe.execute(sql)
     return exe.fetchall()
-
-def format_team(team):
-    return ' '.join([i for i in team.split()[:-1]])
 
 def extract_file(file_path):
     with open(file_path, 'r') as infile:

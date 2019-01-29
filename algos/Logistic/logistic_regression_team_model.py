@@ -24,12 +24,9 @@ def get_games():
 
     schedule = np.empty(shape=[0,2])
     for away, home in zip(raw_schedule.iloc[:, 0], raw_schedule.iloc[:, 1]):
-        game = np.array([format_team(away), format_team(home)]).reshape(1,2)
+        game = np.array([gen_cmd_str(away.split()[:-1]), gen_cmd_str(home.split()[:-1])]).reshape(1,2)
         schedule = np.concatenate([schedule, game])
     return pd.DataFrame(schedule, index=None, columns=['away', 'home'])
-
-def format_team(team):
-    return ' '.join([i for i in team.split()[:-1]])
 
 def get_c_values(conn):
     c_val = 'select C_value from c_values where date = (select max(date) from c_values) order by home_away desc'
