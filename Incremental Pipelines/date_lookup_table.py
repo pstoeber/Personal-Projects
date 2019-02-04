@@ -54,7 +54,7 @@ def gen_lookup(date, years):
     return pd.DataFrame(np.array(date_list), index=None, columns=['day', 'season'])
 
 def insert_into_database(df):
-    engine = create_engine('pymysql+mysql://', creator=gen_db_conn)
+    engine = create_engine('mysql+pymysql://', creator=gen_db_conn)
     df.to_sql(con=engine, name='game_date_lookup', if_exists='replace', index=False)
     engine.dispose()
     return
@@ -68,7 +68,7 @@ def main():
     years = find_years(conn)
     all_dates = gen_pools(years, dates)
     dates_lu = pd.concat(all_dates)
-
+    insert_into_database(dates_lu)
     logging.info('Date lookup table generated {}'.format(str(datetime.datetime.now())))
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 """
-python3 multi_threading_test.py "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread"
+python3 migrate_to_prod_mp.py "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread"
 """
 
 import pymysql
@@ -12,6 +12,7 @@ import logging
 import datetime
 from functools import partial
 from multiprocessing import Pool
+from multiprocessing import set_start_method
 from multiprocessing.dummy import Pool as ThreadPool
 
 def gen_timestamp():
@@ -30,7 +31,7 @@ def gen_db_conn():
 
 def extract_file(file):
     with open(file, 'r') as infile:
-        return [i.strip('\n') for i in infile.readlines()]
+        return [i for i in infile.readlines()]
 
 def gen_cmd_str(cmd):
     return r''.join([i for i in cmd])
@@ -58,6 +59,7 @@ def gen_threads(files, flag):
 def main(arg1, arg2):
     logging.basicConfig(filename='algo_refresh_log.log', filemode='w', level=logging.INFO)
     logging.info('Algo refresh intialized {stamp}'.format(stamp=gen_timestamp()))
+    set_start_method('forkserver', force=True)
     primary_files = find_files(arg1)
     for file in primary_files:
         sql_execute(file, 0)

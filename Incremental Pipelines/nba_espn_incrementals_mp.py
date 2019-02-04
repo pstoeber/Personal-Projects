@@ -13,6 +13,17 @@ from multiprocessing.dummy import Pool as ThreadPool
 from functools import partial
 from sqlalchemy import create_engine
 
+def gen_timestamp():
+    return str(datetime.datetime.now())
+
+def gen_db_conn():
+    return pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
+
+def get_player_info_header(conn):
+    sql = 'desc player_info'
+    cols = pd.read_sql(sql=sql, con=conn).Field.values.tolist()
+    return cols
+
 def find_team_names():
     team_links = []
     link = 'https://www.espn.com/nba/teams'
@@ -23,40 +34,39 @@ def find_team_names():
             team_links.append('https://www.espn.com{}'.format(i['href']))
     return team_links
 
-def create_threads(function, iterable):
-    pool = Pool()
-    results = pool.map(function, iterable)
-    pool.close()
-    pool.join()
-    return results
+def player_id_scraper(link):
+    player_links = []
+    soup = BeautifulSoup(requests.get(link).content, "html.parser")
 
-def player_id_scraper(team_link):
-    raw_links, player_links = [], []
-    soup = BeautifulSoup(requests.get(team_link).content, "html.parser")
-
-    for i in soup.find_all('a', href=True): #finding all links
+    for c, i in enumerate(soup.find_all('a', href=True)): #finding all links
         if 'http://www.espn.com/nba/player/_/id/' in i['href']:
             player_links.append(i['href'].replace('/player/', '/player/stats/'))
     player_links = sorted(set(player_links)) #filtering out repeats from the spliced links list
     return player_links
 
-def player_stat_scraper(player):
-    soup = BeautifulSoup(requests.get(player, timeout=None).content, "html.parser")
-    name = soup.find("h1").get_text() #finding player name
-    exp = get_exp(soup)
-    team = get_team(soup)
+def sql_execute(conn, sql):
+    exe = conn.cursor()
+    exe.execute(sql)
+    return exe.fetchall()
 
-    if name == None:
-        return None
+def truncate_tables(conn):
+    truncate_list = ['player_info', 'RegularSeasonAverages', 'RegularSeasonTotals', 'RegularSeasonMiscTotals']
+    for table in truncate_list:
+        sql_execute(conn, 'truncate table {};'.format(table))
+    return
 
-    table_dict = {'dem':[name, team, exp]}
-    for df in pd.read_html(player)[1:]:
-        table_name = df.iloc[0,0].replace(' ', '')
-        df.columns = df.iloc[1]
-        df = df.reindex(df.index.drop([0,1])).iloc[:-1, :]
-        df.insert(loc=0, column='player_id', value=name)
-        table_dict[table_name] = df
-    return table_dict
+def find_player_id(name, team, exp, cols, index):
+    conn = gen_db_conn()
+    try:
+        player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name))[0][0]
+        conn.close()
+        return player_id, False
+    except:
+        player_id = sql_execute(conn, 'select max(player_id) from nba_stats.player_info')[0][0] + index
+        player_info = np.array([player_id, name, team, exp]).reshape(1,4)
+        insert_into_db(pd.DataFrame(player_info, columns=cols), 'player_info')
+        conn.close()
+        return player_id, True
 
 def get_exp(soup):
     try:
@@ -71,65 +81,51 @@ def get_team(soup):
     except AttributeError:
         return 'No Team'
 
-def truncate_tables(conn):
-    truncate_list = ['player_info', 'RegularSeasonAverages', 'RegularSeasonTotals', 'RegularSeasonMiscTotals']
-    for table in truncate_list:
-        sql_execute(conn, 'truncate table {}'.format(table))
-    return
-
-def find_player_id(conn, name, team, exp, index):
-    try:
-        player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name_check(name)))[0][0]
-        return True, player_id
-    except:
-        player_id = sql_execute(conn, 'select max(player_id) from nba_stats.player_info')[0][0] + index
-        sql_execute(conn, 'insert into player_info values({}, "{}", "{}", {})'.format(str(player_id), name, team, exp))
-        return False, player_id
-
-def name_check(name):
-    if '\'' in name:
-        name = name[:name.index('\'')] + '\\' + name[name.index('\''):]
-    return name
-
-def sql_execute(conn, sql):
-    exe = conn.cursor()
-    exe.execute(sql)
-    return exe.fetchall()
-
-def engine(df, player_bool, player_id, table):
-    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
-    df['player_id'] = player_id
-    if player_bool:
-        insert_into_database(engine, df[df['SEASON'] == '\'18-\'19'], table)
-    elif not player_bool and not df.empty:
-        insert_into_database(engine, df, table)
-    return
-
-def insert_into_database(engine, df, table):
+def insert_into_db(df, table):
+    engine = create_engine('mysql+pymysql://', creator=gen_db_conn)
     df.to_sql(con=engine, name=table, if_exists='append', index=False)
     engine.dispose()
     return
 
+def player_stat_scraper(player):
+    soup = BeautifulSoup(requests.get(player.get('link', None), timeout=None).content, "html.parser")
+    name = soup.find("h1").get_text().replace('\'', '\\\'') #finding player name
+
+    if name == None:
+        return None
+
+    player_id, flag = find_player_id(name, get_team(soup), get_exp(soup), player.get('cols', None), player.get('index', None))
+
+    for df in pd.read_html(player.get('link', None))[1:]:
+        table_name = df.iloc[0,0].replace(' ', '')
+        df.columns = df.iloc[1]
+        df = df.reindex(df.index.drop([0,1])).iloc[:-1, :]
+        df.insert(loc=0, column='player_id', value=player_id)
+        if flag == True:
+            insert_into_db(df, table_name)
+        else:
+            insert_into_db(df[df['SEASON'] == '\'18-\'19'], table_name)
+    return
+
+def create_threads(function, iterable):
+    pool = Pool(16)
+    results = pool.map(function, iterable)
+    pool.close()
+    pool.join()
+    return results
+
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
-    logging.info('Beginning ESPN players incrementals pipeline {}'.format(str(datetime.datetime.now())))
+    logging.info('Beginning ESPN players incrementals pipeline {}'.format(gen_timestamp()))
     set_start_method('forkserver', force=True)
-    myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats_staging", autocommit=True)
-
+    conn = gen_db_conn()
+    player_cols = get_player_info_header(conn)
     player_links = create_threads(player_id_scraper, find_team_names())
-    player_stats = create_threads(player_stat_scraper, list(itertools.chain.from_iterable(player_links)))
-    truncate_tables(myConnection)
-    for c, stat in enumerate(player_stats):
-        if stat != None:
-            player_bool = True
-            player_id = 0
-            for k, v in stat.items():
-                if k == 'dem':
-                    player_bool, player_id = find_player_id(myConnection, v[0], v[1], v[2], (c+1))
-                else:
-                    engine(v, player_bool, player_id, k)
-
-    logging.info('ESPN players incrementals pipeline completed {}'.format(str(datetime.datetime.now())))
+    player_links = list(itertools.chain.from_iterable(player_links))
+    truncate_tables(conn)
+    player_content = [dict(link=link, cols=player_cols, index=c+1) for c, link in enumerate(player_links)]
+    player_stats = create_threads(player_stat_scraper, player_content)
+    logging.info('ESPN players incrementals pipeline completed successfully {}'.format(gen_timestamp()))
 
 if __name__ == '__main__':
     main()

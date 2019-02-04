@@ -98,15 +98,15 @@ def recreate_database(conn):
     logging.info('nba_stats_prod schema re-created {}'.format(gen_time_stamp()))
     return
 
-def liquibase_call():
+def liquibase_call(file):
     logging.info('Calling liquibase for nba_stats_prod refresh {}'.format(gen_time_stamp()))
-    os.system("""liquibase --driver=com.mysql.jdbc.Driver \
+    os.system('''liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
-                 --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLogProd.xml" \
+                 --changeLogFile={file} \
                  --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&amp;useSSL=false" \
                  --username=root \
-                 --password=Sk1ttles update""")
-    logging.info('Incrementials Pipeline completed {}'.format(gen_time_stamp()))
+                 --password=Sk1ttles update'''.format(file=file))
+    logging.info('Incrementials Pipeline completed {stamp}'.format(stamp=gen_time_stamp()))
     return
 
 def sql_execute(conn, sql):
@@ -143,5 +143,6 @@ if __name__ == '__main__':
     predictions_team_name_update.main()
     pipeline_auditlog(connection, desc)
     recreate_database(connection)
-    liquibase_call()
+    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogProd.xml')
     migrate_to_prod_mp.main(sys.argv[3], sys.argv[4])
+    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogKeys.xml')

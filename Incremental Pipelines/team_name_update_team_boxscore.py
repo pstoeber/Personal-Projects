@@ -87,6 +87,11 @@ def create_update_statements(connection):
     update_box_map_home = 'update box_score_map set home_team = "{}" where home_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
     sql_execute(connection, update_box_map_home)
 
+    update_basic_box = 'update basic_box_stats set team = "{}" where team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
+    sql_execute(connection, update_basic_box)
+    update_adv_box = 'update advanced_box_stats set team = "{}" where team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
+    sql_execute(connection, update_adv_box)
+
     updated_pred_boston = 'update nba_stats.total_points_predictions set team = "{}" where team = "{}"'.format('Boston Celtics', 'Boston')
     sql_execute(connection, updated_pred_boston)
     updated_pred_clip = 'update nba_stats.total_points_predictions set team = "{}" where team = "{}"'.format('LA Clippers', 'LA')

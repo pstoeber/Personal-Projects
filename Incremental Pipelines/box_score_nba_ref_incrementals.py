@@ -58,7 +58,7 @@ def count_threads(link_count):
     if link_count < 8:
         threads = link_count
     else:
-        threads = 8
+        threads = link_count
     return threads
 
 def get_header(conn, sql):
@@ -108,16 +108,22 @@ def box_scrape(link, **content):
     game_hash = hash_gen(header)
     stats_content['box_score_map'] = gen_game_tag(header, game_hash, content.get('tag_header', None))
     stats_content['game_results'] = gen_score_info(soup, game_hash, content.get('score_header', None))
+    filter_list = ['Did Not Play', 'Did Not Dress']
 
     for c, table in enumerate(pd.read_html(link)):
+        if c < 2:
+            team = stats_content['box_score_map'].iloc[0,1]
+        else:
+            team = stats_content['box_score_map'].iloc[0,2]
         df = table.iloc[:-1, :].dropna(axis=1, how='all')
         df.drop(df.index[5], inplace=True)
         df.columns = [col[1].replace('Starters', 'name') for col in df.columns]
         df.insert(loc=1, column='game_hash', value=game_hash)
+        df.insert(loc=2, column='team', value=team)
         if c % 2 == 0:
-            stats_content['basic_box_stats'] = pd.concat([df[df['MP']!='Did Not Play'].fillna(0), stats_content['basic_box_stats']])
+            stats_content['basic_box_stats'] = pd.concat([df[~df['MP'].isin(filter_list)].fillna(0), stats_content['basic_box_stats']])
         else:
-            stats_content['advanced_box_stats'] = pd.concat([df[df['MP']!='Did Not Play'].fillna(0), stats_content['advanced_box_stats']])
+            stats_content['advanced_box_stats'] = pd.concat([df[~df['MP'].isin(filter_list)].fillna(0), stats_content['advanced_box_stats']])
     insert_stats(stats_content)
     return
 

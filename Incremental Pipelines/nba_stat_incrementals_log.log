@@ -1,71 +1,13 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2019-01-29 08:39:09.725547
-INFO:root:Successfully connected to nba_stats_staging 2019-01-29 08:39:09.751105
-INFO:root:Backing up nba_stats_backup database 2019-01-29 08:39:09.751307
-INFO:root:Backing up complete 2019-01-29 08:39:22.466134
-INFO:root:Compressing backup of nba_stats_backup database 2019-01-29 08:39:22.466437
-INFO:root:Compression complete 2019-01-29 08:39:44.264737
-INFO:root:Refreshing active_rosters table 2019-01-29 08:39:44.264918
-INFO:root:Active_rosters table refresh complete 2019-01-29 08:39:50.291976
-INFO:root:Refreshing injured_players table 2019-01-29 08:39:50.293774
-INFO:root:Injured_players table refresh complete 2019-01-29 08:39:56.337141
-INFO:root:Beginning ESPN players incrementals pipeline 2019-01-29 08:39:56.338856
-INFO:root:ESPN players incrementals pipeline completed 2019-01-29 08:41:23.299473
-INFO:root:Beginning ESPN team incrementials pipeline 2019-01-29 08:41:23.317947
-INFO:root:Beginning ESPN team standings pipeline 2019-01-29 08:41:24.149369
-INFO:root:ESPN team standings pipeline completed successfully 2019-01-29 08:41:25.075451
-INFO:root:Beginning NBA Reference players incrementals pipeline 2019-01-29 08:41:25.077430
-INFO:root:NBA Reference players incrementals pipeline completed successfully 2019-01-29 08:41:27.719403
-INFO:root:Starting NBA Stats incrementals pipeline 2019-01-29 08:41:27.723739
-INFO:root:NBA Stats incrementals pipeline completed successfully 2019-01-29 08:41:47.503096
-INFO:root:Updating ESPN seasons 2019-01-29 08:42:09.546642
-INFO:root:ESPN seasons update completed successfully 2019-01-29 08:42:09.623013
-INFO:root:Updating ESPN team names 2019-01-29 08:42:09.624431
-INFO:root:ESPN team names update completed successfully 2019-01-29 08:42:10.866464
-INFO:root:Beginning NBA Stats team name 2019-01-29 08:42:10.867862
-INFO:root:NBA Stats team name update completed successfully 2019-01-29 08:42:13.015323
-INFO:root:Beginning NBA Reference player name update 2019-01-29 08:42:13.016648
-INFO:root:NBA Reference player name update completed successfully 2019-01-29 08:42:13.276885
-INFO:root:Deleting Max season from ESPN tables 2019-01-29 08:42:13.278001
-INFO:root:Deletion from ESPN tables complete 2019-01-29 08:42:13.448507
-INFO:root:Beginning insert into nba_stats from nba_stats_staging 2019-01-29 08:42:13.450006
-INFO:root:Insert completed 2019-01-29 08:42:13.789143
-INFO:root:Beginning generation of date lookup table 2019-01-29 08:42:13.790469
-INFO:root:Date lookup table generated 2019-01-29 08:42:14.085723
-INFO:root:Dropping nba_stats_prod database 2019-01-29 08:42:14.137036
-INFO:root:nba_stats_prod schema re-created 2019-01-29 08:42:14.282353
-INFO:root:Calling liquibase for nba_stats_prod refresh 2019-01-29 08:42:14.283321
-INFO:root:Incrementials Pipeline completed 2019-01-29 08:42:19.848775
-INFO:root:Algo refresh intialized 2019-01-29 08:42:19.848995
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V2_team_info.sql at 2019-01-29 08:42:19.861694
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V3_box_score_map.sql at 2019-01-29 08:42:22.847630
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V1_player_info.sql at 2019-01-29 08:42:22.879002
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/logrithmic_c.sql at 2019-01-29 08:42:22.940197
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/3pt.sql at 2019-01-29 08:42:22.965254
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_standings.sql at 2019-01-29 08:42:22.976170
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/player_predictions.sql at 2019-01-29 08:42:23.234617
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/regularseasonmisctotals.sql at 2019-01-29 08:42:23.362366
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/total_points_predictions.sql at 2019-01-29 08:42:23.386136
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/fg_pct.sql at 2019-01-29 08:42:23.410178
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/pipeline_auditlog.sql at 2019-01-29 08:42:23.431792
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/regular_season_avg.sql at 2019-01-29 08:42:23.590264
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/regularseasontotal.sql at 2019-01-29 08:42:23.656046
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/active_rosters.sql at 2019-01-29 08:42:23.888802
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/rebounds.sql at 2019-01-29 08:42:23.910500
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/player_team_map.sql at 2019-01-29 08:42:30.069956
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_figure4_boxscore_stats.sql at 2019-01-29 08:42:39.164422
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/lasso_alphas.sql at 2019-01-29 08:42:39.190500
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/injured_players.sql at 2019-01-29 08:42:39.207899
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_misc_boxscore_stats.sql at 2019-01-29 08:42:40.249919
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/win_probability_results.sql at 2019-01-29 08:42:40.281831
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_traditional_boxscore_stats.sql at 2019-01-29 08:42:41.082690
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/game_results.sql at 2019-01-29 08:42:41.700967
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/pts.sql at 2019-01-29 08:42:41.729602
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/turnovers.sql at 2019-01-29 08:42:41.753939
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/game_date_lu.sql at 2019-01-29 08:42:41.847944
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_scoring_boxscore_stats.sql at 2019-01-29 08:42:46.185870
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/team_advanced_boxscore_stats.sql at 2019-01-29 08:42:52.971841
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/test_basic_stats.sql at 2019-01-29 08:42:54.971003
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/test_advanced_stats.sql at 2019-01-29 08:43:05.916864
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/player_misc_stats.sql at 2019-01-29 08:43:47.165983
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/player_usage_stats.sql at 2019-01-29 08:43:48.926812
-INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/player_scoring_stats.sql at 2019-01-29 08:43:49.058243
+INFO:root:Attempting to connect to nba_stats_staging database 2019-02-03 19:16:16.849233
+INFO:root:Successfully connected to nba_stats_staging 2019-02-03 19:16:16.857329
+INFO:root:Dropping nba_stats_prod database 2019-02-03 19:16:16.857463
+INFO:root:nba_stats_prod schema re-created 2019-02-03 19:16:16.926366
+INFO:root:Calling liquibase for nba_stats_prod refresh 2019-02-03 19:16:16.927310
+INFO:root:Incrementials Pipeline completed 2019-02-03 19:16:20.590358
+INFO:root:Algo refresh intialized 2019-02-03 19:16:20.590647
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V2_team_info.sql at 2019-02-03 19:16:20.603317
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V3_box_score_map.sql at 2019-02-03 19:16:23.519584
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V1_player_info.sql at 2019-02-03 19:16:23.549830
+INFO:root:Calling liquibase for nba_stats_prod refresh 2019-02-03 19:25:31.026432
+INFO:root:Incrementials Pipeline completed 2019-02-03 19:26:31.542528
+INFO:root:Beginning ESPN players incrementals pipeline 2019-02-03 19:39:01.306019
