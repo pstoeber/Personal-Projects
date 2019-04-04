@@ -31,13 +31,14 @@ def refresh_prod(conn):
     sql_execute(conn, 'create database nba_stats_prod')
     return
 
-def liquibase_call():
-    os.system("""liquibase --driver=com.mysql.jdbc.Driver \
+def liquibase_call(file):
+    os.system("""/usr/local/bin/liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
-                 --changeLogFile="/Users/Philip/Documents/NBA prediction script/Changelogs/nba_stats_prod_changeLogProd.xml" \
+                 --changeLogFile={file} \
                  --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&amp;useSSL=false" \
                  --username=root \
-                 --password=Sk1ttles update""")
+                 --password=Sk1ttles \
+                 update""".format(file=file))
     return
 
 def gen_hash(row):
@@ -54,8 +55,9 @@ if __name__ == '__main__':
     active(sys.argv[1], sys.argv[2])
     injured(sys.argv[1])
     refresh_prod(conn)
-    liquibase_call()
-    pipeline_auditlog(conn, desc)
+    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogProd.xml')
     load(sys.argv[3], sys.argv[4])
+    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogKeys.xml')
+    pipeline_auditlog(conn, desc)
     lasso(sys.argv[5], sys.argv[6], sys.argv[7])
     log(sys.argv[8], sys.argv[9], sys.argv[10])

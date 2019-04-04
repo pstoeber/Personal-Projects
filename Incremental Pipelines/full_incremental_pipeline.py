@@ -3,7 +3,7 @@ Script to wrap all incremental pipelines together
 
 command line call:
 
-python3 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread"
+python3 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql sql\ ddl/player_team_map.sql production_insert_statements/primary_queries production_insert_statements/multithread
 """
 
 import subprocess
@@ -35,7 +35,7 @@ def gen_time_stamp():
 
 def back_up_db(out_file):
     logging.info('Backing up nba_stats_backup database {}'.format(gen_time_stamp()))
-    os.system('mysqldump -u root -p nba_stats > "{}"'.format(out_file))
+    os.system('/usr/local/mysql-5.7.19-macos10.12-x86_64/bin/mysqldump --defaults-file=/Users/Philip/my.cnf nba_stats > "{}"'.format(out_file))
     logging.info('Backing up complete {}'.format(gen_time_stamp()))
     return
 
@@ -83,13 +83,27 @@ def insert_into_nba_stats(conn):
     logging.info('Insert completed {}'.format(gen_time_stamp()))
     return
 
+def extract_file(file):
+    with open(file, 'r') as infile:
+        return [i for i in infile.readlines()]
+
+def gen_cmd_str(cmd):
+    return ''.join([i for i in cmd])
+
+def refresh_player_team_map(conn, player_team_file):
+    truncate = 'truncate table nba_stats.player_team_map;'
+    sql_execute(conn, truncate)
+    sql = gen_cmd_str(extract_file(player_team_file))
+    sql_execute(conn, sql)
+    return
+
 def pipeline_auditlog(conn, desc):
     pipeline_insert = 'insert into nba_stats.pipeline_auditlog values ("{}", "{}", "{}")'.format(gen_hash(gen_time_stamp()), gen_time_stamp(), desc)
     sql_execute(conn, pipeline_insert)
     return
 
 def gen_hash(row):
-    return  hashlib.md5(row.encode('utf-8')).hexdigest()
+    return hashlib.md5(row.encode('utf-8')).hexdigest()
 
 def recreate_database(conn):
     logging.info('Dropping nba_stats_prod database {}'.format(gen_time_stamp()))
@@ -100,12 +114,13 @@ def recreate_database(conn):
 
 def liquibase_call(file):
     logging.info('Calling liquibase for nba_stats_prod refresh {}'.format(gen_time_stamp()))
-    os.system('''liquibase --driver=com.mysql.jdbc.Driver \
+    os.system('''/usr/local/bin/liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
                  --changeLogFile={file} \
                  --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&amp;useSSL=false" \
                  --username=root \
-                 --password=Sk1ttles update'''.format(file=file))
+                 --password=Sk1ttles \
+                 update'''.format(file=file))
     logging.info('Incrementials Pipeline completed {stamp}'.format(stamp=gen_time_stamp()))
     return
 
@@ -139,10 +154,11 @@ if __name__ == '__main__':
     player_name_nba_ref_boxscore.main()
     espn_delete_max_season(connection)
     insert_into_nba_stats(connection)
+    refresh_player_team_map(connection, sys.argv[3])
     date_lookup_table.main()
     predictions_team_name_update.main()
     pipeline_auditlog(connection, desc)
     recreate_database(connection)
     liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogProd.xml')
-    migrate_to_prod_mp.main(sys.argv[3], sys.argv[4])
+    migrate_to_prod_mp.main(sys.argv[4], sys.argv[5])
     liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogKeys.xml')

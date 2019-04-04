@@ -21,13 +21,13 @@ insert into nba_stats_prod.basic_box_stats(
        b.PF,
        b.PTS,
        b.plus_minus
-from nba_stats.basic_box_stats as b 
+from nba_stats.basic_box_stats as b
 inner join nba_stats.box_score_map as bm on b.game_hash = bm.game_hash
 inner join(
 
      select p.player_id, name, pm.team, lu.day
      from nba_stats.player_info as p
-     inner join nba_stats.player_team_map_view as pm on p.player_id = pm.player_id
+     inner join nba_stats.player_team_map as pm on p.player_id = pm.player_id
      inner join nba_stats.game_date_lookup as lu on pm.season = lu.season
 
 ) as p on b.name = p.name and

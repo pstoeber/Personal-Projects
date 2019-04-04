@@ -33,7 +33,7 @@ def time_convert(minutes_played):
     time_list = minutes_played.split(':')
     try:
         return ((int(time_list[0]) * 60) + int(time_list[1]))
-    except ValueError:
+    except (ValueError, IndexError):
         return 0
 
 def days_of_rest(df):

@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import requests
 import datetime
 import numpy as np
@@ -39,8 +41,10 @@ def player_id_scraper(link):
     soup = BeautifulSoup(requests.get(link).content, "html.parser")
 
     for c, i in enumerate(soup.find_all('a', href=True)): #finding all links
-        if 'http://www.espn.com/nba/player/_/id/' in i['href']:
-            player_links.append(i['href'].replace('/player/', '/player/stats/'))
+        name = i.text.replace(' ', '-').lower()
+        link = i['href'].replace('/player/', '/player/stats/')
+        if re.search(r"http://www.espn.com/nba/player/stats/_/id/[0-9]*/[a-z-]*", link):
+            player_links.append(link)
     player_links = sorted(set(player_links)) #filtering out repeats from the spliced links list
     return player_links
 
@@ -57,16 +61,20 @@ def truncate_tables(conn):
 
 def find_player_id(name, team, exp, cols, index):
     conn = gen_db_conn()
+    flag = False
     try:
         player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name))[0][0]
-        conn.close()
-        return player_id, False
-    except:
+    except IndexError:
         player_id = sql_execute(conn, 'select max(player_id) from nba_stats.player_info')[0][0] + index
         player_info = np.array([player_id, name, team, exp]).reshape(1,4)
         insert_into_db(pd.DataFrame(player_info, columns=cols), 'player_info')
-        conn.close()
-        return player_id, True
+    conn.close()
+    return player_id, flag
+
+def get_player_name(soup):
+    first_name = soup.find('span', class_='truncate min-w-0 fw-light').text
+    last_name = soup.find('span', class_='truncate min-w-0').text
+    return '%s %s' % (first_name, last_name)
 
 def get_exp(soup):
     try:
@@ -77,9 +85,10 @@ def get_exp(soup):
 
 def get_team(soup):
     try:
-        return soup.find('li', class_='last').get_text()
+        team = soup.find('li', class_='truncate min-w-0').text
     except AttributeError:
-        return 'No Team'
+        team = 'None'
+    return team
 
 def insert_into_db(df, table):
     engine = create_engine('mysql+pymysql://', creator=gen_db_conn)
@@ -89,22 +98,24 @@ def insert_into_db(df, table):
 
 def player_stat_scraper(player):
     soup = BeautifulSoup(requests.get(player.get('link', None), timeout=None).content, "html.parser")
-    name = soup.find("h1").get_text().replace('\'', '\\\'') #finding player name
-
-    if name == None:
-        return None
+    name = get_player_name(soup).replace('\'', '\\\'')
+    table_names = soup.find_all('div', class_='Table2__Title')
+    table_names = [i.text.replace(' ', '') for i in table_names]
 
     player_id, flag = find_player_id(name, get_team(soup), get_exp(soup), player.get('cols', None), player.get('index', None))
-
-    for df in pd.read_html(player.get('link', None))[1:]:
-        table_name = df.iloc[0,0].replace(' ', '')
-        df.columns = df.iloc[1]
-        df = df.reindex(df.index.drop([0,1])).iloc[:-1, :]
+    raw_tables = pd.read_html(player.get('link', None))[1:-3]
+    for c, i in enumerate(range(0, len(raw_tables), 4)):
+        table_name = table_names[c].lower()
+        df = pd.concat([raw_tables[i], raw_tables[i+2]], axis=1).iloc[:-1, :]
         df.insert(loc=0, column='player_id', value=player_id)
+        if c == 2:
+            df.loc[:, 'RAT'].replace({'-':0}, inplace=True)
+            df.loc[:, 'AST/TO'].replace({np.inf:0}, inplace=True)
+            df.loc[:, 'STL/TO'].replace({np.inf:0}, inplace=True)
         if flag == True:
             insert_into_db(df, table_name)
         else:
-            insert_into_db(df[df['SEASON'] == '\'18-\'19'], table_name)
+            insert_into_db(df[df['season'] == '2018-19'], table_name)
     return
 
 def create_threads(function, iterable):
@@ -129,6 +140,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 ##for testing
 #player_links = ["http://www.espn.com/nba/player/stats/_/id/2579458/marcus-thornton", "http://www.espn.com/nba/player/stats/_/id/3136776/dangelo-russell"]
 #player_links = ["http://www.espn.com/nba/player/stats/_/id/3136776/dangelo-russell"]

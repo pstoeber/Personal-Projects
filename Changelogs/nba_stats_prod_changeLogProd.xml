@@ -57,14 +57,6 @@
     </changeSet>
 
     <changeSet id="3" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="Player_ID"
-        baseTableName="RegularSeasonAverages"
-        constraintName="fk_RegSeasonAvg"
-        referencedColumnNames="player_id"
-        referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="4" author="Philip">
       <createTable tableName="RegularSeasonTotals">
         <column name="Player_ID" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -75,36 +67,28 @@
         <column name="Team" type="varchar(50)">
           <constraints primaryKey="true" nullable="false"/>
         </column>
-        <column name="FG_M" type="float"></column>
-        <column name="FG_A" type="float"></column>
+        <column name="FG_M" type="int"></column>
+        <column name="FG_A" type="int"></column>
         <column name="FG_PCT" type="float"></column>
-        <column name="3P_M" type="float"></column>
-        <column name="3P_A" type="float"></column>
+        <column name="3P_M" type="int"></column>
+        <column name="3P_A" type="int"></column>
         <column name="3P_PCT" type="float"></column>
-        <column name="FT_M" type="float"></column>
-        <column name="FT_A" type="float"></column>
+        <column name="FT_M" type="int"></column>
+        <column name="FT_A" type="int"></column>
         <column name="FT_PCT" type="float"></column>
-        <column name="OR" type="float"></column>
-        <column name="DR" type="float"></column>
-        <column name="REB" type="float"></column>
-        <column name="AST" type="float"></column>
+        <column name="OR" type="int"></column>
+        <column name="DR" type="int"></column>
+        <column name="REB" type="int"></column>
+        <column name="AST" type="int"></column>
         <column name="BLK" type="float"></column>
         <column name="STL" type="float"></column>
         <column name="PF" type="float"></column>
-        <column name="TO" type="float"></column>
+        <column name="TO" type="int"></column>
         <column name="PTS" type="float"></column>
       </createTable>
     </changeSet>
 
-    <changeSet id="5" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="Player_ID"
-        baseTableName="RegularSeasonTotals"
-        constraintName="fk_RegSeasonTots"
-        referencedColumnNames="player_id"
-        referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="6" author="Philip">
+    <changeSet id="4" author="Philip">
       <createTable tableName="RegularSeasonMiscTotals">
         <column name="Player_ID" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -129,15 +113,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="7" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="Player_ID"
-        baseTableName="RegularSeasonMiscTotals"
-        constraintName="fk_RegSeasonMiscTots"
-        referencedColumnNames="player_id"
-        referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="8" author="Philip">
+    <changeSet id="5" author="Philip">
       <createTable tableName="team_info">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -148,7 +124,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="9" author="Philip">
+    <changeSet id="6" author="Philip">
       <createTable tableName="3pt_pct">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -162,15 +138,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="10" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-        baseTableName="3pt_pct"
-        constraintName="fk_team_id_3p"
-        referencedColumnNames="team_id"
-        referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="11" author="Philip">
+    <changeSet id="7" author="Philip">
       <createTable tableName="fg_pct">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -183,15 +151,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="12" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-        baseTableName="fg_pct"
-        constraintName="fk_team_id_fg"
-        referencedColumnNames="team_id"
-        referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="13" author="Philip">
+    <changeSet id="8" author="Philip">
       <createTable tableName="points">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -205,15 +165,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="14" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-        baseTableName="points"
-        constraintName="fk_team_id_pts"
-        referencedColumnNames="team_id"
-        referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="15" author="Philip">
+    <changeSet id="9" author="Philip">
       <createTable tableName="rebound_pct">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -227,15 +179,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="16" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-        baseTableName="rebound_pct"
-        constraintName="fk_team_id_reb"
-        referencedColumnNames="team_id"
-        referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="17" author="Philip">
+    <changeSet id="10" author="Philip">
       <createTable tableName="turnovers">
         <column name="team_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -248,15 +192,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="18" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-        baseTableName="turnovers"
-        constraintName="fk_team_id_to"
-        referencedColumnNames="team_id"
-        referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="19" author="Philip">
+    <changeSet id="11" author="Philip">
       <createTable tableName="team_standings">
         <column name="team" type="varchar(50)">
           <constraints primaryKey="true" nullable="false"/>
@@ -285,7 +221,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="20" author="Philip">
+    <changeSet id="12" author="Philip">
       <createTable tableName="active_rosters">
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -299,39 +235,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="21" author="Philip">
-      <createIndex catalogName="nba_stats_prod"
-          indexName="team_standings_index"
-          tableName="team_info">
-        <column name="team" type="varchar(50)"/>
-      </createIndex>
-    </changeSet>
-
-    <changeSet id="22" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team"
-          baseTableName="team_standings"
-          constraintName="fk_team_standings_team"
-          referencedColumnNames="team"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="23" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="active_rosters"
-          constraintName="fk_active_rosters_player_id"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="24" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team_id"
-          baseTableName="active_rosters"
-          constraintName="fk_active_rosters_team_id"
-          referencedColumnNames="team_id"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="25" author="Philip">
+    <changeSet id="13" author="Philip">
       <createTable tableName="box_score_map">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -342,28 +246,15 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="26" author="PhiliP">
-      <addForeignKeyConstraint baseColumnNames="away_team"
-          baseTableName="box_score_map"
-          constraintName="fk_away_team_name"
-          referencedColumnNames="team"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="27" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="home_team"
-          baseTableName="box_score_map"
-          constraintName="fk_home_team_name"
-          referencedColumnNames="team"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="28" author="PhiliP">
+    <changeSet id="14" author="PhiliP">
       <createTable tableName="basic_box_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
         </column>
         <column name="player_id" type="int">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="team" type="varchar(50)">
           <constraints primaryKey="true" nullable="false"/>
         </column>
         <column name="minutes_played" type="varchar(50)"></column>
@@ -388,28 +279,15 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="29" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="basic_box_stats"
-          constraintName="fk_game_hash_basic_box_scores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="30" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="basic_box_stats"
-          constraintName="fk_player_id_basic_box_scores"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="31" author="Philip">
+    <changeSet id="15" author="Philip">
       <createTable tableName="advanced_box_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
         </column>
         <column name="player_id" type="int">
+          <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="team" type="varchar(50)">
           <constraints primaryKey="true" nullable="false"/>
         </column>
         <column name="minutes_played" type="varchar(50)"></column>
@@ -430,23 +308,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="32" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="advanced_box_stats"
-          constraintName="fk_game_hash_advanced_box_stats"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="33" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="advanced_box_stats"
-          constraintName="fk_player_id_advance_box_stats"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="34" author="Philip">
+    <changeSet id="16" author="Philip">
       <createView replaceIfExists="true" viewName="box_scores_map_view">
         select game_hash, home_team as team, game_date, 'Home' as home_away
         from box_score_map
@@ -458,7 +320,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="35" author="Philip">
+    <changeSet id="17" author="Philip">
       <createTable tableName="player_team_map">
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -472,23 +334,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="36" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_team_map"
-          constraintName="fk_player_id_map"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="37" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team"
-          baseTableName="player_team_map"
-          constraintName="fk_team_player_map"
-          referencedColumnNames="team"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="38" author="Philip">
+    <changeSet id="18" author="Philip">
       <createTable tableName="game_results">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -498,15 +344,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="39" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="game_results"
-          constraintName="fk_game_hash_results"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="40" author="Philip">
+    <changeSet id="19" author="Philip">
       <createTable tableName="game_date_lookup">
         <column name="day" type="date">
           <constraints primaryKey="true" nullable="false"/>
@@ -515,7 +353,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="41" author="Philip">
+    <changeSet id="20" author="Philip">
       <createTable tableName="team_misc_boxscore_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -536,15 +374,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="42" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="team_misc_boxscore_stats"
-          constraintName="fk_gamehash_misc_boxscores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="43" author="Philip">
+    <changeSet id="21" author="Philip">
       <createTable tableName="team_advanced_boxscore_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -571,15 +401,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="44" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="team_advanced_boxscore_stats"
-          constraintName="fk_gamehash_advancew=d_boxscores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="45" author="Philip">
+    <changeSet id="22" author="Philip">
       <createTable tableName="team_figure4_boxscore_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -600,16 +422,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="46" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="team_figure4_boxscore_stats"
-          constraintName="fk_gamehash_fig4_boxscores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-
-    <changeSet id="47" author="Philip">
+    <changeSet id="23" author="Philip">
       <createTable tableName="team_scoring_boxscore_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -637,15 +450,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="48" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="team_scoring_boxscore_stats"
-          constraintName="fk_gamehash_scoring_boxscores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="49" author="Philip">
+    <changeSet id="24" author="Philip">
       <createTable tableName="team_traditional_boxscore_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -677,15 +482,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="50" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="team_traditional_boxscore_stats"
-          constraintName="fk_gamehash_traditional_boxscores"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="51" author="Philip">
+    <changeSet id="25" author="Philip">
       <createTable tableName="injured_players">
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -695,15 +492,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="52" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="injured_players"
-          constraintName="player_id_injuries_fk"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="53" author="Philip">
+    <changeSet id="55" author="Philip">
       <createTable tableName="player_prediction_results">
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
@@ -719,23 +508,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="54" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_prediction_results"
-          constraintName="player_prediction_results_player_id_fk"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="55" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="team"
-          baseTableName="player_prediction_results"
-          constraintName="player_prediction_results_team_fk"
-          referencedColumnNames="team"
-          referencedTableName="team_info"/>
-    </changeSet>
-
-    <changeSet id="56" author="Philip">
+    <changeSet id="26" author="Philip">
       <createTable tableName="win_probability_results">
         <column name="lose_probability" type="float"></column>
         <column name="win_probability" type="float"></column>
@@ -748,7 +521,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="57" author="Philip">
+    <changeSet id="27" author="Philip">
       <createView replaceIfExists="true" viewName="player_predictions_comparison_view">
         select pred.player_id,
                pred.name,
@@ -765,7 +538,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="58" author="Philip">
+    <changeSet id="28" author="Philip">
       <createView replaceIfExists="true" viewName="win_predictions_comparison_view">
         select map.game_hash,
                pred.team,
@@ -789,7 +562,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="59" author="Philip">
+    <changeSet id="29" author="Philip">
       <createTable tableName="total_points_predictions">
         <column name="team" type="varchar(50)">
           <constraints primaryKey="true" nullable="false"/>
@@ -802,7 +575,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="60" author="Philip">
+    <changeSet id="30" author="Philip">
       <createTable tableName="pipeline_auditlog">
         <column name="pipeline_id" type="varchar(255)"></column>
         <column name="date" type="datetime"></column>
@@ -810,7 +583,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="61" author="Philip">
+    <changeSet id="31" author="Philip">
       <createView replaceIfExists="true"  viewName="vis_player_points_comparision">
         select pred.player_id,
                pred.name,
@@ -835,7 +608,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="62" author="Philip">
+    <changeSet id="32" author="Philip">
       <createView replaceIfExists="true" viewName="total_points_prediction_comparison">
         select tp.team,
                tp.game_date,
@@ -852,7 +625,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="63" author="Philip">
+    <changeSet id="33" author="Philip">
       <createView replaceIfExists="true" viewName="vis_total_points_comparision">
         select tp.team,
                tp.game_date,
@@ -882,7 +655,7 @@
       </createView>
     </changeSet>
 
-    <changeSet id="64" author="Philip">
+    <changeSet id="34" author="Philip">
       <createTable tableName="lasso_alphas">
         <column name="alpha" type="float"></column>
         <column name="r_squared" type="float"></column>
@@ -891,7 +664,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="65" author="Philip">
+    <changeSet id="35" author="Philip">
       <createTable tableName="c_values">
         <column name="C_value" type="float"></column>
         <column name="score" type="float"></column>
@@ -900,7 +673,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="66" author="Philip">
+    <changeSet id="36" author="Philip">
       <createTable tableName="player_misc_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -908,6 +681,7 @@
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
+        <column name="team" type="varchar(50)"></column>
         <column name="pts_off_to" type="int"></column>
         <column name="second_chance_pts" type="int"></column>
         <column name="fbps" type="int"></column>
@@ -923,23 +697,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="67" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_misc_stats"
-          constraintName="player_misc_stats_player_id_fk"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="68" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="player_misc_stats"
-          constraintName="player_misc_stats_game_hash_fk"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="69" author="Philip">
+    <changeSet id="37" author="Philip">
       <createTable tableName="player_scoring_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -947,6 +705,7 @@
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
+        <column name="team" type="varchar(50)"></column>
         <column name="pct_2pt_fga" type="float"></column>
         <column name="pct_3pt_fga" type="float"></column>
         <column name="pct_pt_2pt" type="float"></column>
@@ -965,23 +724,7 @@
       </createTable>
     </changeSet>
 
-    <changeSet id="70" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_scoring_stats"
-          constraintName="player_scoring_stats_player_id_fk"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="71" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="player_scoring_stats"
-          constraintName="player_scoring_stats_game_hash_fk"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
-    </changeSet>
-
-    <changeSet id="72" author="Philip">
+    <changeSet id="38" author="Philip">
       <createTable tableName="player_usage_stats">
         <column name="game_hash" type="varchar(200)">
           <constraints primaryKey="true" nullable="false"/>
@@ -989,6 +732,7 @@
         <column name="player_id" type="int">
           <constraints primaryKey="true" nullable="false"/>
         </column>
+        <column name="team" type="varchar(50)"></column>
         <column name="usage_pct" type="float"></column>
         <column name="pct_fgm" type="float"></column>
         <column name="pct_fga" type="float"></column>
@@ -1008,22 +752,6 @@
         <column name="pct_pfd" type="float"></column>
         <column name="pct_pts" type="float"></column>
       </createTable>
-    </changeSet>
-
-    <changeSet id="73" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="player_id"
-          baseTableName="player_usage_stats"
-          constraintName="player_usage_stats_player_id_fk"
-          referencedColumnNames="player_id"
-          referencedTableName="player_info"/>
-    </changeSet>
-
-    <changeSet id="74" author="Philip">
-      <addForeignKeyConstraint baseColumnNames="game_hash"
-          baseTableName="player_usage_stats"
-          constraintName="player_usage_stats_game_hash_fk"
-          referencedColumnNames="game_hash"
-          referencedTableName="box_score_map"/>
     </changeSet>
 
 </databaseChangeLog>

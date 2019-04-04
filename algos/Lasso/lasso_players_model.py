@@ -50,7 +50,7 @@ def time_convert(minutes_played):
     time_list = minutes_played.split(':')
     try:
         return ((int(time_list[0]) * 60) + int(time_list[1]))
-    except ValueError:
+    except ValueError and IndexError:
         return 0
 
 def days_of_rest(df):
@@ -103,7 +103,6 @@ def main(arg1, arg2, arg3):
         train_df = gen_df(connection, v)
         train_df['minutes_played'] = train_df.loc[:, 'minutes_played'].apply(time_convert)
         train_df = days_of_rest(train_df)
-
         test_query = gen_cmd_str(extract_file(arg3))
         tests = gen_test_dfs(connection, schedule.loc[:, k].tolist(), test_query)
         fit_lasso_model(train_df[train_df.loc[:, 'minutes_played'] >= 360], tests, alphas[c])

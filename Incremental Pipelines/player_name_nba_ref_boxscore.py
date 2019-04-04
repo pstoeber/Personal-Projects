@@ -41,8 +41,8 @@ def update_names(connection):
                         'Cedric Henderson':'Cedric E. Henderson',
                         'Jeffrey Sheppard':'Jeff Sheppard',
                         'J.R. Smith':'JR Smith',
-                        'Kelly Oubre':'Kelley Oubre Jr.',
-                        'Roger Mason':' Roger Mason Jr.',
+                        'Kelly Oubre.':'Kelley Oubre Jr.',
+                        'Roger Mason':'Roger Mason Jr.',
                         'Patrick Ewing':'Patrick Ewing Jr.',
                         'Glen Rice':'Glen Rice Jr.',
                         'Tim Hardaway':'Tim Hardaway Jr.',
@@ -96,12 +96,16 @@ def update_names(connection):
                         'Robert Williams III':'Robert Williams',
                         'Walter Lemon Jr.':'Walt Lemon Jr.',
                         'JJ O\'Brien':'J.J. O\'Brien',
-                        'Vincent Hunter':'Vince Hunter'}
+                        'Vincent Hunter':'Vince Hunter',
+                        'C.J. Miles':'CJ Miles',
+                        'JJ Hickson':'J.J. Hickson',
+                        'Kelly Oubre Jr.':'Kelley Oubre Jr.',
+                        'CJ Wilcox':'C.J. Wilcox'}
 
     for k, v in update_name_dict.items():
         for c, table in enumerate(table_list):
             if c < 2:
-                field = ' name'
+                field = 'name'
             else:
                 field = 'player'
             update = 'update {} set {} = "{}" where {} = "{}"'.format(table, field, v, field, k)

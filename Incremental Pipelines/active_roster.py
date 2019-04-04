@@ -15,6 +15,7 @@ import logging
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
+from multiprocessing import set_start_method
 from sqlalchemy import create_engine
 
 def create_threads():
@@ -39,6 +40,7 @@ def get_rosters(link):
     team = soup.find("h1", class_="headline__h1 dib").get_text().split()[:-1]
 
     roster_df = pd.read_html(link)[-1]
+    roster_df.iloc[:, 1] = roster_df.iloc[:, 1].apply(lambda x: re.search(r'\D+', x).group(0))
     roster_df.insert(loc=2, column='team', value=' '.join([i for i in team]))
     return roster_df.iloc[:, 1:3]
 
@@ -82,6 +84,7 @@ def main(arg1, arg2):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Refreshing active_rosters table {}'.format(str(datetime.datetime.now())))
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
+    set_start_method('forkserver', force=True)
 
     rosters_df = pd.DataFrame()
     results = create_threads()

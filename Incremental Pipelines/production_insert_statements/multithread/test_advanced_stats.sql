@@ -23,7 +23,7 @@ inner join(
 
      select p.player_id, name, pm.team, lu.day
      from nba_stats.player_info as p
-     inner join nba_stats.player_team_map_view as pm on p.player_id = pm.player_id
+     inner join nba_stats.player_team_map as pm on p.player_id = pm.player_id
      inner join nba_stats.game_date_lookup as lu on pm.season = lu.season
 
 ) as p on a.name = p.name and

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Feb 19 20:53:52 EST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0169-089b-f4ce-00001caf1200 
+on database directory /Users/Philip/Documents/NBA prediction script/Pipeline Development/metastore_db with class loader sun.misc.Launcher$AppClassLoader@36aa7bc2 
+Loaded from file:/opt/apache-spark/spark-2.4.0-bin-hadoop2.7/jars/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_201-b09
+user.dir=/Users/Philip/Documents/NBA prediction script/Pipeline Development
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

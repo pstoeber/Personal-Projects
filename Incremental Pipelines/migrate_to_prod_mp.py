@@ -57,7 +57,7 @@ def gen_threads(files, flag):
     return
 
 def main(arg1, arg2):
-    logging.basicConfig(filename='algo_refresh_log.log', filemode='w', level=logging.INFO)
+    logging.basicConfig(filename='algo_refresh_log.log', filemode='a', level=logging.INFO)
     logging.info('Algo refresh intialized {stamp}'.format(stamp=gen_timestamp()))
     set_start_method('forkserver', force=True)
     primary_files = find_files(arg1)

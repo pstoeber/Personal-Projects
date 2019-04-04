@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="Player_ID"
+        baseTableName="RegularSeasonAverages"
+        constraintName="fk_RegSeasonAvg"
+        referencedColumnNames="player_id"
+        referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="2" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="Player_ID"
+        baseTableName="RegularSeasonTotals"
+        constraintName="fk_RegSeasonTots"
+        referencedColumnNames="player_id"
+        referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="3" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="Player_ID"
+        baseTableName="RegularSeasonMiscTotals"
+        constraintName="fk_RegSeasonMiscTots"
+        referencedColumnNames="player_id"
+        referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="4" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+        baseTableName="3pt_pct"
+        constraintName="fk_team_id_3p"
+        referencedColumnNames="team_id"
+        referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="5" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+        baseTableName="fg_pct"
+        constraintName="fk_team_id_fg"
+        referencedColumnNames="team_id"
+        referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="6" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+        baseTableName="points"
+        constraintName="fk_team_id_pts"
+        referencedColumnNames="team_id"
+        referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="7" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+        baseTableName="rebound_pct"
+        constraintName="fk_team_id_reb"
+        referencedColumnNames="team_id"
+        referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="8" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+        baseTableName="turnovers"
+        constraintName="fk_team_id_to"
+        referencedColumnNames="team_id"
+        referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="9" author="Philip">
+      <createIndex catalogName="nba_stats_prod"
+          indexName="team_standings_index"
+          tableName="team_info">
+        <column name="team" type="varchar(50)"/>
+      </createIndex>
+    </changeSet>
+
+    <changeSet id="10" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team"
+          baseTableName="team_standings"
+          constraintName="fk_team_standings_team"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="11" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="active_rosters"
+          constraintName="fk_active_rosters_player_id"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="12" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team_id"
+          baseTableName="active_rosters"
+          constraintName="fk_active_rosters_team_id"
+          referencedColumnNames="team_id"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="13" author="PhiliP">
+      <addForeignKeyConstraint baseColumnNames="away_team"
+          baseTableName="box_score_map"
+          constraintName="fk_away_team_name"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="14" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="home_team"
+          baseTableName="box_score_map"
+          constraintName="fk_home_team_name"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="15" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="basic_box_stats"
+          constraintName="fk_game_hash_basic_box_scores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="16" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="basic_box_stats"
+          constraintName="fk_player_id_basic_box_scores"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="17" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team"
+          baseTableName="basic_box_stats"
+          constraintName="fk_team_basic_box_scores"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="18" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="player_team_map"
+          constraintName="fk_player_id_map"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="19" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team"
+          baseTableName="player_team_map"
+          constraintName="fk_team_player_map"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="20" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="game_results"
+          constraintName="fk_game_hash_results"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="21" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="team_misc_boxscore_stats"
+          constraintName="fk_gamehash_misc_boxscores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="22" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="team_advanced_boxscore_stats"
+          constraintName="fk_gamehash_advancew=d_boxscores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="23" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="team_figure4_boxscore_stats"
+          constraintName="fk_gamehash_fig4_boxscores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="24" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="team_scoring_boxscore_stats"
+          constraintName="fk_gamehash_scoring_boxscores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="25" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="team_traditional_boxscore_stats"
+          constraintName="fk_gamehash_traditional_boxscores"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="26" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="injured_players"
+          constraintName="player_id_injuries_fk"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="27" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="player_prediction_results"
+          constraintName="player_prediction_results_player_id_fk"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="28" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="team"
+          baseTableName="player_prediction_results"
+          constraintName="player_prediction_results_team_fk"
+          referencedColumnNames="team"
+          referencedTableName="team_info"/>
+    </changeSet>
+
+    <changeSet id="29" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="player_misc_stats"
+          constraintName="player_misc_stats_player_id_fk"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="30" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="player_misc_stats"
+          constraintName="player_misc_stats_game_hash_fk"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="31" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="player_scoring_stats"
+          constraintName="player_scoring_stats_player_id_fk"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="32" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="player_scoring_stats"
+          constraintName="player_scoring_stats_game_hash_fk"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+    <changeSet id="33" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="player_id"
+          baseTableName="player_usage_stats"
+          constraintName="player_usage_stats_player_id_fk"
+          referencedColumnNames="player_id"
+          referencedTableName="player_info"/>
+    </changeSet>
+
+    <changeSet id="34" author="Philip">
+      <addForeignKeyConstraint baseColumnNames="game_hash"
+          baseTableName="player_usage_stats"
+          constraintName="player_usage_stats_game_hash_fk"
+          referencedColumnNames="game_hash"
+          referencedTableName="box_score_map"/>
+    </changeSet>
+
+  </databaseChangeLog>

@@ -14,6 +14,7 @@ import logging
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
 from multiprocessing.dummy import Pool as ThreadPool
+from multiprocessing import set_start_method
 from sqlalchemy import create_engine
 
 def create_threads():
@@ -97,6 +98,7 @@ def main(arg):
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Refreshing injured_players table {}'.format(str(datetime.datetime.now())))
     connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats', autocommit=True)
+    set_start_method('forkserver', force=True)
 
     results = create_threads()
     players = np.empty(shape=[0, 2])
