@@ -19,13 +19,27 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 
+def get_year():
+    today = datetime.datetime.today().date()
+    start_season = datetime.datetime.strptime('2018-10-01', '%Y-%m-%d').date()
+    new_year = datetime.datetime.strptime('2019-01-01', '%Y-%m-%d').date()
+    end_season = datetime.datetime.strptime('2019-05-30', '%Y-%m-%d').date()
+
+    if today > start_season and today < new_year:
+        return str(today.year) + '-' + str(today.year + 1)[2:]
+    elif today >= new_year and today < end_season:
+        return str(today.year - 1) + '-' + str(today.year)[2:]
+
 def connect_to_staging():
     return pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
 
-def find_max_date(conn):
-    exe = conn.cursor()
-    exe.execute('select max(game_date) from nba_stats.player_misc_stats') #change to new table once in place
-    return exe.fetchall()[0][0]
+def find_max_date():
+    conn = connect_to_staging()
+    cursor = conn.cursor()
+    cursor.execute('select max(game_date) from nba_stats.player_misc_stats') #change to new table once in place
+    results = cursor.fetchall()[0][0]
+    cursor.close()
+    return results
 
 def gen_pools(content, driver):
     pool = Pool(3)
@@ -45,6 +59,8 @@ def stat_scraper(link_list, driver):
         df = pd.read_html(content)[0]
         f_df = format_matchup(df)
         f_df['Game Date']  = f_df.loc[:, 'Game Date'].apply(convert_date)
+        f_df['source_link'] = browser.current_url
+        f_df['created_at'] = datetime.datetime.now()
         insert_into_database(f_df[f_df['Game Date'] > link_list[2]], link_list[1])
         if f_df['Game Date'].min() <= link_list[2]:
             break
@@ -91,10 +107,9 @@ def parse_teams(row):
     return_row = []
     if match_up[1] == 'vs.':
         return_row = [i for i in [row.loc['Player'], row.loc['Team'], match_up[0], match_up[2], row.loc['Game Date']]]
-        return np.array(return_row).reshape(1,5)
     elif match_up[1] == '@':
         return_row = [i for i in [row.loc['Player'], row.loc['Team'], match_up[2], match_up[0], row.loc['Game Date']]]
-        return np.array(return_row).reshape(1,5)
+    return np.array(return_row).reshape(1,5)
 
 def convert_date(date_str):
     return datetime.datetime.strptime(date_str, '%m/%d/%Y').date()
@@ -107,10 +122,11 @@ def insert_into_database(df, table):
 
 def main():
     driver = '/Users/Philip/Downloads/chromedriver 2'
-    max_date = find_max_date(connect_to_staging())
-    content = [['https://stats.nba.com/players/boxscores-misc', 'player_misc_stats', max_date],
-               ['https://stats.nba.com/players/boxscores-scoring', 'player_scoring_stats', max_date],
-               ['https://stats.nba.com/players/boxscores-usage', 'player_usage_stats', max_date]]
+    year = get_year()
+    max_date = find_max_date()
+    content = [['https://stats.nba.com/players/boxscores-misc/?Season={year}&SeasonType=Regular%20Season'.format(year=year), 'player_misc_stats', max_date],
+               ['https://stats.nba.com/players/boxscores-scoring/?Season={year}&SeasonType=Regular%20Season'.format(year=year), 'player_scoring_stats', max_date],
+               ['https://stats.nba.com/players/boxscores-usage?Season={year}&SeasonType=Regular%20Season'.format(year=year), 'player_usage_stats', max_date]]
     gen_pools(content, driver)
 
 if __name__ == '__main__':

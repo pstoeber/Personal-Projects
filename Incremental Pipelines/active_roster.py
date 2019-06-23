@@ -42,7 +42,10 @@ def get_rosters(link):
     roster_df = pd.read_html(link)[-1]
     roster_df.iloc[:, 1] = roster_df.iloc[:, 1].apply(lambda x: re.search(r'\D+', x).group(0))
     roster_df.insert(loc=2, column='team', value=' '.join([i for i in team]))
-    return roster_df.iloc[:, 1:3]
+    df = roster_df.iloc[:, 1:3].copy()
+    df['source_link'] = link
+    df['created_at'] = datetime.datetime.now()
+    return df
 
 def truncate_table(connection):
     truncate_table_statement = 'truncate table active_rosters'
@@ -86,17 +89,17 @@ def main(arg1, arg2):
     myConnection = pymysql.connect(host="localhost", user="root", password="Sk1ttles", db="nba_stats", autocommit="true")
     set_start_method('forkserver', force=True)
 
-    rosters_df = pd.DataFrame()
     results = create_threads()
-    for roster in results:
-        rosters_df = pd.concat([rosters_df, roster])
-
+    rosters_df = pd.concat(results)
     truncate_table(myConnection)
-    rosters_df['player_id'] = rosters_df.loc[:, 'Name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
+    player_ids = rosters_df.loc[:, 'Name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg1)), myConnection))
+    rosters_df.insert(loc=0, column='player_id', value=player_ids)
     team_info_df = gen_df(myConnection, gen_cmd_str(extract_command(arg2)))
 
-    active_rosters_df = pd.merge(rosters_df[rosters_df['player_id'] != 0], team_info_df, how='inner', left_on='team', right_on='team')
-    insert_into_database(myConnection, active_rosters_df)
+    active_rosters_df = pd.merge(rosters_df[rosters_df['player_id'] != 0], team_info_df, how='inner', on='team')
+    sequence = ['player_id', 'Name', 'team_id', 'team', 'conference', 'source_link', 'created_at']
+    input_df = active_rosters_df.reindex(columns=sequence)
+    insert_into_database(myConnection, input_df)
     logging.info('Active_rosters table refresh complete {}'.format(str(datetime.datetime.now())))
 
 if __name__ == '__main__':

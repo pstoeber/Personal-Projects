@@ -1,16 +1,6 @@
-INFO:root:Attempting to connect to nba_stats_staging database 2019-04-04 07:38:27.405964
-INFO:root:Successfully connected to nba_stats_staging 2019-04-04 07:38:27.442141
-INFO:root:Backing up nba_stats_backup database 2019-04-04 07:38:27.442305
-INFO:root:Backing up complete 2019-04-04 07:38:38.418735
-INFO:root:Compressing backup of nba_stats_backup database 2019-04-04 07:38:38.419029
-INFO:root:Compression complete 2019-04-04 07:39:00.858055
-INFO:root:Refreshing active_rosters table 2019-04-04 07:39:00.875568
-INFO:root:Active_rosters table refresh complete 2019-04-04 07:39:06.686522
-INFO:root:Refreshing injured_players table 2019-04-04 07:39:06.688091
-INFO:root:Injured_players table refresh complete 2019-04-04 07:39:10.766416
-INFO:root:Beginning ESPN players incrementals pipeline 2019-04-04 07:39:10.768837
-INFO:root:ESPN players incrementals pipeline completed successfully 2019-04-04 07:40:24.797386
-INFO:root:Beginning ESPN team incrementials pipeline 2019-04-04 07:40:24.803800
-INFO:root:Beginning ESPN team standings pipeline 2019-04-04 07:40:25.582384
-INFO:root:ESPN team standings pipeline completed successfully 2019-04-04 07:40:26.617928
-INFO:root:Beginning NBA Reference players incrementals pipeline 2019-04-04 07:40:26.620060
+INFO:root:Attempting to connect to nba_stats_staging database 2019-06-09 16:14:25.705341
+INFO:root:Successfully connected to nba_stats_staging 2019-06-09 16:14:25.749314
+INFO:root:Dropping nba_stats_prod database 2019-06-09 16:14:25.749506
+INFO:root:nba_stats_prod schema re-created 2019-06-09 16:14:25.930554
+INFO:root:Calling liquibase for nba_stats_prod refresh 2019-06-09 16:14:25.930689
+INFO:root:Incrementials Pipeline completed 2019-06-09 16:14:29.501842

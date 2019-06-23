@@ -3,7 +3,7 @@ import logging
 import datetime
 
 def update_names(connection):
-    table_list = ['basic_box_stats', 'advanced_box_stats', 'player_usage_stats', 'player_misc_stats', 'player_scoring_stats']
+    table_list = ['basic_box_stats', 'advanced_box_stats'] #, 'player_usage_stats', 'player_misc_stats', 'player_scoring_stats']
     update_name_dict = {'James Webb':'James Webb III',
                         'James Ennis':'James Ennis III',
                         'Wade Baldwin':'Wade Baldwin IV',
@@ -41,7 +41,7 @@ def update_names(connection):
                         'Cedric Henderson':'Cedric E. Henderson',
                         'Jeffrey Sheppard':'Jeff Sheppard',
                         'J.R. Smith':'JR Smith',
-                        'Kelly Oubre.':'Kelley Oubre Jr.',
+                        'Kelly Oubre':'Kelly Oubre Jr.',
                         'Roger Mason':'Roger Mason Jr.',
                         'Patrick Ewing':'Patrick Ewing Jr.',
                         'Glen Rice':'Glen Rice Jr.',
@@ -98,7 +98,7 @@ def update_names(connection):
                         'JJ O\'Brien':'J.J. O\'Brien',
                         'Vincent Hunter':'Vince Hunter',
                         'C.J. Miles':'CJ Miles',
-                        'JJ Hickson':'J.J. Hickson',
+                        'J.J. Hickson':'JJ Hickson',
                         'Kelly Oubre Jr.':'Kelley Oubre Jr.',
                         'CJ Wilcox':'C.J. Wilcox'}
 

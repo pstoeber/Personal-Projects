@@ -47,10 +47,12 @@ def extract_injured_players(link):
         status = i.findAll('span', class_='TextStatus TextStatus--red fw-medium ml2')
         bio = i.findAll('div', class_='clr-gray-04 pt3 n8')
         for p, s, b in zip(players, status, bio):
-            if s.text in ['Out', 'Suspension']:
-                injuries.append([p.text, team])
-            elif check_update(b.text):
-                injuries.append([p.text, team])
+            if s.text in ['Out', 'Suspension'] or check_update(b.text):
+                injuries.append([p.text, team, link, datetime.datetime.now()])
+            #elif check_update(b.text):
+            #    injuries.append([p.text, team])
+            else:
+                pass
     return np.array(injuries)
 
 def check_update(player_update):
@@ -101,13 +103,13 @@ def main(arg):
     set_start_method('forkserver', force=True)
 
     results = create_threads()
-    players = np.empty(shape=[0, 2])
+    players = np.empty(shape=[0, 4])
     for result in results:
         if result.size > 0:
             players = np.concatenate([players, result])
 
     truncate_table(connection)
-    injured_players_df = pd.DataFrame(players, index=None, columns=['name', 'team'])
+    injured_players_df = pd.DataFrame(players, index=None, columns=['name', 'team', 'source_link', 'created_at'])
     injured_players_df['player_id'] = injured_players_df.loc[:, 'name'].astype(str).apply(lambda x: get_player_id(x, gen_cmd_str(extract_command(arg)), connection))
     insert_into_database(connection, injured_players_df[injured_players_df['player_id'] != 0])
     logging.info('Injured_players table refresh complete {}'.format(str(datetime.datetime.now())))

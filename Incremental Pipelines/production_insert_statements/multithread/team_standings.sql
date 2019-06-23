@@ -17,6 +17,8 @@ insert into nba_stats_prod.team_standings (select distinct `stand`.`team`       
                                                     `stand`.`OPP_PPG`                                            AS `opp_ppg`,
                                                     `stand`.`DIFF`                                               AS `diff`,
                                                     `stand`.`STRK`                                               AS `strk`,
-                                                    `stand`.`L10`                                                AS `l10`
+                                                    `stand`.`L10`                                                AS `l10`,
+                                                    `stand`.source_link,
+                                                    `stand`.created_at
                                     from (`nba_stats`.`team_standings` `stand`
                                            join `nba_stats`.`team_info` `team` on ((`stand`.`team` = `team`.`TEAM`))));

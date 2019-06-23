@@ -13,14 +13,14 @@ from sqlalchemy import create_engine
 def season_link_scraper(today):
     start_season = datetime.datetime.strptime('2018-10-01', '%Y-%m-%d').date()
     new_year = datetime.datetime.strptime('2019-01-01', '%Y-%m-%d').date()
-    end_season = datetime.datetime.strptime('2019-05-01', '%Y-%m-%d').date()
+    end_season = datetime.datetime.strptime('2019-05-30', '%Y-%m-%d').date()
 
     if today > start_season and today < new_year:
         return today.year + 1
     elif today >= new_year and today < end_season:
         return today.year
 
-def team_stat_scraper(team_link, year, conn):
+def team_stat_scraper(team_link, year):
     soup = BeautifulSoup(requests.get(team_link).content, "html.parser")
     header_list = get_headers(soup)
     table_names = get_table_names(header_list.pop(0).split())
@@ -28,7 +28,7 @@ def team_stat_scraper(team_link, year, conn):
 
     season_totals_df = get_stats(soup)
     slice_list = [[0,1,2,3], [0,4,5], [0,6,7,8], [0,9,10,11], [0,12,13]]
-    return gen_tables(season_totals_df, table_names, header_list, slice_list, year)
+    return gen_tables(season_totals_df, table_names, header_list, slice_list, year, team_link)
 
 def get_headers(soup):
     header_list= []
@@ -63,12 +63,14 @@ def check_team(row):
         row.pop(1)
     return row
 
-def gen_tables(df, table_names, header_list, slice_list, year):
+def gen_tables(df, table_names, header_list, slice_list, year, link):
     table_dict = {}
     for slice, name in zip(slice_list, table_names[1:]):
-        table = df.iloc[:, slice]
+        table = df.iloc[:, slice].copy()
         table.columns=list(itemgetter(*slice)(header_list))
         table.insert(loc=1, column='year', value=year)
+        table['source_link'] = link
+        table['created_at'] = datetime.datetime.now()
         table_dict[name] = table
     return table_dict
 
@@ -87,6 +89,8 @@ def sql_execute(conn, sql):
 def insert_into_database(df, table):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root", pw="Sk1ttles", db="nba_stats_staging"))
     df.to_sql(con=engine, name=table, if_exists='replace', index=False)
+    engine.dispose()
+    return
 
 def main():
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
@@ -96,7 +100,7 @@ def main():
 
     team_link = "http://www.espn.com/nba/statistics/team/_/stat/team-comparison-per-game/sort/avgPoints/year/" + str(year) + "/seasontype/2"
     team_id_dict = {}
-    for c, (k, v) in enumerate(team_stat_scraper(team_link, year, myConnection).items()):
+    for c, (k, v) in enumerate(team_stat_scraper(team_link, year).items()):
         if c == 0:
             team_id_dict = get_teams_id(myConnection, v.loc[:, 'TEAM'].tolist())
         v['TEAM'] = v.loc[:, 'TEAM'].apply(lambda x: team_id_dict[x])

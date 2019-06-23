@@ -1,22 +1,24 @@
 insert into nba_stats_prod.player_scoring_stats(
   select b.game_hash,
          id.player_id,
-         score.team,
-         score.`%FGA2PT`,
-         score.`%FGA3PT`,
-         score.`%PTS2PT`,
-         score.`%PTS2PT MR`,
-         score.`%PTS3PT`,
-         score.`%PTSFBPs`,
-         score.`%PTSFT`,
-         score.`%PTSOffTO`,
-         score.`%PTSPITP`,
-         score.`2FGM%AST`,
-         score.`2FGM%UAST`,
-         score.`3FGM%AST`,
-         score.`3FGM%UAST`,
-         score.`FGM%AST`,
-         score.`FGM%UAST`
+         t.team_id,
+         score.`%FGA2PT` / 100,
+         score.`%FGA3PT` / 100,
+         score.`%PTS2PT` / 100,
+         score.`%PTS2PT MR` / 100,
+         score.`%PTS3PT` / 100,
+         score.`%PTSFBPs` / 100,
+         score.`%PTSFT` / 100,
+         score.`%PTSOffTO` / 100,
+         score.`%PTSPITP` / 100,
+         score.`2FGM%AST` / 100,
+         score.`2FGM%UAST` / 100,
+         score.`3FGM%AST` / 100,
+         score.`3FGM%UAST` / 100,
+         score.`FGM%AST` / 100,
+         score.`FGM%UAST` / 100,
+         score.source_link,
+         score.created_at
   from(
 
         select box_score_map_view.game_hash,
@@ -50,4 +52,5 @@ insert into nba_stats_prod.player_scoring_stats(
   inner join nba_stats.player_scoring_stats as score on id.team = score.team and
                                                         id.NAME = score.name and
                                                         id.game_date = score.game_date
+  inner join nba_stats.team_info as t on score.team = t.team
 );

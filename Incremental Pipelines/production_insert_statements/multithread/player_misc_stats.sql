@@ -1,7 +1,7 @@
 insert into nba_stats_prod.player_misc_stats(
   select b.game_hash,
          id.player_id,
-         misc.team,
+         t.team_id,
          misc.PTS_OFF_TO,
          misc.2nd_PTS,
          misc.FBPs,
@@ -13,7 +13,9 @@ insert into nba_stats_prod.player_misc_stats(
          misc.BLK,
          misc.BLKA,
          misc.PF,
-         misc.PFD
+         misc.PFD,
+         misc.source_link,
+         misc.created_at
   from(
 
     select box_score_map_view.game_hash,
@@ -46,4 +48,5 @@ insert into nba_stats_prod.player_misc_stats(
 
   inner join nba_stats.player_misc_stats as misc on id.team = misc.team and
                                                     id.NAME = misc.name and
-                                                    id.game_date = misc.game_date);
+                                                    id.game_date = misc.game_date
+  inner join nba_stats.team_info as t on misc.team = t.team);

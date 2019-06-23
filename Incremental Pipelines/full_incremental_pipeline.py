@@ -3,7 +3,7 @@ Script to wrap all incremental pipelines together
 
 command line call:
 
-python3 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql sql\ ddl/player_team_map.sql production_insert_statements/primary_queries production_insert_statements/multithread
+python3 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql sql\ ddl/player_team_map.sql
 """
 
 import subprocess
@@ -14,6 +14,10 @@ import shutil
 import datetime
 import logging
 import hashlib
+import subprocess
+import numpy as np
+import pandas as pd
+#import boto3
 import nba_stats_team_boxscores
 import box_score_nba_ref_incrementals
 import nba_espn_incrementals_mp
@@ -28,10 +32,13 @@ import date_lookup_table
 import active_roster
 import injured_players
 import nba_stats_player_boxscores_inc
-import migrate_to_prod_mp
+from sqlalchemy import create_engine
 
 def gen_time_stamp():
     return str(datetime.datetime.now())
+
+def gen_db_conn():
+    return pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
 
 def back_up_db(out_file):
     logging.info('Backing up nba_stats_backup database {}'.format(gen_time_stamp()))
@@ -65,11 +72,18 @@ def espn_delete_max_season(conn):
                   'TURNOVERS']
     for c, table in enumerate(table_list):
         field = 'season'
-        if c > 3:
-            field = 'year'
         delete = 'delete from nba_stats.{} where {} = 2019'.format(table, field)
         sql_execute(conn, delete)
     logging.info('Deletion from ESPN tables complete {}'.format(gen_time_stamp()))
+    return
+
+def clean_espn_table(table, conn):
+    engine = create_engine('mysql+pymysql://', creator=gen_db_conn)
+    sql = 'select * from nba_stats_staging.{table}'.format(table=table)
+    df = pd.read_sql(sql=sql, con=conn)
+    df.drop_duplicates(subset=['player_id', 'season', 'Team'], keep='last', inplace=True)
+    df.to_sql(con=engine, schema='nba_stats_staging', name=table, if_exists='replace', index=False)
+    engine.dispose()
     return
 
 def insert_into_nba_stats(conn):
@@ -78,6 +92,11 @@ def insert_into_nba_stats(conn):
     tables = sql_execute(conn, get_tables)
 
     for table in tables:
+        if table[0] in ['regularseasonaverages', 'regularseasonmisctotals', 'regularseasontotals']:
+            clean_espn_table(table[0], conn)
+        else:
+            pass
+
         insert = 'insert into nba_stats.{} (select * from nba_stats_staging.{})'.format(table[0], table[0])
         sql_execute(conn, insert)
     logging.info('Insert completed {}'.format(gen_time_stamp()))
@@ -117,7 +136,7 @@ def liquibase_call(file):
     os.system('''/usr/local/bin/liquibase --driver=com.mysql.jdbc.Driver \
                  --classpath="/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar" \
                  --changeLogFile={file} \
-                 --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&amp;useSSL=false" \
+                 --url="jdbc:mysql://localhost:3306/nba_stats_prod?autoReconnect=true&useSSL=false" \
                  --username=root \
                  --password=Sk1ttles \
                  update'''.format(file=file))
@@ -129,36 +148,41 @@ def sql_execute(conn, sql):
     exe.execute(sql)
     return exe.fetchall()
 
+def load_db(jar):
+    subprocess.Popen(['spark-submit', '--jars', jar, 'production_loader.py']).wait()
+    return
+
 if __name__ == '__main__':
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='w', level=logging.INFO)
     logging.info('Attempting to connect to nba_stats_staging database {}'.format(gen_time_stamp()))
-    connection = pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
+    connection = gen_db_conn()
     logging.info('Successfully connected to nba_stats_staging {}'.format(gen_time_stamp()))
+    jar = '/Users/Philip/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar'
     out_file = '/Users/Philip/Documents/NBA Database Backups/nba_stats_{}.sql'.format(str(datetime.date.today()))
-    desc = 'full incremental pipeline run'
+    desc = 'Spark Test On Prod'
 
-    back_up_db(out_file)
-    compress_backup(out_file)
-    clean_up(out_file)
-    active_roster.main(sys.argv[1], sys.argv[2])
-    injured_players.main(sys.argv[1])
-    nba_espn_incrementals_mp.main()
-    nba_espn_team_incrementals.main()
-    nba_espn_team_standings_incrementals.main()
-    box_score_nba_ref_incrementals.main()
-    nba_stats_team_boxscores.main()
-    nba_stats_player_boxscores_inc.main()
-    espn_update_season_date.main()
-    espn_team_name_update.main()
-    team_name_update_team_boxscore.main()
-    player_name_nba_ref_boxscore.main()
-    espn_delete_max_season(connection)
-    insert_into_nba_stats(connection)
-    refresh_player_team_map(connection, sys.argv[3])
-    date_lookup_table.main()
-    predictions_team_name_update.main()
-    pipeline_auditlog(connection, desc)
+    # back_up_db(out_file)
+    # compress_backup(out_file)
+    # clean_up(out_file)
+    # active_roster.main(sys.argv[1], sys.argv[2])
+    # injured_players.main(sys.argv[1])
+    # nba_espn_incrementals_mp.main()
+    # nba_espn_team_incrementals.main()
+    # nba_espn_team_standings_incrementals.main()
+    # box_score_nba_ref_incrementals.main()
+    # nba_stats_team_boxscores.main()
+    # nba_stats_player_boxscores_inc.main()
+    # espn_update_season_date.main()
+    # espn_team_name_update.main()
+    # team_name_update_team_boxscore.main()
+    # player_name_nba_ref_boxscore.main()
+    # espn_delete_max_season(connection)
+    # insert_into_nba_stats(connection)
+    # refresh_player_team_map(connection, sys.argv[3])
+    # date_lookup_table.main()
+    # predictions_team_name_update.main()
+    # pipeline_auditlog(connection, desc)
     recreate_database(connection)
-    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogProd.xml')
-    migrate_to_prod_mp.main(sys.argv[4], sys.argv[5])
-    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogKeys.xml')
+    liquibase_call('/Users/Philip/Documents/NBA\ prediction\ script/Changelogs/nba_stats_prod_changeLogProd_test.xml')
+    load_db(jar)
+    connection.close()

@@ -24,13 +24,27 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 
+def get_year():
+    today = datetime.datetime.today().date()
+    start_season = datetime.datetime.strptime('2018-10-01', '%Y-%m-%d').date()
+    new_year = datetime.datetime.strptime('2019-01-01', '%Y-%m-%d').date()
+    end_season = datetime.datetime.strptime('2019-05-30', '%Y-%m-%d').date()
+
+    if today > start_season and today < new_year:
+        return str(today.year) + '-' + str(today.year + 1)[2:]
+    elif today >= new_year and today < end_season:
+        return str(today.year - 1) + '-' + str(today.year)[2:]
+
 def connect_to_staging():
     return pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
 
-def find_max_date(conn):
-    exe = conn.cursor()
-    exe.execute('select max(game_date) from nba_stats.box_score_map')
-    return exe.fetchall()[0][0]
+def find_max_date():
+    conn = connect_to_staging()
+    cursor = conn.cursor()
+    cursor.execute('select max(game_date) from nba_stats.box_score_map')
+    results = cursor.fetchall()[0][0]
+    conn.close()
+    return results
 
 def create_pools(driver, content):
     pool = Pool(5)
@@ -50,6 +64,8 @@ def stat_scraper(link, driver):
         df = pd.read_html(content)[0]
         f_df = format_matchup(df)
         f_df['Game Date']  = f_df.loc[:, 'Game Date'].apply(convert_date)
+        f_df['source_link'] = browser.current_url
+        f_df['created_at'] = datetime.datetime.now()
         insert_into_database(f_df[f_df['Game Date'] > link[2]], link[0])
         if f_df['Game Date'].min() <= link[2]:
             break
@@ -95,10 +111,10 @@ def parse_teams(row):
     return_row = []
     if match_up[1] == 'vs.':
         return_row = [i for i in [row.loc['Team'], match_up[0], match_up[2], row.loc['Game Date']]]
-        return np.array(return_row).reshape(1,4)
+        #return np.array(return_row).reshape(1,4)
     elif match_up[1] == '@':
         return_row = [i for i in [row.loc['Team'], match_up[2], match_up[0], row.loc['Game Date']]]
-        return np.array(return_row).reshape(1,4)
+    return np.array(return_row).reshape(1,4)
 
 def convert_date(date_str):
     return datetime.datetime.strptime(date_str, '%m/%d/%Y').date()
@@ -113,13 +129,13 @@ def main():
     driver = '/Users/Philip/Downloads/chromedriver 2'
     logging.basicConfig(filename='nba_stat_incrementals_log.log', filemode='a', level=logging.INFO)
     logging.info('Starting NBA Stats incrementals pipeline {}'.format(str(datetime.datetime.now())))
-
-    max_date = find_max_date(connect_to_staging())
-    content = [['advanced_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-advanced/', max_date],
-               ['figure4_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-four-factors/', max_date],
-               ['team_misc_boxscore_stats', 'https://stats.nba.com/teams/boxscores-misc/', max_date],
-               ['team_scoring_boxscore_stats', 'https://stats.nba.com/teams/boxscores-scoring/', max_date],
-               ['traditional_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-traditional/', max_date]]
+    year = get_year()
+    max_date = find_max_date()
+    content = [['advanced_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-advanced/?Season={year}&SeasonType=Regular%20Season'.format(year=year), max_date],
+               ['figure4_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-four-factors/?Season={year}&SeasonType=Regular%20Season'.format(year=year), max_date],
+               ['team_misc_boxscore_stats', 'https://stats.nba.com/teams/boxscores-misc/?Season={year}&SeasonType=Regular%20Season'.format(year=year), max_date],
+               ['team_scoring_boxscore_stats', 'https://stats.nba.com/teams/boxscores-scoring/?Season={year}&SeasonType=Regular%20Season'.format(year=year), max_date],
+               ['traditional_team_boxscore_stats', 'https://stats.nba.com/teams/boxscores-traditional/?Season={year}&SeasonType=Regular%20Season'.format(year=year), max_date]]
     create_pools(driver, content)
     logging.info('NBA Stats incrementals pipeline completed successfully {}'.format(str(datetime.datetime.now())))
 

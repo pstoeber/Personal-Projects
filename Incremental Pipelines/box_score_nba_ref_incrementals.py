@@ -22,6 +22,15 @@ from sqlalchemy import create_engine
 def gen_db_conn():
     return pymysql.connect(host='localhost', user='root', password='Sk1ttles', db='nba_stats_staging', autocommit=True)
 
+def sql_execute(conn, sql):
+    exe = conn.cursor()
+    exe.execute(sql)
+    return exe.fetchall()
+
+def get_max_date(conn):
+    find_max_date = 'select date_add(max(game_date), interval +1 day) from nba_stats.box_score_map'
+    return sql_execute(conn, find_max_date)[0][0]
+
 def gen_dates(conn):
     links_list = []
     start = get_max_date(conn)
@@ -32,15 +41,6 @@ def gen_dates(conn):
         links_list.append('https://www.basketball-reference.com/boxscores/?month={}&day={}&year={}'.format(date[1], date[2], date[0]))
         start += datetime.timedelta(days=1)
     return links_list
-
-def sql_execute(conn, sql):
-    exe = conn.cursor()
-    exe.execute(sql)
-    return exe.fetchall()
-
-def get_max_date(conn):
-    find_max_date = 'select date_add(max(game_date), interval +1 day) from nba_stats.box_score_map'
-    return sql_execute(conn, find_max_date)[0][0]
 
 def get_links(links):
     box_score_list = []
@@ -58,7 +58,7 @@ def count_threads(link_count):
     if link_count < 8:
         threads = link_count
     else:
-        threads = link_count
+        threads = 8
     return threads
 
 def get_header(conn, sql):
@@ -79,20 +79,31 @@ def create_pools(threads, links, col_info):
     pool.join()
     return results
 
+def gen_timestamp():
+    return str(datetime.datetime.now())
+
 def hash_gen(game_info_string):
     return hashlib.md5(game_info_string.encode('utf-8')).hexdigest()
 
-def gen_game_tag(header, game_hash, tag_header):
+def gen_game_tag(header, game_hash, link, tag_header):
     game_tag = header.text.split(' at ')
-    game_tag = list(itertools.chain([game_hash], game_tag[:1], game_tag[1].split(' Box Score, ')))
-    game_tag_df = pd.DataFrame(np.array(game_tag).reshape(1,4), columns=tag_header)
+    game_tag = list(itertools.chain([game_hash], game_tag[:1], game_tag[1].split(' Box Score, '), [link], [datetime.datetime.now()]))
+    game_tag_df = pd.DataFrame(np.array(game_tag).reshape(1,6), columns=tag_header)
     game_tag_df['game_date'] = pd.to_datetime(game_tag_df['game_date']).dt.date
     return game_tag_df
 
 def gen_score_info(soup, game_hash, score_header):
     score = [i.get_text() for i in soup.findAll(True, {'class':['score']})]
     score = list(itertools.chain([game_hash], score))
-    return pd.DataFrame(np.array(score).reshape(1,3), columns=score_header)
+    score.append(gen_timestamp())
+    return pd.DataFrame(np.array(score).reshape(1,4), columns=score_header)
+
+def calc_seconds(minutes_played):
+    try:
+        time_list = str(minutes_played).split(':')
+        return ((int(time_list[0]) * 60) + int(time_list[1]))
+    except (ValueError, IndexError):
+        return 0
 
 def insert_stats(stats_content):
     engine = create_engine("mysql+pymysql://", creator=gen_db_conn)
@@ -106,9 +117,9 @@ def box_scrape(link, **content):
     soup = BeautifulSoup(requests.get(link, None).content, "html.parser")
     header = soup.find('h1')
     game_hash = hash_gen(header)
-    stats_content['box_score_map'] = gen_game_tag(header, game_hash, content.get('tag_header', None))
+    stats_content['box_score_map'] = gen_game_tag(header, game_hash, link, content.get('tag_header', None))
     stats_content['game_results'] = gen_score_info(soup, game_hash, content.get('score_header', None))
-    filter_list = ['Did Not Play', 'Did Not Dress']
+    filter_list = ['Did Not Play', 'Did Not Dress', 'Suspended']
 
     for c, table in enumerate(pd.read_html(link)):
         if c < 2:
@@ -120,10 +131,14 @@ def box_scrape(link, **content):
         df.columns = [col[1].replace('Starters', 'name') for col in df.columns]
         df.insert(loc=1, column='game_hash', value=game_hash)
         df.insert(loc=2, column='team', value=team)
+        df['source_link'] = link
+        df['created_at'] = gen_timestamp()
+        clean_df = df[~df['MP'].isin(filter_list)].fillna(0)
+        clean_df['MP'] = clean_df.MP.apply(calc_seconds)
         if c % 2 == 0:
-            stats_content['basic_box_stats'] = pd.concat([df[~df['MP'].isin(filter_list)].fillna(0), stats_content['basic_box_stats']])
+            stats_content['basic_box_stats'] = pd.concat([clean_df, stats_content['basic_box_stats']])
         else:
-            stats_content['advanced_box_stats'] = pd.concat([df[~df['MP'].isin(filter_list)].fillna(0), stats_content['advanced_box_stats']])
+            stats_content['advanced_box_stats'] = pd.concat([clean_df, stats_content['advanced_box_stats']])
     insert_stats(stats_content)
     return
 

@@ -59,7 +59,8 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/local/bin/python3.6 "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/full_incremental_pipeline.py" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/sql ddl/active_rosters_player_id.sql" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/sql ddl/active_rosters_team_info.sql" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/sql ddl/player_team_map.sql" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries" "/Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread"</string>
+					<string>cd ~/Documents/NBA\ prediction\ script/Incremental\ Pipelines
+/usr/local/bin/python3.6 full_incremental_pipeline.py sql\ ddl/active_rosters_player_id.sql sql\ ddl/active_rosters_team_info.sql sql\ ddl/player_team_map.sql production_insert_statements/primary_queries production_insert_statements/multithread</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -95,6 +96,8 @@
 				</array>
 				<key>OutputUUID</key>
 				<string>F66C75AD-6063-4D43-8ED8-F2E113F4B9FE</string>
+				<key>ShowWhenRun</key>
+				<false/>
 				<key>UUID</key>
 				<string>D3DFA1F3-ADC8-42EF-96D3-D489C22EBA3E</string>
 				<key>UnlocalizedApplications</key>
@@ -169,12 +172,10 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:252.000000</string>
+				<string>325.000000:304.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>

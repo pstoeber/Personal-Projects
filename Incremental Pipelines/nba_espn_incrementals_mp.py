@@ -8,6 +8,7 @@ import re
 import pymysql
 import itertools
 import logging
+import hashlib
 from bs4 import BeautifulSoup
 from multiprocessing import set_start_method
 from multiprocessing import Pool
@@ -59,29 +60,15 @@ def truncate_tables(conn):
         sql_execute(conn, 'truncate table {};'.format(table))
     return
 
-def find_player_id(name, team, exp, cols, index):
-    conn = gen_db_conn()
-    flag = False
-    try:
-        player_id = sql_execute(conn, 'select player_id from nba_stats.player_info where name like \'{}\''.format(name))[0][0]
-    except IndexError:
-        player_id = sql_execute(conn, 'select max(player_id) from nba_stats.player_info')[0][0] + index
-        player_info = np.array([player_id, name, team, exp]).reshape(1,4)
-        insert_into_db(pd.DataFrame(player_info, columns=cols), 'player_info')
-    conn.close()
-    return player_id, flag
-
 def get_player_name(soup):
     first_name = soup.find('span', class_='truncate min-w-0 fw-light').text
     last_name = soup.find('span', class_='truncate min-w-0').text
     return '%s %s' % (first_name, last_name)
 
-def get_exp(soup):
-    try:
-        bio = soup.find("ul", class_="player-metadata").get_text()
-        return int(re.search("Experience(.*\d)", bio).group(1)) #extracting years of experience
-    except AttributeError:
-        return 0
+def get_postion(soup):
+    bio = soup.find("div", class_="PlayerHeader__Team n8 mt3 mb4 flex items-center clr-gray-01 mt3 mb4").get_text()
+    position = bio.split('#')[-1]
+    return re.search(r'[A-Za-z].*', position).group(0)
 
 def get_team(soup):
     try:
@@ -90,29 +77,58 @@ def get_team(soup):
         team = 'None'
     return team
 
+def gen_row_hash(row):
+    return hashlib.md5(''.join(str(i) for i in row).encode('utf-8')).hexdigest()
+
 def insert_into_db(df, table):
     engine = create_engine('mysql+pymysql://', creator=gen_db_conn)
     df.to_sql(con=engine, name=table, if_exists='append', index=False)
     engine.dispose()
     return
 
-def player_stat_scraper(player):
-    soup = BeautifulSoup(requests.get(player.get('link', None), timeout=None).content, "html.parser")
-    name = get_player_name(soup).replace('\'', '\\\'')
-    table_names = soup.find_all('div', class_='Table2__Title')
-    table_names = [i.text.replace(' ', '') for i in table_names]
+def gen_player_info(name, team, pos, link):
+    player_info_list = [name, team, pos, link, gen_timestamp()]
+    player_id = gen_row_hash(player_info_list)
+    player_info_list.insert(0, player_id)
+    player_info = np.array([player_info_list]).reshape(1,6)
+    return player_info, player_id
 
-    player_id, flag = find_player_id(name, get_team(soup), get_exp(soup), player.get('cols', None), player.get('index', None))
-    raw_tables = pd.read_html(player.get('link', None))[1:-3]
+def create_player_info(name, team, pos, link):
+    conn = gen_db_conn()
+    cols = ['player_id', 'name', 'team', 'position', 'source_link', 'created_at']
+    flag = False
+    sql = 'select player_id from nba_stats.player_info where name like \'{name}\''.format(name=name.replace('\'', '\\\''))
+
+    try:
+        player_id = sql_execute(conn, sql)[0][0]
+        flag = True
+        conn.close()
+    except IndexError:
+        player_info, player_id = gen_player_info(name, team, pos, link)
+        player_df = pd.DataFrame(player_info, columns=cols, index=None)
+        insert_into_db(player_df, 'player_info')
+    return player_id, flag
+
+def player_stat_scraper(link):
+    soup = BeautifulSoup(requests.get(link).content, "html.parser")
+    name = get_player_name(soup)
+    table_names = soup.find_all('caption', class_='Table2__Title')
+    table_names = [i.text.replace(' ', '') for i in table_names]
+    team = get_team(soup)
+    pos = get_postion(soup)
+
+    player_id, flag = create_player_info(name, team, pos, link)
+    raw_tables = pd.read_html(link)[1:-3]
     for c, i in enumerate(range(0, len(raw_tables), 4)):
         table_name = table_names[c].lower()
         df = pd.concat([raw_tables[i], raw_tables[i+2]], axis=1).iloc[:-1, :]
         df.insert(loc=0, column='player_id', value=player_id)
+        df['created_at'] = gen_timestamp()
         if c == 2:
             df.loc[:, 'RAT'].replace({'-':0}, inplace=True)
             df.loc[:, 'AST/TO'].replace({np.inf:0}, inplace=True)
             df.loc[:, 'STL/TO'].replace({np.inf:0}, inplace=True)
-        if flag == True:
+        if flag == False:
             insert_into_db(df, table_name)
         else:
             insert_into_db(df[df['season'] == '2018-19'], table_name)
@@ -134,8 +150,7 @@ def main():
     player_links = create_threads(player_id_scraper, find_team_names())
     player_links = list(itertools.chain.from_iterable(player_links))
     truncate_tables(conn)
-    player_content = [dict(link=link, cols=player_cols, index=c+1) for c, link in enumerate(player_links)]
-    player_stats = create_threads(player_stat_scraper, player_content)
+    player_stats = create_threads(player_stat_scraper, player_links)
     logging.info('ESPN players incrementals pipeline completed successfully {}'.format(gen_timestamp()))
 
 if __name__ == '__main__':

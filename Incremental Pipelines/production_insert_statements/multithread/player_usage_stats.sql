@@ -1,25 +1,27 @@
 insert into nba_stats_prod.player_usage_stats(
   select b.game_hash,
          id.player_id,
-         u.team,
-         u.`USG%`,
-         u.`%FGM`,
-         u.`%FGA`,
-         u.`%3PM`,
-         u.`%3PA`,
-         u.`%FTM`,
-         u.`%FTA`,
-         u.`%OREB`,
-         u.`%DREB`,
-         u.`%REB`,
-         u.`%AST`,
-         u.`%TOV`,
-         u.`%STL`,
-         u.`%BLK`,
-         u.`%BLKA`,
-         u.`%PF`,
-         u.`%PFD`,
-         u.`%PTS`
+         t.team_id,
+         u.`USG%` / 100,
+         u.`%FGM` / 100,
+         u.`%FGA` / 100,
+         u.`%3PM` / 100,
+         u.`%3PA` / 100,
+         u.`%FTM` / 100,
+         u.`%FTA` / 100,
+         u.`%OREB` / 100,
+         u.`%DREB` / 100,
+         u.`%REB` / 100,
+         u.`%AST` / 100,
+         u.`%TOV` / 100,
+         u.`%STL` / 100,
+         u.`%BLK` / 100,
+         u.`%BLKA` / 100,
+         u.`%PF` / 100,
+         u.`%PFD` / 100,
+         u.`%PTS` / 100,
+         u.source_link,
+         u.created_at
   from(
 
         select box_score_map_view.game_hash,
@@ -53,4 +55,5 @@ insert into nba_stats_prod.player_usage_stats(
   inner join nba_stats.player_usage_stats as u on id.team = u.team and
                                                   id.NAME = u.name and
                                                   id.game_date = u.game_date
+  inner join nba_stats.team_info as t on u.team = t.team
 );

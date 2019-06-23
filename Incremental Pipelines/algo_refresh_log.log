@@ -33,3 +33,7 @@ INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction scri
 INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/pts.sql at 2019-02-09 18:16:37.759868
 INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/turnovers.sql at 2019-02-09 18:16:37.760959
 INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/multithread/game_date_lu.sql at 2019-02-09 18:16:37.761966
+INFO:root:Algo refresh intialized 2019-04-14 10:10:36.929667
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V2_team_info.sql at 2019-04-14 10:10:36.949837
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V3_box_score_map.sql at 2019-04-14 10:10:37.297549
+INFO:root:SQL executed successfully: /Users/Philip/Documents/NBA prediction script/Incremental Pipelines/production_insert_statements/primary_queries/V1_player_info.sql at 2019-04-14 10:10:37.304562

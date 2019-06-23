@@ -1,0 +1,101 @@
+{
+    "player_info": {
+        "partitionColumn": "created_at"
+    },
+    "team_info": {
+        "partitionColumn": "created_at"
+    },
+    "box_score_map": {
+        "partitionColumn": "game_date"
+    },
+    "game_date_lookup": {
+        "partitionColumn": "season"
+    },
+    "active_rosters": {
+        "partitionColumn": "created_at"
+    },
+    "regularseasonaverages": {
+        "partitionColumn": "season"
+    },
+    "regularseasontotals": {
+        "partitionColumn": "season"
+    },
+    "regularseasonmisctotals": {
+        "partitionColumn": "season"
+    },
+    "player_team_map": {
+        "partitionColumn": "season"
+    },
+    "basic_box_stats": {
+        "partitionColumn": "created_at"
+    },
+    "advanced_box_stats": {
+        "partitionColumn": "created_at"
+    },
+    "player_misc_stats": {
+        "partitionColumn": "game_date"
+    },
+    "player_scoring_stats": {
+        "partitionColumn": "game_date"
+    },
+    "player_usage_stats": {
+        "partitionColumn": "game_date"
+    },
+    "fg_pct": {
+        "partitionColumn": "season"
+    },
+    "points": {
+        "partitionColumn": "season"
+    },
+    "rebound_pct": {
+        "partitionColumn": "season"
+    },
+    "3pt_pct": {
+        "partitionColumn": "season"
+    },
+    "turnovers": {
+        "partitionColumn": "season"
+    },
+    "team_traditional_boxscore_stats": {
+        "partitionColumn": "GAME_DATE"
+    },
+    "team_scoring_boxscore_stats": {
+        "partitionColumn": "GAME_DATE"
+    },
+    "team_figure4_boxscore_stats": {
+        "partitionColumn": "GAME_DATE"
+    },
+    "team_misc_boxscore_stats": {
+        "partitionColumn": "GAME_DATE"
+    },
+    "team_advanced_boxscore_stats": {
+        "partitionColumn": "GAME_DATE"
+    },
+    "game_results": {
+        "partitionColumn": "created_at"
+    },
+    "injured_players": {
+        "partitionColumn": "created_at"
+    },
+    "lasso_alphas": {
+        "partitionColumn": "date"
+    },
+    "c_values": {
+        "partitionColumn": "date"
+    },
+    "pipeline_auditlog": {
+        "partitionColumn": "date"
+    },
+    "team_standings": {
+        "partitionColumn": "season"
+    },
+    "total_points_predictions": {
+        "partitionColumn": "game_date"
+    },
+    "win_probability_results": {
+        "partitionColumn": "game_date"
+    },
+    "player_prediction_results": {
+        "partitionColumn": "game_date"
+    }
+}

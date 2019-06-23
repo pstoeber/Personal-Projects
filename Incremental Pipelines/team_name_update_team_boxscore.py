@@ -79,7 +79,7 @@ def create_update_statements(connection):
                 update_away_statement = "update " + table + " set away_team = \"" + team_dict[city] + "\" where away_team = \"" + city + "\""
                 sql_execute(connection, update_away_statement)
             elif table == 'player_info':
-                player_update_statement = "update " + table + " set current_team = \"" + team_dict[city] + "\" where current_team = \"" + city + "\""
+                player_update_statement = "update " + table + " set team = \"" + team_dict[city] + "\" where team = \"" + city + "\""
                 sql_execute(connection, player_update_statement)
 
     update_box_map_away = 'update box_score_map set away_team = "{}" where away_team = "{}"'.format('LA Clippers', 'Los Angeles Clippers')
