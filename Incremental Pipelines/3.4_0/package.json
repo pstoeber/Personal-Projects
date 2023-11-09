@@ -11,7 +11,7 @@
       "incompatibilities with the configured chromium version and newer",
       "drivers."
     ],
-    "chromedriver": "2.36.0",
+    "chromedriver": "119.0.1",
     "dmg": "^0.1.0",
     "eslint": "^5.1.0",
     "eslint-config-eyeo": "^2.1.0",
